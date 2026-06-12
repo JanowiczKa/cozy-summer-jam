@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bbxv0y6mmgnhy"]
+
+[ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_n23dq"]
+[ext_resource type="Script" uid="uid://ha5duy5cxl8v" path="res://Scripts/MouseDrag/MouseDrag.cs" id="1_ya3vg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n23dq"]
+font_size = 6
+font_color = Color(0, 0, 0, 1)
+
+[node name="LiquidBottle" type="RigidBody2D" unique_id=1570976637 groups=["draggable"]]
+input_pickable = true
+script = ExtResource("1_ya3vg")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1804397802]
+
+[node name="Base" type="Sprite2D" parent="Visuals" unique_id=1517791186]
+modulate = Color(0.43137255, 0.8392157, 0.6431373, 1)
+position = Vector2(-1.0430813e-07, 0)
+scale = Vector2(0.40625003, 1)
+texture = ExtResource("1_n23dq")
+
+[node name="Nozzle" type="Sprite2D" parent="Visuals/Base" unique_id=210761328]
+position = Vector2(0, -80)
+scale = Vector2(0.4, 0.25)
+texture = ExtResource("1_n23dq")
+
+[node name="LabelPlaceholder" type="Sprite2D" parent="Visuals" unique_id=1256606127]
+scale = Vector2(0.40625, 0.25)
+texture = ExtResource("1_n23dq")
+
+[node name="Label" type="Label" parent="Visuals" unique_id=879800941]
+offset_left = -26.0
+offset_top = -16.0
+offset_right = 25.0
+offset_bottom = 16.0
+text = "99% Strong Shit"
+label_settings = SubResource("LabelSettings_n23dq")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="Nozzle" type="Sprite2D" parent="Visuals" unique_id=730467742]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -99)
+scale = Vector2(0.21875001, 0.04687503)
+texture = ExtResource("1_n23dq")
+
+[node name="Nozzle" type="Sprite2D" parent="Visuals/Nozzle" unique_id=1013447300]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -403.33298)
+scale = Vector2(0.21875001, 5.3020787)
+texture = ExtResource("1_n23dq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=201507439]
+position = Vector2(0, -18.925)
+scale = Vector2(2.59, 8.26)
+polygon = PackedVector2Array(-4.2471046, -9.331114, -4.2471046, -5.578087, -10.03861, -5.578087, -10.03861, 10.039346, 10.03861, 10.039346, 10.03861, -5.4570217, 4.2471046, -5.4570217, 4.2471046, -9.331114, 5.405406, -9.331114, 5.405406, -10.057507, -5.405406, -10.057507, -5.405406, -9.331114)

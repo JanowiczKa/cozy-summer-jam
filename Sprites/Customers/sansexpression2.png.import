@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://canuacfaatprt"
-path="res://.godot/imported/sansexpression1.png-f236b54480d7e4126cc44acebb4a04bd.ctex"
+uid="uid://bst7mggacu1fa"
+path="res://.godot/imported/sansexpression2.png-730d3a85fc1378ab50e93e76e9ef1db8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character Sprites/sansexpression1.png"
-dest_files=["res://.godot/imported/sansexpression1.png-f236b54480d7e4126cc44acebb4a04bd.ctex"]
+source_file="res://Sprites/Customers/sansexpression2.png"
+dest_files=["res://.godot/imported/sansexpression2.png-730d3a85fc1378ab50e93e76e9ef1db8.ctex"]
 
 [params]
 
