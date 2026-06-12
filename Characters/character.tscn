@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dhs5evb6h75wu"]
+
+[ext_resource type="Texture2D" uid="uid://omp8o4skdbly" path="res://Character Sprites/Sans_.webp" id="1_acr0g"]
+[ext_resource type="Script" uid="uid://d3eai5vrvalyi" path="res://Characters/Character Scripts/CharacterSprite.cs" id="2_ticvp"]
+
+[node name="Characters" type="Node2D" unique_id=623045154]
+
+[node name="CharacterSprite" type="Sprite2D" parent="." unique_id=1052017425]
+position = Vector2(558, 298)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_acr0g")
+script = ExtResource("2_ticvp")

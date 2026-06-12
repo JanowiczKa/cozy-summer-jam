@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cozy Summer Jam", "Cozy Summer Jam.csproj", "{AD1970E2-0D2E-4234-9F2C-B78919C8680F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cozy Summer Jam", "Cozy Summer Jam.csproj", "{6CBD3E30-5198-4EAD-84BD-C0A96501423F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AD1970E2-0D2E-4234-9F2C-B78919C8680F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD1970E2-0D2E-4234-9F2C-B78919C8680F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD1970E2-0D2E-4234-9F2C-B78919C8680F}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{AD1970E2-0D2E-4234-9F2C-B78919C8680F}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{AD1970E2-0D2E-4234-9F2C-B78919C8680F}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{AD1970E2-0D2E-4234-9F2C-B78919C8680F}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{6CBD3E30-5198-4EAD-84BD-C0A96501423F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CBD3E30-5198-4EAD-84BD-C0A96501423F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CBD3E30-5198-4EAD-84BD-C0A96501423F}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{6CBD3E30-5198-4EAD-84BD-C0A96501423F}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{6CBD3E30-5198-4EAD-84BD-C0A96501423F}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{6CBD3E30-5198-4EAD-84BD-C0A96501423F}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal
