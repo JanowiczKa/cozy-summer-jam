@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cozy Summer Jam"
-run/main_scene="uid://dhs5evb6h75wu"
+run/main_scene="uid://b2mjar35es27q"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
