@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2mjar35es27q"]
 
-[ext_resource type="Script" uid="uid://6cbblhldwrgf" path="res://Scenes/MouseDragController.cs" id="1_gqqm6"]
-[ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Square.png" id="1_gr58c"]
+[ext_resource type="Script" uid="uid://6cbblhldwrgf" path="res://Scripts/MouseDrag/MouseDragController.cs" id="1_gqqm6"]
+[ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_gr58c"]
 [ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
 

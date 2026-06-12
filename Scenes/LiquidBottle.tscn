@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bbxv0y6mmgnhy"]
 
-[ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Square.png" id="1_n23dq"]
-[ext_resource type="Script" uid="uid://ha5duy5cxl8v" path="res://Scripts/MouseDrag.cs" id="1_ya3vg"]
+[ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_n23dq"]
+[ext_resource type="Script" uid="uid://ha5duy5cxl8v" path="res://Scripts/MouseDrag/MouseDrag.cs" id="1_ya3vg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n23dq"]
 font_size = 6

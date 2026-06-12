@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://canuacfaatprt"
-path="res://.godot/imported/sansexpression1.png-f236b54480d7e4126cc44acebb4a04bd.ctex"
+uid="uid://b3dcifnthf2cb"
+path="res://.godot/imported/Square.png-7dab7f53847ca22099034886f1a47ae5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character Sprites/sansexpression1.png"
-dest_files=["res://.godot/imported/sansexpression1.png-f236b54480d7e4126cc44acebb4a04bd.ctex"]
+source_file="res://Sprites/Temp/Square.png"
+dest_files=["res://.godot/imported/Square.png-7dab7f53847ca22099034886f1a47ae5.ctex"]
 
 [params]
 

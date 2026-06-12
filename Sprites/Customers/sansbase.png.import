@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g1sljdutxrl8"
-path="res://.godot/imported/EmptyGlass.png-d8e7e4d1b32ec53de5021d1894f3c236.ctex"
+uid="uid://v8il60nx14bi"
+path="res://.godot/imported/sansbase.png-b86e96f601a3bafeca8179e892523277.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/EmptyGlass.png"
-dest_files=["res://.godot/imported/EmptyGlass.png-d8e7e4d1b32ec53de5021d1894f3c236.ctex"]
+source_file="res://Sprites/Customers/sansbase.png"
+dest_files=["res://.godot/imported/sansbase.png-b86e96f601a3bafeca8179e892523277.ctex"]
 
 [params]
 

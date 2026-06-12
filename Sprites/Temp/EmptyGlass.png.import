@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bst7mggacu1fa"
-path="res://.godot/imported/sansexpression2.png-1fa4c57e43caf34bca2fb1b3619aad77.ctex"
+uid="uid://g1sljdutxrl8"
+path="res://.godot/imported/EmptyGlass.png-4b30d7c1dbd26937c0b863fdfd06e536.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Character Sprites/sansexpression2.png"
-dest_files=["res://.godot/imported/sansexpression2.png-1fa4c57e43caf34bca2fb1b3619aad77.ctex"]
+source_file="res://Sprites/Temp/EmptyGlass.png"
+dest_files=["res://.godot/imported/EmptyGlass.png-4b30d7c1dbd26937c0b863fdfd06e536.ctex"]
 
 [params]
 
