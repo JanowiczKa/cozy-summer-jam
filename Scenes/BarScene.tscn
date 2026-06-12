@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b2mjar35es27q"]
+
+[ext_resource type="Script" uid="uid://6cbblhldwrgf" path="res://Scenes/MouseDragController.cs" id="1_gqqm6"]
+[ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Square.png" id="1_gr58c"]
+[ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
+[ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
+distance = -2.0
+
+[node name="BarScene" type="Node2D" unique_id=284124051]
+script = ExtResource("1_gqqm6")
+
+[node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
+position = Vector2(365, 22)
+
+[node name="MainCamera" type="Camera2D" parent="." unique_id=1962037065]
+
+[node name="Table" type="StaticBody2D" parent="." unique_id=1237125352]
+position = Vector2(0, 225)
+
+[node name="Visuals" type="Sprite2D" parent="Table" unique_id=367679077]
+modulate = Color(0.56, 0.33898667, 0.14559999, 1)
+position = Vector2(0, 160)
+scale = Vector2(15, 2.5)
+texture = ExtResource("1_gr58c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table" unique_id=779099646]
+position = Vector2(0, 1)
+scale = Vector2(9, 2)
+shape = SubResource("WorldBoundaryShape2D_gr58c")
+
+[node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
+position = Vector2(1, -17)
+input_pickable = false
+
+[node name="LiquidBottle" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
+position = Vector2(370, -23)
+freeze_mode = 1
