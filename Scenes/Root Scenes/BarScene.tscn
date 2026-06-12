@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_gr58c"]
 [ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
+[ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/Root Scenes/character.tscn" id="5_4aloy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -2.0
@@ -37,3 +38,6 @@ input_pickable = false
 [node name="LiquidBottle" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
 position = Vector2(370, -23)
 freeze_mode = 1
+
+[node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
+position = Vector2(-1287, -496)
