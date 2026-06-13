@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cspb5c30a5a15"]
+
+[ext_resource type="Script" uid="uid://sv6rnciq1vcl" path="res://Scripts/Droplet.cs" id="1_5plri"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5plri"]
+load_path = "res://.godot/imported/Droplet.png-d7cff6107971a3fe61f1d55e191d2227.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_04br5"]
+radius = 6.0
+
+[node name="Droplet" type="RigidBody2D" unique_id=2092397949]
+collision_layer = 2
+collision_priority = 0.1
+mass = 0.1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_5plri")
+timeToLive = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=529686071]
+position = Vector2(0, -2)
+texture = SubResource("CompressedTexture2D_5plri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=639467342]
+shape = SubResource("CircleShape2D_04br5")
