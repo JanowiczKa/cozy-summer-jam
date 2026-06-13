@@ -5,10 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/Root Scenes/character.tscn" id="5_4aloy"]
-<<<<<<< HEAD
-=======
 [ext_resource type="Script" uid="uid://16kx4o1hf44n" path="res://Scripts/EventController.cs" id="6_r4now"]
->>>>>>> d4552c5 (big fat update)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -2.0
@@ -44,11 +41,7 @@ position = Vector2(412, 115)
 freeze_mode = 1
 
 [node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
-<<<<<<< HEAD
-position = Vector2(-1287, -496)
-=======
 position = Vector2(-953, -818)
 
 [node name="EventController" type="Node" parent="." unique_id=838439069]
 script = ExtResource("6_r4now")
->>>>>>> d4552c5 (big fat update)
