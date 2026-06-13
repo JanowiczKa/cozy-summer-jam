@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g1sljdutxrl8"
-path="res://.godot/imported/EmptyGlass.png-4b30d7c1dbd26937c0b863fdfd06e536.ctex"
+uid="uid://cn5m8u2huv1w8"
+path="res://.godot/imported/Droplet.png-d7cff6107971a3fe61f1d55e191d2227.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Temp/EmptyGlass.png"
-dest_files=["res://.godot/imported/EmptyGlass.png-4b30d7c1dbd26937c0b863fdfd06e536.ctex"]
+source_file="res://Sprites/Temp/Droplet.png"
+dest_files=["res://.godot/imported/Droplet.png-d7cff6107971a3fe61f1d55e191d2227.ctex"]
 
 [params]
 
