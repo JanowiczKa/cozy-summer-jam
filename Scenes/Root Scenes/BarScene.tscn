@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://6cbblhldwrgf" path="res://Scripts/MouseDrag/MouseDragController.cs" id="1_gqqm6"]
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_gr58c"]
 [ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
-[ext_resource type="Script" uid="uid://byvfl3pypgq87" path="res://Scripts/Table.cs" id="2_vq2hx"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/Root Scenes/character.tscn" id="5_4aloy"]
 [ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="8_3btq8"]
@@ -29,7 +28,6 @@ position = Vector2(365, 22)
 
 [node name="Table" type="StaticBody2D" parent="." unique_id=1237125352]
 position = Vector2(0, 225)
-script = ExtResource("2_vq2hx")
 
 [node name="Visuals" type="Sprite2D" parent="Table" unique_id=367679077]
 modulate = Color(0.56, 0.33898667, 0.14559999, 1)
