@@ -4,32 +4,56 @@ using System.Collections.Generic;
 
 public partial class Character : Node2D
 {
-	private List<string> expression_sequence;
-	private List<string> speech_sequence;
-	private int sequence_index;
 	[Signal]
 	private delegate void DialogActionEventHandler(string expression, string speech);
+	[Signal]
+	private delegate void FadeInActionEventHandler();
+	[Signal]
+	private delegate void FadeOutActionEventHandler();
+	[Signal]
+	private delegate void ControllerSequenceEndEventHandler(string sequence);
 	
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		expression_sequence = ["DefaultExp", "DefaultExp", "", "Mog"];
-		speech_sequence = ["Ay it's me, Sans Undertale over here", "From the award winning game Undertale", "...", "You doing anything tonight?"];
-		sequence_index = 0;
+		var spriteNode = GetNode<Sprite2D>("./CharacterSprite");
+		spriteNode.Connect("FadeInFinished", new Callable(this, MethodName.StartDialogWhenFinishedFadingIn));
+		spriteNode.Connect("FadeOutFinished", new Callable(this, MethodName.StartDialogWhenFinishedFadingOut));
+		var controllerNode = GetNode<Node>("../EventController");
+		controllerNode.Connect("SkipDialogLine", new Callable(this, MethodName.PlayDialog));
+		controllerNode.Connect("StartFadeIn", new Callable(this, MethodName.StartFadeInSequence));
+		controllerNode.Connect("StartFadeOut", new Callable(this, MethodName.StartFadeOutSequence));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("Space"))
-		{
-			EmitSignal(SignalName.DialogAction, expression_sequence[sequence_index], speech_sequence[sequence_index]);
-			sequence_index += 1;
-			if (sequence_index >= expression_sequence.Count || sequence_index >= speech_sequence.Count)
-			{
-				sequence_index = 0;
-			}
-		}
+	}
+
+	private void PlayDialog(string expression, string speech)
+	{
+		EmitSignal(SignalName.DialogAction, expression, speech);
+	}
+
+	private void StartDialogWhenFinishedFadingIn()
+	{
+		EmitSignal(SignalName.ControllerSequenceEnd, "Introduction");
+	}
+
+	private void StartDialogWhenFinishedFadingOut()
+	{
+		EmitSignal(SignalName.ControllerSequenceEnd, "End");
+	}
+
+
+	private void StartFadeInSequence()
+	{
+		EmitSignal(SignalName.FadeInAction);
+	}
+
+	private void StartFadeOutSequence()
+	{
+		EmitSignal(SignalName.FadeOutAction);
 	}
 }

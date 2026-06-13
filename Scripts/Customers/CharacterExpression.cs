@@ -5,11 +5,12 @@ using System.Linq.Expressions;
 
 public partial class CharacterExpression : AnimatedSprite2D
 {
-	// Called when the node enters the scene tree for the first time.
+	// Called when the node enters the s cene tree for the first time.
 	public override void _Ready()
 	{
-		var parentCharacter = GetParent<Sprite2D>();
-		parentCharacter.Connect("NextLine", new Callable(this, MethodName.ChangeExpression));
+		var parentNode = GetNode<Node2D>("../..");
+		parentNode.Connect("DialogAction", new Callable(this, MethodName.ChangeExpression));
+		parentNode.Connect("FadeOutAction", new Callable(this, MethodName.ResetExpression));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,9 +18,9 @@ public partial class CharacterExpression : AnimatedSprite2D
 	{
 	}
 	
-	public void ChangeExpression(string expressionName){
+	public void ChangeExpression(string expression, string txt){
 		
-		switch(expressionName)
+		switch(expression)
 		{
 			case "DefaultExp":
 				Frame = 0;
@@ -31,5 +32,10 @@ public partial class CharacterExpression : AnimatedSprite2D
 				Frame = 0;
 				break;
 		}
+	}
+
+	private void ResetExpression()
+	{
+		Frame = 0;
 	}
 }

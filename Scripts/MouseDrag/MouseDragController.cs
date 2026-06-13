@@ -54,9 +54,9 @@ public partial class MouseDragController : Node2D
 	}
 	
 
-    public override void _PhysicsProcess(double delta)
-    {
-        if (currentDraggedObject == null) return;
+	public override void _PhysicsProcess(double delta)
+	{
+		if (currentDraggedObject == null) return;
 
 		if (Input.IsActionPressed("RotateHeldObjectLeft"))
 		{
@@ -67,11 +67,11 @@ public partial class MouseDragController : Node2D
 			holdingParentObject.GlobalRotationDegrees = holdingParentObject.GlobalRotationDegrees -= objectRotationSpeed;
 		}
 
-        //Originally did this with physics impulses but was quite floaty so I gave up on that for the sake of time
+		//Originally did this with physics impulses but was quite floaty so I gave up on that for the sake of time
 		//but would really like to make that work because collision would work nicer
 
 		var newPosition = GetGlobalMousePosition();
 
 		holdingParentObject.GlobalPosition = newPosition;
-    }
+	}
 }

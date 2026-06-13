@@ -6,6 +6,7 @@ public partial class RichTextLabel : Godot.RichTextLabel
 {
 	private double total_time_elapsed;
 	private int text_index;
+	private int sequence_index;
 	[Signal]
 	private delegate void VoiceSoundEffectEventHandler();
 	
@@ -18,6 +19,7 @@ public partial class RichTextLabel : Godot.RichTextLabel
 
 		var parentNode = GetNode<Node2D>("../..");
 		parentNode.Connect("DialogAction", new Callable(this, MethodName.LoadNewLine));
+		parentNode.Connect("FadeOutAction", new Callable(this, MethodName.ClearText));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,5 +41,11 @@ public partial class RichTextLabel : Godot.RichTextLabel
 	{
 		VisibleCharacters = 0;
 		Text = txt;	
+	}
+
+	private void ClearText()
+	{
+		VisibleCharacters = 0;
+		Text = "";
 	}
 }

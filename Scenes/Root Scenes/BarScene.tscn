@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/Root Scenes/character.tscn" id="5_4aloy"]
+[ext_resource type="Script" uid="uid://16kx4o1hf44n" path="res://Scripts/EventController.cs" id="6_r4now"]
 [ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="8_3btq8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
@@ -22,7 +23,7 @@ font_color = Color(0, 1, 0, 1)
 script = ExtResource("1_gqqm6")
 
 [node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
-position = Vector2(365, 22)
+position = Vector2(410, 88)
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1962037065]
 
@@ -41,7 +42,7 @@ scale = Vector2(9, 2)
 shape = SubResource("WorldBoundaryShape2D_gr58c")
 
 [node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
-position = Vector2(1, -17)
+position = Vector2(-365, 96)
 input_pickable = false
 containerSize = 60
 
@@ -64,34 +65,12 @@ rotation = -1.5707964
 text = "Milk"
 label_settings = SubResource("LabelSettings_vq2hx")
 
-[node name="LiquidPourSpout" parent="Milk" index="2" unique_id=967450582]
-spillRatePerSecond = 30.0
-
-[node name="Monster" parent="." unique_id=531781604 instance=ExtResource("3_iy0dp")]
-position = Vector2(370, -24)
+[node name="LiquidBottle" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
+position = Vector2(412, 115)
 freeze_mode = 1
 
-[node name="Base" parent="Monster/Visuals" parent_id_path=PackedInt32Array(531781604, 1804397802) index="0" unique_id=1517791186]
-modulate = Color(0.07545523, 0.07545523, 0.07545523, 1)
+[node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
+position = Vector2(-953, -818)
 
-[node name="LabelPlaceholder" parent="Monster/Visuals" parent_id_path=PackedInt32Array(531781604, 1804397802) index="1" unique_id=1256606127]
-visible = false
-
-[node name="Label" parent="Monster/Visuals" parent_id_path=PackedInt32Array(531781604, 1804397802) index="2" unique_id=879800941]
-offset_top = -36.0
-offset_bottom = 36.0
-text = "M"
-label_settings = SubResource("LabelSettings_3btq8")
-
-[node name="CollisionPolygon2D" parent="Monster" index="1" unique_id=201507439]
-visible = false
-
-[node name="LiquidPourSpout" parent="Monster" index="2" unique_id=967450582]
-spillRatePerSecond = 30.0
-
-[node name="Customers" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
-position = Vector2(-1287, -496)
-
-[editable path="DrinkGlass"]
-[editable path="Milk"]
-[editable path="Monster"]
+[node name="EventController" type="Node" parent="." unique_id=838439069]
+script = ExtResource("6_r4now")
