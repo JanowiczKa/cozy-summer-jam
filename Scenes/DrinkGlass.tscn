@@ -1,32 +1,45 @@
 [gd_scene format=3 uid="uid://cjoyjip4hou8r"]
 
-[ext_resource type="Texture2D" uid="uid://g1sljdutxrl8" path="res://Sprites/Temp/EmptyGlass.png" id="1_mqeui"]
+[ext_resource type="Script" uid="uid://br6r2enpgrafi" path="res://Scripts/LiquidContainer.cs" id="1_mqeui"]
+[ext_resource type="Shader" uid="uid://0kd3xkqjxmvj" path="res://Shaders/DrinkGlassLiquid.gdshader" id="2_mqeui"]
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="2_rax88"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqe10"]
-size = Vector2(68, 128)
+size = Vector2(60, 14)
 
-[node name="DrinkGlass" type="RigidBody2D" unique_id=955460407]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rax88"]
+shader = ExtResource("2_mqeui")
+
+[node name="DrinkGlass" type="RigidBody2D" unique_id=955460407 node_paths=PackedStringArray("liquidSprite")]
 input_pickable = true
+script = ExtResource("1_mqeui")
+liquidSprite = NodePath("Visuals/Liquid")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=802619320]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1269815078]
+scale = Vector2(3.3999987, 6.400001)
+polygon = PackedVector2Array(-10.000004, -9.999998, -10.000004, 9.999998, 10.000004, 9.999998, 10.000004, -9.999998, 8.823532, -9.999998, 8.823532, 8.437498, -8.823532, 8.437498, -8.823532, -9.999998)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1557034075]
+collision_layer = 3
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=802619320]
+position = Vector2(0, 47)
 shape = SubResource("RectangleShape2D_eqe10")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=646938521]
 
-[node name="Shape" type="Sprite2D" parent="Visuals" unique_id=1919169950]
-texture = ExtResource("1_mqeui")
-
 [node name="Liquid" type="Sprite2D" parent="Visuals" unique_id=617900354]
-modulate = Color(1, 0.4392157, 1, 1)
-position = Vector2(0, 60)
-scale = Vector2(0.469, 1e-05)
+material = SubResource("ShaderMaterial_rax88")
+instance_shader_parameters/partsShowing = 0
+position = Vector2(0, -3.000001)
+scale = Vector2(0.5, 0.890625)
 texture = ExtResource("2_rax88")
 
 [node name="Glass" type="Sprite2D" parent="Visuals" unique_id=771185029]
 modulate = Color(0.49803922, 0.7254902, 0.98039216, 0.29411766)
 position = Vector2(0, -2.005999)
-scale = Vector2(0.469, 0.96865624)
+scale = Vector2(0.53125, 0.96865624)
 texture = ExtResource("2_rax88")
 
 [connection signal="input_event" from="." to="." method="Test"]

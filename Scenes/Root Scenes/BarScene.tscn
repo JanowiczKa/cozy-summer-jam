@@ -3,11 +3,21 @@
 [ext_resource type="Script" uid="uid://6cbblhldwrgf" path="res://Scripts/MouseDrag/MouseDragController.cs" id="1_gqqm6"]
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_gr58c"]
 [ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
+[ext_resource type="Script" uid="uid://byvfl3pypgq87" path="res://Scripts/Table.cs" id="2_vq2hx"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/Root Scenes/character.tscn" id="5_4aloy"]
+[ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="8_3btq8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vq2hx"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3btq8"]
+font_size = 52
+font_color = Color(0, 1, 0, 1)
 
 [node name="BarScene" type="Node2D" unique_id=284124051]
 script = ExtResource("1_gqqm6")
@@ -19,6 +29,7 @@ position = Vector2(365, 22)
 
 [node name="Table" type="StaticBody2D" parent="." unique_id=1237125352]
 position = Vector2(0, 225)
+script = ExtResource("2_vq2hx")
 
 [node name="Visuals" type="Sprite2D" parent="Table" unique_id=367679077]
 modulate = Color(0.56, 0.33898667, 0.14559999, 1)
@@ -34,10 +45,55 @@ shape = SubResource("WorldBoundaryShape2D_gr58c")
 [node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
 position = Vector2(1, -17)
 input_pickable = false
+containerSize = 60
 
-[node name="LiquidBottle" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
-position = Vector2(370, -23)
+[node name="Milk" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
+position = Vector2(740, -46)
+freeze_mode = 1
+metadata/Liquid = ExtResource("8_3btq8")
+
+[node name="Base" parent="Milk/Visuals" parent_id_path=PackedInt32Array(1570976637, 1804397802) index="0" unique_id=1517791186]
+modulate = Color(0.36449146, 0.81330234, 0.9183133, 1)
+
+[node name="LabelPlaceholder" parent="Milk/Visuals" parent_id_path=PackedInt32Array(1570976637, 1804397802) index="1" unique_id=1256606127]
+visible = false
+
+[node name="Label" parent="Milk/Visuals" parent_id_path=PackedInt32Array(1570976637, 1804397802) index="2" unique_id=879800941]
+offset_top = 44.0
+offset_right = 66.515
+offset_bottom = 96.16
+rotation = -1.5707964
+text = "Milk"
+label_settings = SubResource("LabelSettings_vq2hx")
+
+[node name="LiquidPourSpout" parent="Milk" index="2" unique_id=967450582]
+spillRatePerSecond = 30.0
+
+[node name="Monster" parent="." unique_id=531781604 instance=ExtResource("3_iy0dp")]
+position = Vector2(370, -24)
 freeze_mode = 1
 
-[node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
+[node name="Base" parent="Monster/Visuals" parent_id_path=PackedInt32Array(531781604, 1804397802) index="0" unique_id=1517791186]
+modulate = Color(0.07545523, 0.07545523, 0.07545523, 1)
+
+[node name="LabelPlaceholder" parent="Monster/Visuals" parent_id_path=PackedInt32Array(531781604, 1804397802) index="1" unique_id=1256606127]
+visible = false
+
+[node name="Label" parent="Monster/Visuals" parent_id_path=PackedInt32Array(531781604, 1804397802) index="2" unique_id=879800941]
+offset_top = -36.0
+offset_bottom = 36.0
+text = "M"
+label_settings = SubResource("LabelSettings_3btq8")
+
+[node name="CollisionPolygon2D" parent="Monster" index="1" unique_id=201507439]
+visible = false
+
+[node name="LiquidPourSpout" parent="Monster" index="2" unique_id=967450582]
+spillRatePerSecond = 30.0
+
+[node name="Customers" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
 position = Vector2(-1287, -496)
+
+[editable path="DrinkGlass"]
+[editable path="Milk"]
+[editable path="Monster"]
