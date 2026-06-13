@@ -13,13 +13,13 @@ public partial class MouseDragController : Node2D
 		//shit for performance but only happens once on load, figure out better way if we have time, oof
 		foreach (var node in GetTree().GetNodesInGroup("draggable")) //<= draggable is a group I've added to some scenes
 		{
-			GD.Print(node.Name);
+			//GD.Print(node.Name);
 			
 			var mouseDragScript = node as MouseDrag; //What a weird way to access the script attached to a node, defo doesn't feel safe
 
 			//var mouseDragScript = node.GetScript().As<MouseDrag>(); <- straight up doesn't work
 
-			GD.Print(mouseDragScript);
+			//GD.Print(mouseDragScript);
 
 			if (mouseDragScript == null) continue;
 
