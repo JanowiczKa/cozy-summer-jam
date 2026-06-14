@@ -11,14 +11,6 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -2.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_vq2hx"]
-font_size = 30
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_3btq8"]
-font_size = 52
-font_color = Color(0, 1, 0, 1)
-
 [node name="BarScene" type="Node2D" unique_id=284124051]
 script = ExtResource("1_gqqm6")
 
@@ -51,21 +43,7 @@ position = Vector2(740, -46)
 freeze_mode = 1
 metadata/Liquid = ExtResource("8_3btq8")
 
-[node name="Base" parent="Milk/Visuals" parent_id_path=PackedInt32Array(1570976637, 1804397802) index="0" unique_id=1517791186]
-modulate = Color(0.36449146, 0.81330234, 0.9183133, 1)
-
-[node name="LabelPlaceholder" parent="Milk/Visuals" parent_id_path=PackedInt32Array(1570976637, 1804397802) index="1" unique_id=1256606127]
-visible = false
-
-[node name="Label" parent="Milk/Visuals" parent_id_path=PackedInt32Array(1570976637, 1804397802) index="2" unique_id=879800941]
-offset_top = 44.0
-offset_right = 66.515
-offset_bottom = 96.16
-rotation = -1.5707964
-text = "Milk"
-label_settings = SubResource("LabelSettings_vq2hx")
-
-[node name="LiquidBottle" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
+[node name="LiquidBottle" parent="." unique_id=1340305212 instance=ExtResource("3_iy0dp")]
 position = Vector2(412, 115)
 freeze_mode = 1
 
