@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class LiquidContainer : RigidBody2D
+public partial class DrinkContainer : RigidBody2D
 {
 	//1 droplet is 1 part
 	[Export] 
@@ -13,6 +13,8 @@ public partial class LiquidContainer : RigidBody2D
 	public Sprite2D liquidSprite;
 
 	private List<LiquidData> liquids = new List<LiquidData>();
+
+	private List<GarnishData> garnishes = new List<GarnishData>();
 
 	//access to the shader?	
 	public override void _Ready()

@@ -31,11 +31,11 @@ public partial class Droplet : RigidBody2D
 
 	public void Collided(Node body)
 	{
-		if (body.Name == "DrinkGlass" && body is LiquidContainer)
+		if (body.Name == "DrinkGlass" && body is DrinkContainer)
 		{
 			//GD.Print("liquids +1 " + liquid.LiquidName);
 
-			var liquidContainer = body as LiquidContainer;
+			var liquidContainer = body as DrinkContainer;
 
 			liquidContainer.AddLiquid(liquid);
 
