@@ -3,6 +3,8 @@ using Godot;
 
 public partial class MouseDrag : RigidBody2D
 {
+	[Export(PropertyHint.File)] public Area2D optionalDraggableAreaCollider;
+
 	public float mouseFollowSpeed = 30f;
 	public float objectRotationSpeed = 10f;
 
@@ -19,7 +21,14 @@ public partial class MouseDrag : RigidBody2D
 		InputPickable = true;
 
         //calls the OnInputEvent method when the collider detects user input overlapping it
-		InputEvent += OnInputEvent;
+		if (optionalDraggableAreaCollider == null)
+		{
+			InputEvent += OnInputEvent;
+		}
+		else
+		{
+			optionalDraggableAreaCollider.InputEvent += OnInputEvent;
+		}
 	}
 
 

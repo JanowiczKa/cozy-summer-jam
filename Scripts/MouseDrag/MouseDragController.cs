@@ -39,7 +39,7 @@ public partial class MouseDragController : Node2D
 
 		currentDraggedObject.Reparent(holdingParentObject);
 
-		GD.Print("Controller knows of drag");
+		//GD.Print("Controller knows of drag");
 	}
 
 	public override void _Process(double delta)

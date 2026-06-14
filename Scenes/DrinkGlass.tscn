@@ -1,31 +1,64 @@
 [gd_scene format=3 uid="uid://cjoyjip4hou8r"]
 
-[ext_resource type="Script" uid="uid://br6r2enpgrafi" path="res://Scripts/DrinkContainer.cs" id="1_mqeui"]
+[ext_resource type="Script" uid="uid://chmls05qbt8nh" path="res://Scripts/DrinkContainer.cs" id="1_mqeui"]
+[ext_resource type="Script" uid="uid://br6r2enpgrafi" path="res://Scripts/LiquidContainer.cs" id="2_0gmqp"]
 [ext_resource type="Shader" uid="uid://0kd3xkqjxmvj" path="res://Shaders/DrinkGlassLiquid.gdshader" id="2_mqeui"]
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="2_rax88"]
+[ext_resource type="Script" uid="uid://dt06wv2a4kxp7" path="res://Sprites/GarnishObserver.cs" id="5_0gmqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqe10"]
 size = Vector2(60, 14)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rax88"]
+size = Vector2(60, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gmqp"]
+size = Vector2(68, 128)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rax88"]
 shader = ExtResource("2_mqeui")
 
-[node name="DrinkGlass" type="RigidBody2D" unique_id=955460407 node_paths=PackedStringArray("liquidSprite")]
+[node name="DrinkGlass" type="RigidBody2D" unique_id=955460407 node_paths=PackedStringArray("liquidContainer", "garnishObserver", "optionalDraggableAreaCollider") groups=["draggable"]]
 input_pickable = true
 script = ExtResource("1_mqeui")
-liquidSprite = NodePath("Visuals/Liquid")
+liquidContainer = NodePath("LiquidContainer")
+garnishObserver = NodePath("GarnishObserver")
+optionalDraggableAreaCollider = NodePath("DraggableArea")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1269815078]
 scale = Vector2(3.3999987, 6.400001)
 polygon = PackedVector2Array(-10.000004, -9.999998, -10.000004, 9.999998, 10.000004, 9.999998, 10.000004, -9.999998, 8.823532, -9.999998, 8.823532, 8.437498, -8.823532, 8.437498, -8.823532, -9.999998)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1557034075]
-collision_layer = 3
-collision_mask = 2
+[node name="LiquidContainer" type="Area2D" parent="." unique_id=1557034075 node_paths=PackedStringArray("liquidSprite")]
+position = Vector2(0, 1)
+collision_layer = 6
+collision_mask = 7
+input_pickable = false
+script = ExtResource("2_0gmqp")
+liquidSprite = NodePath("../Visuals/Liquid")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=802619320]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LiquidContainer" unique_id=802619320]
 position = Vector2(0, 47)
 shape = SubResource("RectangleShape2D_eqe10")
+
+[node name="GarnishObserver" type="Area2D" parent="." unique_id=313053193]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("5_0gmqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GarnishObserver" unique_id=1890438741]
+shape = SubResource("RectangleShape2D_rax88")
+
+[node name="DraggableArea" type="Area2D" parent="." unique_id=2095054370]
+position = Vector2(0, -1)
+collision_layer = 2147483648
+collision_mask = 2147483648
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableArea" unique_id=1766104558]
+shape = SubResource("RectangleShape2D_0gmqp")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=646938521]
 
@@ -41,5 +74,3 @@ modulate = Color(0.49803922, 0.7254902, 0.98039216, 0.29411766)
 position = Vector2(0, -2.005999)
 scale = Vector2(0.53125, 0.96865624)
 texture = ExtResource("2_rax88")
-
-[connection signal="input_event" from="." to="." method="Test"]

@@ -37,7 +37,6 @@ shape = SubResource("WorldBoundaryShape2D_gr58c")
 [node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
 position = Vector2(-365, 96)
 input_pickable = false
-containerSize = 60
 
 [node name="Milk" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
 position = Vector2(740, -46)
@@ -62,7 +61,3 @@ position = Vector2(-773, 123)
 
 [node name="RigidBody2D3" parent="." unique_id=1717991361 instance=ExtResource("8_fvivi")]
 position = Vector2(-676, 104)
-
-[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1596592085]
-node_a = NodePath("../RigidBody2D")
-node_b = NodePath("../RigidBody2D2")

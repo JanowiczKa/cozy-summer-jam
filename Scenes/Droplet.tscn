@@ -6,7 +6,7 @@
 load_path = "res://.godot/imported/Droplet.png-d7cff6107971a3fe61f1d55e191d2227.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_04br5"]
-radius = 6.0
+radius = 5.0
 
 [node name="Droplet" type="RigidBody2D" unique_id=2092397949]
 collision_layer = 2

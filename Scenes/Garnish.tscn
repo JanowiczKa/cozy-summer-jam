@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://1q8sybp70ruv"]
 
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_ccmx4"]
-[ext_resource type="Script" uid="uid://cijr1eidkk6il" path="res://Scenes/Garnish.cs" id="1_e8ite"]
+[ext_resource type="Script" uid="uid://cijr1eidkk6il" path="res://Scripts/Garnish.cs" id="1_e8ite"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccmx4"]
 
@@ -9,8 +9,10 @@
 collision_layer = 4
 collision_mask = 5
 input_pickable = true
-lock_rotation = true
+mass = 3.0
 freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_e8ite")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=987522512]

@@ -31,17 +31,6 @@ public partial class Droplet : RigidBody2D
 
 	public void Collided(Node body)
 	{
-		if (body.Name == "DrinkGlass" && body is DrinkContainer)
-		{
-			//GD.Print("liquids +1 " + liquid.LiquidName);
-
-			var liquidContainer = body as DrinkContainer;
-
-			liquidContainer.AddLiquid(liquid);
-
-			QueueFree();
-		}
-
 		if (body.Name == "Table")
 		{
 			//GD.Print("Hit the table :(");
