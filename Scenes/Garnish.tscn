@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://1q8sybp70ruv"]
+
+[ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_ccmx4"]
+[ext_resource type="Script" uid="uid://cijr1eidkk6il" path="res://Scenes/Garnish.cs" id="1_e8ite"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ccmx4"]
+
+[node name="Garnish" type="RigidBody2D" unique_id=249593882 groups=["draggable"]]
+collision_layer = 4
+collision_mask = 5
+input_pickable = true
+lock_rotation = true
+freeze_mode = 1
+script = ExtResource("1_e8ite")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=987522512]
+self_modulate = Color(1, 1, 1, 0.49411765)
+position = Vector2(0.12, 0.12)
+scale = Vector2(0.158125, 0.158125)
+texture = ExtResource("1_ccmx4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=274889893]
+shape = SubResource("RectangleShape2D_ccmx4")

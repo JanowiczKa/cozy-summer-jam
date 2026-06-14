@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/Root Scenes/character.tscn" id="5_4aloy"]
 [ext_resource type="Script" uid="uid://16kx4o1hf44n" path="res://Scripts/EventController.cs" id="6_r4now"]
 [ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="8_3btq8"]
+[ext_resource type="PackedScene" uid="uid://1q8sybp70ruv" path="res://Scenes/Garnish.tscn" id="8_fvivi"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -2.0
@@ -52,3 +53,16 @@ position = Vector2(-953, -818)
 
 [node name="EventController" type="Node" parent="." unique_id=838439069]
 script = ExtResource("6_r4now")
+
+[node name="RigidBody2D" parent="." unique_id=249593882 instance=ExtResource("8_fvivi")]
+position = Vector2(-623, 176)
+
+[node name="RigidBody2D2" parent="." unique_id=277594630 instance=ExtResource("8_fvivi")]
+position = Vector2(-773, 123)
+
+[node name="RigidBody2D3" parent="." unique_id=1717991361 instance=ExtResource("8_fvivi")]
+position = Vector2(-676, 104)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=1596592085]
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../RigidBody2D2")
