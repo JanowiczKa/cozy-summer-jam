@@ -12,7 +12,7 @@ public partial class LiquidContainer : RigidBody2D
 	[Export(PropertyHint.File)]
 	public Sprite2D liquidSprite;
 
-	private List<LiquidData> liquids = new List<LiquidData>();
+	public List<LiquidData> liquids = new List<LiquidData>();
 
 	//access to the shader?	
 	public override void _Ready()
@@ -34,7 +34,7 @@ public partial class LiquidContainer : RigidBody2D
 	{
 		var newVolume = liquids.Count();
 
-        //Shit for performance but small so I don't mind
+		//Shit for performance but small so I don't mind
 		var avgRed = liquids.Average(x => x.Color.R);
 		var avgGreen = liquids.Average(x => x.Color.G);
 		var avgBlue = liquids.Average(x => x.Color.B);

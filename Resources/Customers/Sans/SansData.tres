@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CustomerData" format=3 uid="uid://b5qte3llaamjx"]
+
+[ext_resource type="Texture2D" uid="uid://v8il60nx14bi" path="res://Sprites/Customers/sansbase.png" id="1_5adhb"]
+[ext_resource type="Resource" uid="uid://dyyiao7vw3g0j" path="res://Resources/Customers/Sans/Gameplay.tres" id="1_kc74c"]
+[ext_resource type="SpriteFrames" uid="uid://dkmbybe3cj75j" path="res://Resources/Customers/Sans/SansFrames.tres" id="2_8oe6k"]
+[ext_resource type="Resource" uid="uid://dfkgiuf4smhh7" path="res://Resources/Customers/Sans/Intro.tres" id="2_rtenj"]
+[ext_resource type="Resource" uid="uid://b1kv3er56gaty" path="res://Resources/Customers/Sans/Outro.tres" id="3_4m066"]
+[ext_resource type="SpriteFrames" uid="uid://byijqb68l806b" path="res://Resources/Drinks/JustMilk.tres" id="3_5adhb"]
+[ext_resource type="Resource" uid="uid://btcxxvgqq72r2" path="res://Resources/Customers/Sans/ResultBad.tres" id="4_5adhb"]
+[ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/CustomerData.cs" id="5_8oe6k"]
+[ext_resource type="Resource" uid="uid://dqdqppkekmgp7" path="res://Resources/Customers/Sans/ResultMixed.tres" id="8_37pn7"]
+[ext_resource type="Resource" uid="uid://bwbouesiulp1a" path="res://Resources/Customers/Sans/ResultPerfect.tres" id="9_7qw3p"]
+
+[resource]
+script = ExtResource("5_8oe6k")
+Final_drink_target = ExtResource("3_5adhb")
+Intro_dialog_and_expressions = ExtResource("2_rtenj")
+Gameplay_dialog_and_expressions = ExtResource("1_kc74c")
+Result_perfect = ExtResource("9_7qw3p")
+Result_mixed = ExtResource("8_37pn7")
+Result_bad = ExtResource("4_5adhb")
+Outro_dialog_and_expressions = ExtResource("3_4m066")
+Base_customer_texture = ExtResource("1_5adhb")
+Customer_expression_textures = ExtResource("2_8oe6k")

@@ -5,11 +5,21 @@ using System.Collections.Generic;
 public partial class Character : Node2D
 {
 	[Signal]
-	private delegate void DialogActionEventHandler(string expression, string speech);
+	private delegate void PlayDrinkingAnimationEventHandler();
+	[Signal]
+	private delegate void SetDialogEventHandler(string speech);
+	[Signal]
+	private delegate void SetExpressionEventHandler(string expression);
+	[Signal]
+	private delegate void PlayBounceAnimationEventHandler();
 	[Signal]
 	private delegate void FadeInActionEventHandler();
 	[Signal]
 	private delegate void FadeOutActionEventHandler();
+	[Signal]
+	private delegate void TextClearEventHandler();
+	[Signal]
+	private delegate void ExpressionClearEventHandler();
 	[Signal]
 	private delegate void ControllerSequenceEndEventHandler(string sequence);
 	
@@ -21,7 +31,11 @@ public partial class Character : Node2D
 		spriteNode.Connect("FadeInFinished", new Callable(this, MethodName.StartDialogWhenFinishedFadingIn));
 		spriteNode.Connect("FadeOutFinished", new Callable(this, MethodName.StartDialogWhenFinishedFadingOut));
 		var controllerNode = GetNode<Node>("../EventController");
-		controllerNode.Connect("SkipDialogLine", new Callable(this, MethodName.PlayDialog));
+		controllerNode.Connect("StartNextDialog", new Callable(this, MethodName.PlayDialog));
+		controllerNode.Connect("StartBounceAnimation", new Callable(this, MethodName.AnimateBouncing));
+		controllerNode.Connect("ChangeExpression", new Callable(this, MethodName.PlayExpression));
+		controllerNode.Connect("ClearDialogAndExpression", new Callable(this, MethodName.SetDialogAndExpressionToDefault));
+		controllerNode.Connect("StartDrinkingAnimation", new Callable(this, MethodName.AnimateDrinking));
 		controllerNode.Connect("StartFadeIn", new Callable(this, MethodName.StartFadeInSequence));
 		controllerNode.Connect("StartFadeOut", new Callable(this, MethodName.StartFadeOutSequence));
 	}
@@ -31,9 +45,30 @@ public partial class Character : Node2D
 	{
 	}
 
-	private void PlayDialog(string expression, string speech)
+	private void PlayExpression(string expression)
 	{
-		EmitSignal(SignalName.DialogAction, expression, speech);
+		EmitSignal(SignalName.SetExpression, expression);
+	}
+
+	private void AnimateBouncing()
+	{
+		EmitSignal(SignalName.PlayBounceAnimation);
+	}
+
+	private void PlayDialog(string speech)
+	{
+		EmitSignal(SignalName.SetDialog, speech);
+	}
+
+	private void AnimateDrinking()
+	{
+		EmitSignal(SignalName.PlayDrinkingAnimation);
+	}
+
+	private void SetDialogAndExpressionToDefault()
+	{
+		EmitSignal(SignalName.TextClear);
+		EmitSignal(SignalName.ExpressionClear);
 	}
 
 	private void StartDialogWhenFinishedFadingIn()

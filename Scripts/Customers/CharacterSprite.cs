@@ -6,18 +6,21 @@ using System.ComponentModel;
 public partial class CharacterSprite : Sprite2D
 {
 	// Some of these will have to be removed, redundancy prevention lol
-	private bool _isAnimated;
+	public bool is_animated;
 	private double total_time_elapsed;
 	private int animation_sequence;
-	private double pos_acceleration, neg_acceleration;
+	private double acceleration;
 	private double velocity;
 	private double max_velocity, min_velocity;
 	private Color rgb_modulation;
+	private int iterations;
+	private List<double> anim_bounds;
 	private enum AnimationType
 	{
 		FadeIn,
 		FadeOut,
 		Bounce,
+		Drink,
 		Static
 	};
 	private AnimationType animtp;
@@ -26,27 +29,33 @@ public partial class CharacterSprite : Sprite2D
 	private delegate void FadeInFinishedEventHandler();
 	[Signal]
 	private delegate void FadeOutFinishedEventHandler();
+	[Signal]
+	private delegate void VoiceSoundEffectEventHandler();
+	[Signal]
+	private delegate void DrinkingFinishedEventHandler(string sequence);
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Scale = new Vector2((float)0.2, (float)0.2);
-		_isAnimated = false;
+		is_animated = false;
 		total_time_elapsed = 0.0;
 		animation_sequence = 0;
-		pos_acceleration = 0.0;
-		neg_acceleration = 0.0;
+		acceleration = 0.0;
 		velocity = 0.0;
 		max_velocity = 0.0;
 		min_velocity = 0.0;
+		iterations = 0;
 		rgb_modulation = new Color(0, 0, 0, 0);
 		Modulate = rgb_modulation;
 		animtp = AnimationType.Static;
+		anim_bounds = [0.21, Scale.Y];
 
 		var parentNode = GetParent<Node2D>();
-		parentNode.Connect("DialogAction", new Callable(this, MethodName.InitBounceAnimation));
+		parentNode.Connect("PlayBounceAnimation", new Callable(this, MethodName.InitBounceAnimation));
 		parentNode.Connect("FadeInAction", new Callable(this, MethodName.InitFadeInAnimation));
 		parentNode.Connect("FadeOutAction", new Callable(this, MethodName.InitFadeOutAnimation));
+		parentNode.Connect("PlayDrinkingAnimation", new Callable(this, MethodName.InitDrinkAnimation));
 
 	}
 
@@ -56,10 +65,11 @@ public partial class CharacterSprite : Sprite2D
 		total_time_elapsed += delta;
 		
 		// Animation loop (sort of)
-		if (_isAnimated)
+		if (is_animated)
 		{
 			switch(animtp)
 			{
+				case AnimationType.Drink:
 				case AnimationType.Bounce:
 					AnimateBounce();
 					break;
@@ -86,41 +96,48 @@ public partial class CharacterSprite : Sprite2D
 
 	private void InitFadeInAnimation()
 	{
-		_isAnimated = true;
+		is_animated = true;
 		animtp = AnimationType.FadeIn;
 	}
 
 	private void InitFadeOutAnimation()
 	{
-		_isAnimated = true;
+		is_animated = true;
 		animtp = AnimationType.FadeOut;
 	}
 	
 	// Initiates the sentence animation and sets its values
-	private void InitBounceAnimation(string expression, string txt)
+	private void InitBounceAnimation()
 	{
-		if (expression != "")
-		{
-			_isAnimated = true;
-			animtp = AnimationType.Bounce;
-			velocity 	 = 0.001;
-			neg_acceleration = 0.00001;
-			pos_acceleration = 0.00001;
-			max_velocity = 0.01;
-			min_velocity = 0.0001;
-		}
+		is_animated = true;
+		animtp = AnimationType.Bounce;
+		velocity 	 = 0.001;
+		acceleration = 0.00001;
+		max_velocity = 0.01;
+		min_velocity = 0.0001;
+	}
+
+	private void InitDrinkAnimation()
+	{
+		is_animated = true;
+		animtp = AnimationType.Drink;
+		velocity 	 = 0.001;
+		acceleration = 0.00001;
+		max_velocity = 0.01;
+		min_velocity = 0.0001;
+		anim_bounds = [0.24, 0.2];
 	}
 
 	private void TerminateBounceAnimation()
 	{
 		animation_sequence = 0;
 		animtp = AnimationType.Static;
-		_isAnimated = false;
+		is_animated = false;
 		velocity 	 = 0.001;
-		neg_acceleration = 0.0;
-		pos_acceleration = 0.0;
+		acceleration = 0.0;
 		max_velocity = 0.0;
 		min_velocity = 0.0;
+		anim_bounds = [0.21, 0.2];
 	}
 	
 	// Manipulates the sprite's Scale values to stretch the image
@@ -128,7 +145,7 @@ public partial class CharacterSprite : Sprite2D
 	private void AnimateBounce()
 	{
 		// List of a maximum and minimum distance to stretch the sprite
-		List<double> sentence_start_anim = [0.21, 0.2];
+		List<double> sentence_start_anim = anim_bounds;
 		
 		// Sprite manipulation towards the maximum stretch distance
 		if (animation_sequence == 0)
@@ -140,7 +157,7 @@ public partial class CharacterSprite : Sprite2D
 				
 				// Recalculate the velocity to decrease speed at which
 				// the sprite is stretched
-				velocity -= neg_acceleration;
+				velocity -= acceleration;
 				if (velocity < min_velocity)
 				{
 					velocity = min_velocity;
@@ -150,6 +167,10 @@ public partial class CharacterSprite : Sprite2D
 			{
 				// Move on to the next sequence of the animation
 				animation_sequence += 1;
+
+				// If the animation is set to Drinking, play the speech sound effect at the apex of the animation
+				if (animtp == AnimationType.Drink)
+					EmitSignal(SignalName.VoiceSoundEffect);
 			}
 		}
 		// Sprite manipulation towards the starting dimensions
@@ -162,7 +183,7 @@ public partial class CharacterSprite : Sprite2D
 				
 				// Recalculate the velocity to increase speed at which
 				// the sprite is stretched
-				velocity += pos_acceleration;
+				velocity += acceleration;
 				if (velocity > max_velocity)
 				{
 					velocity = max_velocity;
@@ -170,7 +191,20 @@ public partial class CharacterSprite : Sprite2D
 			}
 			else
 			{
-				TerminateBounceAnimation();
+				if (animtp == AnimationType.Drink && iterations < 2)
+				{
+					animation_sequence = 0;
+					iterations += 1;
+					velocity = 0.001;
+				}
+				else
+				{
+					// If the animation is set to Drinking, send signal to controller to trigger the next game state
+					if (animtp == AnimationType.Drink)
+						EmitSignal(SignalName.DrinkingFinished, "Result");
+					iterations = 0;
+					TerminateBounceAnimation();
+				}
 			}
 		}
 	}
@@ -186,7 +220,7 @@ public partial class CharacterSprite : Sprite2D
 				}
 			else
 				{
-				_isAnimated = false;
+				is_animated = false;
 				animtp = AnimationType.Static;
 				EmitSignal(SignalName.FadeInFinished);
 				}
@@ -205,7 +239,7 @@ public partial class CharacterSprite : Sprite2D
 				}
 			else
 				{
-				_isAnimated = false;
+				is_animated = false;
 				animtp = AnimationType.Static;
 				EmitSignal(SignalName.FadeOutFinished);
 				}
