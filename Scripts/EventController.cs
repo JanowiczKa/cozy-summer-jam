@@ -24,6 +24,10 @@ public partial class EventController : Node
 	[Export]
 	private CustomerData customerData;
 	[Signal]
+	private delegate void EndOfIntroductionEventHandler();
+	[Signal]
+	private delegate void EndOfCustomerSequenceEventHandler();
+	[Signal]
 	private delegate void ChangeExpressionEventHandler(string expression);
 	[Signal]
 	private delegate void StartNextDialogEventHandler(string speech);
@@ -80,6 +84,10 @@ public partial class EventController : Node
 				{
 					case GameState.Introduction:
 						ChangeGameState("Gameplay");
+
+						// Signals the game manager to start the gameplay timer
+						EmitSignal(SignalName.EndOfIntroduction);
+
 						EmitSignal(SignalName.ClearDialogAndExpression);
 						EmitSignal(SignalName.StartBounceAnimation);
 						break;
@@ -103,16 +111,32 @@ public partial class EventController : Node
 			TriggerNextDialogLine();
 		}
 
+		// testing purposes only
 		if (@event.IsActionPressed("FadeOut"))
 		{
-			ChangeGameState("Outro");
-			TriggerNextDialogLine();
+			MoveToOutroAndScoringSequence();
 		}
 
+		// testing purposes only
 		if (@event.IsActionPressed("FadeIn"))
 		{
-			EmitSignal(SignalName.StartFadeIn);
+			StartCustomerSequence(GD.Load<CustomerData>("res://Resources/Customers/Sans/SansData.tres"));
 		}
+	}
+
+	// Loads a new customer resource and fades the customer in, starting the entire sequence
+	public void StartCustomerSequence(CustomerData customer)
+	{
+		customerData = customer;
+		EmitSignal(SignalName.StartFadeIn);
+	}
+
+	// To be called when the gameplay timer ends or when the player passes the finished drink to the customer;
+	// Starts the dialog leading into the score
+	public void MoveToOutroAndScoringSequence()
+	{
+		ChangeGameState("Outro");
+		TriggerNextDialogLine();
 	}
 
 	private void ResetTimerForText()
@@ -153,10 +177,10 @@ public partial class EventController : Node
 	// vice versa.
 	private double VerifyDrinkAndScore()
 	{
-		LiquidContainer container = GetNode<LiquidContainer>("../DrinkGlass");
+		DrinkContainer container = GetNode<DrinkContainer>("../DrinkGlass");
 		double score = 0.0;
 		List<LiquidData> target = new List<LiquidData>();
-		List<LiquidData> drink = container.liquids;
+		List<LiquidData> drink = container.liquidContainer.liquids;
 		for (int i = 0; i < customerData.Final_drink_target.DrinkList.Count(); i++)
 		{
 			target.Add(customerData.Final_drink_target.DrinkList[i]);
@@ -241,6 +265,9 @@ public partial class EventController : Node
 			case "End":
 				gmstate = GameState.Idle;
 				sequence_index = 0;
+
+				// Signals the game manager that the entire customer sequence has finished
+				EmitSignal(SignalName.EndOfCustomerSequence);
 				break;
 		}
 	}
