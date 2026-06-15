@@ -39,7 +39,7 @@ public partial class MouseDragController : Node2D
 
 		currentDraggedObject.Reparent(holdingParentObject);
 
-		GD.Print("Controller knows of drag");
+		//GD.Print("Controller knows of drag");
 	}
 
 	public override void _Process(double delta)
@@ -60,11 +60,11 @@ public partial class MouseDragController : Node2D
 
 		if (Input.IsActionPressed("RotateHeldObjectLeft"))
 		{
-			holdingParentObject.GlobalRotationDegrees = holdingParentObject.GlobalRotationDegrees += objectRotationSpeed;
+			holdingParentObject.GlobalRotationDegrees = holdingParentObject.GlobalRotationDegrees -= objectRotationSpeed;
 		}
 		else if (Input.IsActionPressed("RotateHeldObjectRight"))
 		{
-			holdingParentObject.GlobalRotationDegrees = holdingParentObject.GlobalRotationDegrees -= objectRotationSpeed;
+			holdingParentObject.GlobalRotationDegrees = holdingParentObject.GlobalRotationDegrees += objectRotationSpeed;
 		}
 
 		//Originally did this with physics impulses but was quite floaty so I gave up on that for the sake of time

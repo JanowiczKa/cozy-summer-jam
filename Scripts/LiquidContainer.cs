@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-public partial class LiquidContainer : RigidBody2D
+public partial class LiquidContainer : Area2D //MouseDrag
 {
 	//1 droplet is 1 part
 	[Export] 
-	public int containerSize = 10;
+	public int containerSize = 60;
 
 	[Export(PropertyHint.File)]
 	public Sprite2D liquidSprite;
@@ -18,6 +18,22 @@ public partial class LiquidContainer : RigidBody2D
 	public override void _Ready()
 	{
 		liquidSprite.SetInstanceShaderParameter("totalParts", containerSize);
+
+		BodyEntered += Collision;
+	}
+
+	public void Collision(Node body)
+	{
+		GD.Print("something entered the glass! " + body.Name);
+
+		if (body is Droplet)
+		{
+			var droplet = body as Droplet;
+
+			AddLiquid(droplet.liquid);
+
+			body.QueueFree();
+		}
 	}
 	
 	public void AddLiquid(LiquidData newLiquid)

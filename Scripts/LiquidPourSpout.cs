@@ -62,7 +62,7 @@ public partial class LiquidPourSpout : Node2D
 
 		var randomOffset = new Vector2(rand.RandfRange(-1, 1), rand.RandfRange(-1, 1)).Normalized() * spillRadius;
 
-		GD.Print(randomOffset);
+		//GD.Print(randomOffset);
 
 		var spawnPosition = GlobalPosition + randomOffset;
 
