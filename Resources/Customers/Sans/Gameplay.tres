@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogAndExpression" format=3 uid="uid://dyyiao7vw3g0j"]
+
+[ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/DialogAndExpression.cs" id="1_ph132"]
+
+[resource]
+script = ExtResource("1_ph132")
+Dialog = PackedStringArray("Did I mention I\'m from the award winning game Undertale?", "Yeah mix it good baby", "I\'m Sans Undertale", "Tell Shaun I said hi", "I wonder what else those hands can do")
+Expression = PackedStringArray("DefaultExp", "Mog", "DefaultExp", "DefaultExp", "Mog")

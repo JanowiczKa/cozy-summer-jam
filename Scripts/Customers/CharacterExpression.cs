@@ -9,8 +9,9 @@ public partial class CharacterExpression : AnimatedSprite2D
 	public override void _Ready()
 	{
 		var parentNode = GetNode<Node2D>("../..");
-		parentNode.Connect("DialogAction", new Callable(this, MethodName.ChangeExpression));
+		parentNode.Connect("SetExpression", new Callable(this, MethodName.ChangeExpression));
 		parentNode.Connect("FadeOutAction", new Callable(this, MethodName.ResetExpression));
+		parentNode.Connect("ExpressionClear", new Callable(this, MethodName.ResetExpression));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +19,7 @@ public partial class CharacterExpression : AnimatedSprite2D
 	{
 	}
 	
-	public void ChangeExpression(string expression, string txt){
+	public void ChangeExpression(string expression){
 		
 		switch(expression)
 		{
