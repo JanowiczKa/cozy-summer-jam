@@ -15,6 +15,8 @@ distance = -2.0
 [node name="BarScene" type="Node2D" unique_id=284124051]
 script = ExtResource("1_gqqm6")
 
+[node name="GameManager" type="Node" parent="." unique_id=597460365]
+
 [node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
 position = Vector2(410, 88)
 
