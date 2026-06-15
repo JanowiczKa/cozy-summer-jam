@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogAndExpression" format=3 uid="uid://btcxxvgqq72r2"]
+
+[ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/DialogAndExpression.cs" id="1_nw07r"]
+
+[resource]
+script = ExtResource("1_nw07r")
+Dialog = PackedStringArray("Oh hell nah", "This is NOT what I wanted", "Go seek a different career path, pal")
+Expression = PackedStringArray("DefaultExp", "DefaultExp", "Mog")

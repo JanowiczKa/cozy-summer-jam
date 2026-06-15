@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class EventController : Node
 {
@@ -9,21 +10,34 @@ public partial class EventController : Node
 		Idle,
 		Introduction,
 		Gameplay,
+		Outro,
 		Result
 	}
-	private List<string> expression_sequence;
-	private List<string> speech_sequence;
+	private string[] expression_sequence;
+	private string[] speech_sequence;
 	private int sequence_index;
 	private double total_time_elapsed;
+	private bool waiting_for_text_to_finish;
 	private GameState gmstate { get; set; }
 	private Random rand;
 
+	[Export]
+	private CustomerData customerData;
 	[Signal]
-	private delegate void SkipDialogLineEventHandler(string expression, string speech);
+	private delegate void ChangeExpressionEventHandler(string expression);
+	[Signal]
+	private delegate void StartNextDialogEventHandler(string speech);
+	[Signal]
+	private delegate void StartBounceAnimationEventHandler();
+	[Signal]
+	private delegate void StartDrinkingAnimationEventHandler();
 	[Signal]
 	private delegate void StartFadeInEventHandler();
 	[Signal]
 	private delegate void StartFadeOutEventHandler();
+	[Signal]
+	private delegate void ClearDialogAndExpressionEventHandler();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -32,10 +46,15 @@ public partial class EventController : Node
 		sequence_index = 0;
 		total_time_elapsed = 0.0;
 		rand = new Random();
+		waiting_for_text_to_finish = false;
 
 		gmstate = GameState.Idle;
 		var charactersNode = GetNode<Node2D>("../Characters");
 		charactersNode.Connect("ControllerSequenceEnd", new Callable(this, MethodName.ChangeGameState));
+		var spriteNode = GetNode<CharacterSprite>("../Characters/CharacterSprite");
+		spriteNode.Connect("DrinkingFinished", new Callable(this, MethodName.ChangeGameState));
+		var textNode = GetNode<RichTextLabel>("../Characters/SpeechBubble/BubbleText");
+		textNode.Connect("RestartGameplayTextTimer", new Callable(this, MethodName.ResetTimerForText));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -43,47 +62,147 @@ public partial class EventController : Node
 	{
 		total_time_elapsed += delta;
 
-		if (gmstate == GameState.Gameplay && total_time_elapsed >= 5.0)
+		if (gmstate == GameState.Gameplay && total_time_elapsed >= 10.0 && waiting_for_text_to_finish == false)
 		{
-			sequence_index = rand.Next(expression_sequence.Count);
-			EmitSignal(SignalName.SkipDialogLine, expression_sequence[sequence_index], speech_sequence[sequence_index]);
-			total_time_elapsed = 0.0;
+			LoopMessagesWhenMakingDrink();
 		}
 	}
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("Space") && (gmstate == GameState.Introduction || gmstate == GameState.Result))
+		// Player input for Introduction, Outro and Result dialog sequences
+		if (@event.IsActionPressed("Space") && (gmstate == GameState.Introduction || gmstate == GameState.Result || gmstate == GameState.Outro))
 		{
-			if (sequence_index >= expression_sequence.Count || sequence_index >= speech_sequence.Count)
+			// Change game states if the at the end of a dialog sequence
+			if (sequence_index >= expression_sequence.Length || sequence_index >= speech_sequence.Length)
 			{
-				sequence_index = 0;
-				if (gmstate == GameState.Introduction)
+				switch(gmstate)
 				{
-					ChangeGameState("Gameplay");
-					EmitSignal(SignalName.SkipDialogLine, "DefaultExp", "");
-				}
-				else
-				{
-					EmitSignal(SignalName.StartFadeOut);
-					EmitSignal(SignalName.SkipDialogLine, "", "");
+					case GameState.Introduction:
+						ChangeGameState("Gameplay");
+						EmitSignal(SignalName.ClearDialogAndExpression);
+						EmitSignal(SignalName.StartBounceAnimation);
+						break;
+					case GameState.Outro:
+						CharacterSprite characterSprite = GetNode<CharacterSprite>("../Characters/CharacterSprite");
+						if (characterSprite.is_animated)
+							break;
+						EmitSignal(SignalName.StartDrinkingAnimation);
+						EmitSignal(SignalName.ClearDialogAndExpression);
+						break;
+					case GameState.Result:
+						EmitSignal(SignalName.StartFadeOut);
+
+						EmitSignal(SignalName.ClearDialogAndExpression);
+						break;
 				}
 				return;
 			}
-			EmitSignal(SignalName.SkipDialogLine, expression_sequence[sequence_index], speech_sequence[sequence_index]);
-			sequence_index += 1;
+
+			// If not at the end of a dialog sequence
+			TriggerNextDialogLine();
 		}
 
 		if (@event.IsActionPressed("FadeOut"))
 		{
-			ChangeGameState("Result");
-			EmitSignal(SignalName.SkipDialogLine, expression_sequence[sequence_index], speech_sequence[sequence_index]);
-			sequence_index += 1;
+			ChangeGameState("Outro");
+			TriggerNextDialogLine();
 		}
 
 		if (@event.IsActionPressed("FadeIn"))
 		{
 			EmitSignal(SignalName.StartFadeIn);
+		}
+	}
+
+	private void ResetTimerForText()
+	{
+		total_time_elapsed = 0.0;
+		waiting_for_text_to_finish = false;
+	}
+
+	private void TriggerNextDialogLine()
+	{
+		EmitSignal(SignalName.ChangeExpression, expression_sequence[sequence_index]);
+		EmitSignal(SignalName.StartNextDialog, speech_sequence[sequence_index]);
+		// Do not play bounce animation if the text is set to ""
+		if (expression_sequence[sequence_index] != "")
+			EmitSignal(SignalName.StartBounceAnimation);
+		sequence_index += 1;
+	}
+
+	private void LoopMessagesWhenMakingDrink()
+	{
+		sequence_index = rand.Next(expression_sequence.Length);
+		EmitSignal(SignalName.ChangeExpression, expression_sequence[sequence_index]);
+		EmitSignal(SignalName.StartNextDialog, speech_sequence[sequence_index]);
+		// Do not play bounce animation if the text is set to ""
+		if (expression_sequence[sequence_index] != "")
+			EmitSignal(SignalName.StartBounceAnimation);
+		waiting_for_text_to_finish = true;
+	}
+	
+	// Huge fucking method, I know, but works pretty damn well.
+	// It extracts the names of all unique ingredients from the LiquidData list
+	// and iterates over each one, comparing the player created drink to
+	// the recipe. As it does so, it calculates the difference between
+	// the volume of an ingredient in the recipe and the player made drink
+	// to then later calculate the score based off of the result.
+	// If a player's drink contains an ingredient the recipe doesn't,
+	// the difference equals 0 (since 0 divided by anything is 0) and
+	// vice versa.
+	private double VerifyDrinkAndScore()
+	{
+		LiquidContainer container = GetNode<LiquidContainer>("../DrinkGlass");
+		double score = 0.0;
+		List<LiquidData> target = new List<LiquidData>();
+		List<LiquidData> drink = container.liquids;
+		for (int i = 0; i < customerData.Final_drink_target.DrinkList.Count(); i++)
+		{
+			target.Add(customerData.Final_drink_target.DrinkList[i]);
+		}
+		List<string> targetIngredientTypes = target.Select(x => x.LiquidName).Distinct().ToList();
+		List<string> playerDrinkIngredientTypes = drink.Select(x => x.LiquidName).Distinct().ToList();
+
+		if (playerDrinkIngredientTypes.Count() > 0)
+		{
+			for (int i = 0; i < playerDrinkIngredientTypes.Count(); i++)
+			{
+				string liquidName = playerDrinkIngredientTypes[i];
+				int presentAmount = drink.Where(x => x.LiquidName == liquidName).Select(x => x.LiquidName).Count();
+				int targetAmount = target.Where(x => x.LiquidName == liquidName).Select(x => x.LiquidName).Count();
+				
+				double result = 0.0;
+
+				if (presentAmount <= targetAmount)
+				{
+					result = 100 / targetIngredientTypes.Count() * ((double)presentAmount / targetAmount);
+				}
+				else
+				{
+					result = 100 / targetIngredientTypes.Count() * ((double)targetAmount / presentAmount);
+				}
+				score += result;
+			}
+		}
+		return score;
+	}
+
+	private void DetermineResult(double score)
+	{
+		if (score >= 95)
+		{
+			speech_sequence = customerData.Result_perfect.Dialog;
+			expression_sequence = customerData.Result_perfect.Expression;
+		} else if (score >= 50)
+		{
+			speech_sequence = customerData.Result_mixed.Dialog;
+			expression_sequence = customerData.Result_mixed.Expression;
+		}
+		else
+		{
+			speech_sequence = customerData.Result_bad.Dialog;
+			expression_sequence = customerData.Result_bad.Expression;
 		}
 	}
 	
@@ -92,25 +211,32 @@ public partial class EventController : Node
 		switch (sequence)
 		{
 			case "Introduction":
+				sequence_index = 0;
 				gmstate = GameState.Introduction;
-				expression_sequence = ["DefaultExp", "DefaultExp", "", "Mog"];
-				speech_sequence = ["Ay it's me, Sans Undertale over here", "Can I get uhh...",
-		 		"...", "Seven million shots of Absinthe Father?"];
-				EmitSignal(SignalName.SkipDialogLine, expression_sequence[sequence_index], speech_sequence[sequence_index]);
-				sequence_index += 1;
+				expression_sequence = customerData.Intro_dialog_and_expressions.Expression;
+				speech_sequence = customerData.Intro_dialog_and_expressions.Dialog;
+				TriggerNextDialogLine();
 				break;
 			case "Gameplay":
 				gmstate = GameState.Gameplay;
-				speech_sequence = ["Did I mention I'm from the award winning game Undertale?", "Yeah mix it good baby", "I'm Sans Undertale"
-				, "Tell Shaun I said hi", "I wonder what else those hands can do"];
-				expression_sequence = ["DefaultExp", "Mog", "DefaultExp", "DefaultExp", "Mog"];
+				speech_sequence = customerData.Gameplay_dialog_and_expressions.Dialog;
+				expression_sequence = customerData.Gameplay_dialog_and_expressions.Expression;
 				total_time_elapsed = 0.0;
 				break;
-			case "Result":
-				gmstate = GameState.Result;
-				speech_sequence = ["Cheers boss, lemme have a sip", "Oh yeah", "This shit sucks", "Smell ya later, sexy"];
-				expression_sequence = ["DefaultExp", "DefaultExp", "DefaultExp", "Mog"];
+			case "Outro":
+				gmstate = GameState.Outro;
+				speech_sequence = customerData.Outro_dialog_and_expressions.Dialog;
+				expression_sequence = customerData.Outro_dialog_and_expressions.Expression;
 				sequence_index = 0;
+				break;
+			case "Result":
+				sequence_index = 0;
+				gmstate = GameState.Result;
+				double score = VerifyDrinkAndScore();
+				DetermineResult(score);
+				GD.Print(score);
+				sequence_index = 0;
+				TriggerNextDialogLine();
 				break;
 			case "End":
 				gmstate = GameState.Idle;

@@ -9,6 +9,8 @@ public partial class RichTextLabel : Godot.RichTextLabel
 	private int sequence_index;
 	[Signal]
 	private delegate void VoiceSoundEffectEventHandler();
+	[Signal]
+	private delegate void RestartGameplayTextTimerEventHandler();
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,8 +20,9 @@ public partial class RichTextLabel : Godot.RichTextLabel
 		text_index = 0;
 
 		var parentNode = GetNode<Node2D>("../..");
-		parentNode.Connect("DialogAction", new Callable(this, MethodName.LoadNewLine));
+		parentNode.Connect("SetDialog", new Callable(this, MethodName.LoadNewLine));
 		parentNode.Connect("FadeOutAction", new Callable(this, MethodName.ClearText));
+		parentNode.Connect("TextClear", new Callable(this, MethodName.ClearText));
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,11 +36,13 @@ public partial class RichTextLabel : Godot.RichTextLabel
 			if (blank_space_check[VisibleCharacters] != ' ' && blank_space_check[VisibleCharacters] != '.')
 				EmitSignal(SignalName.VoiceSoundEffect);
 			VisibleCharacters += 1;
+			if (VisibleCharacters == Text.Length)
+				EmitSignal(SignalName.RestartGameplayTextTimer);
 			total_time_elapsed = 0.0;
 		}
 	}
 
-	private void LoadNewLine(string expression, string txt)
+	private void LoadNewLine(string txt)
 	{
 		VisibleCharacters = 0;
 		Text = txt;	
