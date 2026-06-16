@@ -3,61 +3,117 @@
 [ext_resource type="Script" uid="uid://6cbblhldwrgf" path="res://Scripts/MouseDrag/MouseDragController.cs" id="1_gqqm6"]
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_gr58c"]
 [ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
+[ext_resource type="Script" uid="uid://djc871d8462ux" path="res://Scripts/GameManager.cs" id="2_fvivi"]
+[ext_resource type="Script" uid="uid://cuaj5mroc22rv" path="res://Scripts/GameRound.cs" id="3_85wtc"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
+[ext_resource type="Resource" uid="uid://b5qte3llaamjx" path="res://Resources/Customers/Sans/SansData.tres" id="3_kc8my"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/Root Scenes/character.tscn" id="5_4aloy"]
+[ext_resource type="Script" uid="uid://d06fruxa5ksow" path="res://Scripts/DrinkSubmissionArea.cs" id="6_5lf26"]
 [ext_resource type="Script" uid="uid://16kx4o1hf44n" path="res://Scripts/EventController.cs" id="6_r4now"]
 [ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="8_3btq8"]
 [ext_resource type="PackedScene" uid="uid://1q8sybp70ruv" path="res://Scenes/Garnish.tscn" id="8_fvivi"]
 
+[sub_resource type="Resource" id="Resource_5lf26"]
+script = ExtResource("3_85wtc")
+customers = Array[Object]([ExtResource("3_kc8my")])
+metadata/_custom_type_script = "uid://cuaj5mroc22rv"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85wtc"]
+size = Vector2(1920, 12.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf26"]
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
-distance = -2.0
+distance = -0.5
 
 [node name="BarScene" type="Node2D" unique_id=284124051]
 script = ExtResource("1_gqqm6")
 
-[node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
-position = Vector2(410, 88)
-
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1962037065]
 
-[node name="Table" type="StaticBody2D" parent="." unique_id=1237125352]
-position = Vector2(0, 225)
-
-[node name="Visuals" type="Sprite2D" parent="Table" unique_id=367679077]
-modulate = Color(0.56, 0.33898667, 0.14559999, 1)
-position = Vector2(0, 160)
-scale = Vector2(15, 2.5)
-texture = ExtResource("1_gr58c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Table" unique_id=779099646]
-position = Vector2(0, 1)
-scale = Vector2(9, 2)
-shape = SubResource("WorldBoundaryShape2D_gr58c")
-
-[node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
-position = Vector2(-365, 96)
-input_pickable = false
-
-[node name="Milk" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
-position = Vector2(740, -46)
-freeze_mode = 1
-metadata/Liquid = ExtResource("8_3btq8")
-
-[node name="LiquidBottle" parent="." unique_id=1340305212 instance=ExtResource("3_iy0dp")]
-position = Vector2(412, 115)
-freeze_mode = 1
-
-[node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
-position = Vector2(-953, -818)
+[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea")]
+script = ExtResource("2_fvivi")
+gameRounds = Array[Resource]([SubResource("Resource_5lf26")])
+eventController = NodePath("../EventController")
+drinkSubmissionArea = NodePath("../BarScene/BarCounter")
 
 [node name="EventController" type="Node" parent="." unique_id=838439069]
 script = ExtResource("6_r4now")
 
-[node name="RigidBody2D" parent="." unique_id=249593882 instance=ExtResource("8_fvivi")]
-position = Vector2(-623, 176)
+[node name="BarScene" type="Node2D" parent="." unique_id=413730612]
 
-[node name="RigidBody2D2" parent="." unique_id=277594630 instance=ExtResource("8_fvivi")]
-position = Vector2(-773, 123)
+[node name="Sprite2D" type="Sprite2D" parent="BarScene" unique_id=1607842691]
+self_modulate = Color(0.35, 0.21186666, 0.091, 1)
+position = Vector2(2, 181)
+scale = Vector2(14.97, 2)
+texture = ExtResource("1_gr58c")
 
-[node name="RigidBody2D3" parent="." unique_id=1717991361 instance=ExtResource("8_fvivi")]
-position = Vector2(-676, 104)
+[node name="BarCounter" type="StaticBody2D" parent="BarScene" unique_id=1223054503 node_paths=PackedStringArray("drinkSubmissionArea")]
+position = Vector2(0, 50)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("6_5lf26")
+drinkSubmissionArea = NodePath("Area2D")
+timeToSubmit = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/BarCounter" unique_id=165915098]
+shape = SubResource("RectangleShape2D_85wtc")
+
+[node name="Visuals" type="Sprite2D" parent="BarScene/BarCounter" unique_id=2129108844]
+modulate = Color(0.56, 0.33898667, 0.14559999, 1)
+scale = Vector2(15, 0.1)
+texture = ExtResource("1_gr58c")
+
+[node name="Area2D" type="Area2D" parent="BarScene/BarCounter" unique_id=32967087]
+collision_layer = 8
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/BarCounter/Area2D" unique_id=302225844]
+position = Vector2(1, -16.5)
+scale = Vector2(96, 1)
+shape = SubResource("RectangleShape2D_5lf26")
+
+[node name="Table" type="StaticBody2D" parent="BarScene" unique_id=1237125352]
+position = Vector2(0, 301)
+
+[node name="Visuals" type="Sprite2D" parent="BarScene/Table" unique_id=367679077]
+modulate = Color(0.56, 0.33898667, 0.14559999, 1)
+position = Vector2(0, 159)
+scale = Vector2(15, 2.5)
+texture = ExtResource("1_gr58c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/Table" unique_id=779099646]
+position = Vector2(0, -2)
+scale = Vector2(9, 2)
+shape = SubResource("WorldBoundaryShape2D_gr58c")
+
+[node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
+position = Vector2(410, 88)
+
+[node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
+position = Vector2(20, 165)
+input_pickable = false
+
+[node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
+position = Vector2(-953, -818)
+
+[node name="LiquidBottle" parent="." unique_id=1340305212 instance=ExtResource("3_iy0dp")]
+position = Vector2(412, 206)
+freeze_mode = 1
+
+[node name="Milk" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
+position = Vector2(740, 202)
+freeze_mode = 1
+metadata/Liquid = ExtResource("8_3btq8")
+
+[node name="IceCube" parent="." unique_id=249593882 instance=ExtResource("8_fvivi")]
+position = Vector2(-205, 179)
+
+[node name="IceCube2" parent="." unique_id=277594630 instance=ExtResource("8_fvivi")]
+position = Vector2(-306, 220)
+
+[node name="IceCube3" parent="." unique_id=1717991361 instance=ExtResource("8_fvivi")]
+position = Vector2(-370, 184)
+
+[editable path="Characters"]
