@@ -22,7 +22,7 @@ public partial class EventController : Node
 	private Random rand;
 
 	[Export]
-	private CustomerData customerData;
+	public CustomerData customerData;
 	[Signal]
 	private delegate void EndOfIntroductionEventHandler();
 	[Signal]
@@ -128,6 +128,8 @@ public partial class EventController : Node
 	public void StartCustomerSequence(CustomerData customer)
 	{
 		customerData = customer;
+		CharacterExpression expressionNode = GetNode<CharacterExpression>("../Characters/CharacterSprite/CharacterExpression");
+		expressionNode.SpriteFrames = customer.Customer_expression_textures;
 		EmitSignal(SignalName.StartFadeIn);
 	}
 
@@ -135,6 +137,14 @@ public partial class EventController : Node
 	// Starts the dialog leading into the score
 	public void MoveToOutroAndScoringSequence()
 	{
+		// Check if drink is empty
+		DrinkContainer container = GetNode<DrinkContainer>("../DrinkGlass");
+		List<LiquidData> drink = container.liquidContainer.liquids;
+		if (drink.Count() == 0)
+		{
+			ChangeGameState("Result");
+			return;
+		}
 		ChangeGameState("Outro");
 		TriggerNextDialogLine();
 	}
@@ -214,6 +224,15 @@ public partial class EventController : Node
 
 	private void DetermineResult(double score)
 	{
+		DrinkContainer container = GetNode<DrinkContainer>("../DrinkGlass");
+		List<LiquidData> drink = container.liquidContainer.liquids;
+		if (drink.Count() == 0)
+		{
+			speech_sequence = customerData.Result_empty.Dialog;
+			expression_sequence = customerData.Result_empty.Expression;
+			return;
+		}
+
 		if (score >= 95)
 		{
 			speech_sequence = customerData.Result_perfect.Dialog;

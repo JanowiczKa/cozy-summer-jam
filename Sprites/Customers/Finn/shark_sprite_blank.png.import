@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bst7mggacu1fa"
-path="res://.godot/imported/sansexpression2.png-730d3a85fc1378ab50e93e76e9ef1db8.ctex"
+uid="uid://dmjldvrplv4dr"
+path="res://.godot/imported/shark_sprite_blank.png-25fc41d5dd0c3c25eebdbc9663579059.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Customers/sansexpression2.png"
-dest_files=["res://.godot/imported/sansexpression2.png-730d3a85fc1378ab50e93e76e9ef1db8.ctex"]
+source_file="res://Sprites/Customers/Finn/shark_sprite_blank.png"
+dest_files=["res://.godot/imported/shark_sprite_blank.png-25fc41d5dd0c3c25eebdbc9663579059.ctex"]
 
 [params]
 

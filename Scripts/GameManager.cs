@@ -84,6 +84,7 @@ public partial class GameManager : Node
 	{
 		//pass drink data
 		//EndCurrentCustomerInteraction();
+		eventController.MoveToOutroAndScoringSequence();
 
 		GD.Print("Submitted drink!");
 	}

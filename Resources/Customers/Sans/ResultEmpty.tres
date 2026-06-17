@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogAndExpression" format=3 uid="uid://bs2jepe5kl8bg"]
+
+[ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/DialogAndExpression.cs" id="1_0eqjr"]
+
+[resource]
+script = ExtResource("1_0eqjr")
+Dialog = PackedStringArray("Umm...", "Are you taking the piss, mate?", "Thanks for nothing, idiot")
+Expression = PackedStringArray("Mog", "Mog", "Mog")

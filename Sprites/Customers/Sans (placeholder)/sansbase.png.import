@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://omp8o4skdbly"
-path="res://.godot/imported/Sans_.webp-40dbef3f4dc91f580957bc790d36a079.ctex"
+uid="uid://v8il60nx14bi"
+path="res://.godot/imported/sansbase.png-2a3158fad57611f9e24ff84cbe7b50f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Customers/Sans_.webp"
-dest_files=["res://.godot/imported/Sans_.webp-40dbef3f4dc91f580957bc790d36a079.ctex"]
+source_file="res://Sprites/Customers/Sans (placeholder)/sansbase.png"
+dest_files=["res://.godot/imported/sansbase.png-2a3158fad57611f9e24ff84cbe7b50f7.ctex"]
 
 [params]
 

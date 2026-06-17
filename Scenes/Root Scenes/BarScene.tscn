@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://16kx4o1hf44n" path="res://Scripts/EventController.cs" id="6_r4now"]
 [ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="8_3btq8"]
 [ext_resource type="PackedScene" uid="uid://1q8sybp70ruv" path="res://Scenes/Garnish.tscn" id="8_fvivi"]
+[ext_resource type="Texture2D" uid="uid://dmjldvrplv4dr" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="10_x7ban"]
+[ext_resource type="SpriteFrames" uid="uid://dkmbybe3cj75j" path="res://Resources/Customers/Sans/SansFrames.tres" id="11_45dlq"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -97,6 +99,14 @@ input_pickable = false
 
 [node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
 position = Vector2(-953, -818)
+
+[node name="CharacterSprite" parent="Characters" index="0" unique_id=1052017425]
+position = Vector2(953.00006, 617)
+scale = Vector2(0.35999998, 0.35999998)
+texture = ExtResource("10_x7ban")
+
+[node name="CharacterExpression" parent="Characters/CharacterSprite" index="0" unique_id=1294962647]
+sprite_frames = ExtResource("11_45dlq")
 
 [node name="LiquidBottle" parent="." unique_id=1340305212 instance=ExtResource("3_iy0dp")]
 position = Vector2(412, 206)

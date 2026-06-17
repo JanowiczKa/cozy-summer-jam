@@ -1,16 +1,16 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://dkmbybe3cj75j"]
 
-[ext_resource type="Texture2D" uid="uid://canuacfaatprt" path="res://Sprites/Customers/sansexpression1.png" id="1_lk7r8"]
-[ext_resource type="Texture2D" uid="uid://bst7mggacu1fa" path="res://Sprites/Customers/sansexpression2.png" id="2_od7gg"]
+[ext_resource type="Texture2D" uid="uid://d4hcwi0o3qyt2" path="res://Sprites/Customers/Finn/Expressions/shark_sprite_angry.png" id="1_lk7r8"]
+[ext_resource type="Texture2D" uid="uid://1q2b2vlpsd1y" path="res://Sprites/Customers/Finn/Expressions/shark_sprite_happy.png" id="2_od7gg"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_lk7r8")
+"texture": ExtResource("2_od7gg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_od7gg")
+"texture": ExtResource("1_lk7r8")
 }],
 "loop": true,
 "name": &"Expressions",

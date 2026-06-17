@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v8il60nx14bi"
-path="res://.godot/imported/sansbase.png-b86e96f601a3bafeca8179e892523277.ctex"
+uid="uid://d4hcwi0o3qyt2"
+path="res://.godot/imported/shark_sprite_angry.png-a63589a725a6a0269b8a8c04845104d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Customers/sansbase.png"
-dest_files=["res://.godot/imported/sansbase.png-b86e96f601a3bafeca8179e892523277.ctex"]
+source_file="res://Sprites/Customers/Finn/Expressions/shark_sprite_angry.png"
+dest_files=["res://.godot/imported/shark_sprite_angry.png-a63589a725a6a0269b8a8c04845104d3.ctex"]
 
 [params]
 

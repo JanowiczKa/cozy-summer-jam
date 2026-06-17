@@ -37,7 +37,7 @@ public partial class CharacterSprite : Sprite2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Scale = new Vector2((float)0.2, (float)0.2);
+		Scale = new Vector2((float)0.36, (float)0.36);
 		is_animated = false;
 		total_time_elapsed = 0.0;
 		animation_sequence = 0;
@@ -49,7 +49,7 @@ public partial class CharacterSprite : Sprite2D
 		rgb_modulation = new Color(0, 0, 0, 0);
 		Modulate = rgb_modulation;
 		animtp = AnimationType.Static;
-		anim_bounds = [0.21, Scale.Y];
+		anim_bounds = [Scale.X + 0.02, Scale.Y];
 
 		var parentNode = GetParent<Node2D>();
 		parentNode.Connect("PlayBounceAnimation", new Callable(this, MethodName.InitBounceAnimation));
@@ -115,6 +115,7 @@ public partial class CharacterSprite : Sprite2D
 		acceleration = 0.00001;
 		max_velocity = 0.01;
 		min_velocity = 0.0001;
+		anim_bounds = [0.38, Scale.X];
 	}
 
 	private void InitDrinkAnimation()
@@ -125,7 +126,7 @@ public partial class CharacterSprite : Sprite2D
 		acceleration = 0.00001;
 		max_velocity = 0.01;
 		min_velocity = 0.0001;
-		anim_bounds = [0.24, 0.2];
+		anim_bounds = [0.40, Scale.X];
 	}
 
 	private void TerminateBounceAnimation()
@@ -137,7 +138,7 @@ public partial class CharacterSprite : Sprite2D
 		acceleration = 0.0;
 		max_velocity = 0.0;
 		min_velocity = 0.0;
-		anim_bounds = [0.21, 0.2];
+		anim_bounds = [0.38, 0.36];
 	}
 	
 	// Manipulates the sprite's Scale values to stretch the image
