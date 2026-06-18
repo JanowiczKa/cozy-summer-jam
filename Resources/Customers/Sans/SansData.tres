@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://b1kv3er56gaty" path="res://Resources/Customers/Sans/Outro.tres" id="3_4m066"]
 [ext_resource type="SpriteFrames" uid="uid://byijqb68l806b" path="res://Resources/Drinks/JustMilk.tres" id="3_5adhb"]
 [ext_resource type="Resource" uid="uid://btcxxvgqq72r2" path="res://Resources/Customers/Sans/ResultBad.tres" id="4_5adhb"]
-[ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/CustomerData.cs" id="5_8oe6k"]
+[ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/Customers/CustomerData.cs" id="5_8oe6k"]
 [ext_resource type="Resource" uid="uid://bs2jepe5kl8bg" path="res://Resources/Customers/Sans/ResultEmpty.tres" id="8_7qw3p"]
 [ext_resource type="Resource" uid="uid://dqdqppkekmgp7" path="res://Resources/Customers/Sans/ResultMixed.tres" id="8_37pn7"]
 [ext_resource type="Resource" uid="uid://bwbouesiulp1a" path="res://Resources/Customers/Sans/ResultPerfect.tres" id="9_7qw3p"]

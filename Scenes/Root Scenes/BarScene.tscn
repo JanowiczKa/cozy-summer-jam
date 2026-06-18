@@ -24,9 +24,9 @@
 [ext_resource type="Script" uid="uid://dxeu7qbij4t8n" path="res://Scripts/Chatbot/ChatBotRecipe.cs" id="20_10ytx"]
 [ext_resource type="Resource" uid="uid://cu384u56l0w3g" path="res://Resources/ListOfIngredients.tres" id="21_ddpem"]
 [ext_resource type="AudioStream" uid="uid://i75pnj0w06um" path="res://Audio/Chatbot/mixr_dial1.wav" id="22_8yvl4"]
-[ext_resource type="Script" uid="uid://hlbtnj17hakv" path="res://Scripts/ChatBotAudio.cs" id="22_tcgbs"]
+[ext_resource type="Script" uid="uid://hlbtnj17hakv" path="res://Scripts/Chatbot/ChatBotAudio.cs" id="22_tcgbs"]
 [ext_resource type="PackedScene" uid="uid://beworw7g3u1d3" path="res://Scenes/SceneSpawner.tscn" id="24_0s30y"]
-[ext_resource type="PackedScene" uid="uid://cglv6s5c0ixwc" path="res://Scenes/LiquidDispenser.tscn" id="26_e5jey"]
+[ext_resource type="PackedScene" uid="uid://80mxvochxghw" path="res://Scenes/LiquidDispenser.tscn" id="26_e5jey"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -37,6 +37,7 @@ metadata/_custom_type_script = "uid://cuaj5mroc22rv"
 size = Vector2(1920, 12.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf26"]
+size = Vector2(20.9, 20)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -0.5
@@ -89,7 +90,7 @@ collision_mask = 8
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/BarCounter/Area2D" unique_id=302225844]
-position = Vector2(1, -16.5)
+position = Vector2(167, -18)
 scale = Vector2(10, 1)
 shape = SubResource("RectangleShape2D_5lf26")
 

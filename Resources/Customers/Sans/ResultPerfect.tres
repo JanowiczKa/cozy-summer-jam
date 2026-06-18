@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogAndExpression" format=3 uid="uid://bwbouesiulp1a"]
 
-[ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/DialogAndExpression.cs" id="1_j1724"]
+[ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/Customers/DialogAndExpression.cs" id="1_j1724"]
 
 [resource]
 script = ExtResource("1_j1724")
