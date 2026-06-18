@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://cglv6s5c0ixwc"]
+[gd_scene format=3 uid="uid://80mxvochxghw"]
 
-[ext_resource type="Script" uid="uid://bhbau24ohrhdo" path="res://Scripts/Liquids/LiquidDispenser.cs" id="1_1qtch"]
+[ext_resource type="Script" path="res://Scripts/Liquids/LiquidDispenser.cs" id="1_1qtch"]
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_6ra8a"]
-[ext_resource type="Script" uid="uid://dodgu2i243syh" path="res://Scripts/Liquids/LiquidDispenserButton.cs" id="3_etaux"]
-[ext_resource type="Resource" uid="uid://df2e0o38g5ua1" path="res://Resources/Liquids/SeaWater.tres" id="4_suje7"]
-[ext_resource type="Resource" uid="uid://bdnktcsklt801" path="res://Resources/Liquids/CrabshellCola.tres" id="5_m3s6g"]
-[ext_resource type="Resource" uid="uid://cwhh162v21u7p" path="res://Resources/Liquids/ShavedIceberg.tres" id="6_kqyic"]
-[ext_resource type="Resource" uid="uid://cr6h4joq7i5bi" path="res://Resources/Liquids/WhaleMilk.tres" id="7_m3s6g"]
+[ext_resource type="Script" path="res://Scripts/Liquids/LiquidDispenserButton.cs" id="3_etaux"]
+[ext_resource type="Resource" path="res://Resources/Liquids/SeaWater.tres" id="4_suje7"]
+[ext_resource type="Resource" path="res://Resources/Liquids/CrabshellCola.tres" id="5_m3s6g"]
+[ext_resource type="Resource" path="res://Resources/Liquids/ShavedIceberg.tres" id="6_kqyic"]
+[ext_resource type="Resource" path="res://Resources/Liquids/WhaleMilk.tres" id="7_m3s6g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ra8a"]
 font_size = 20
@@ -50,6 +50,7 @@ corner_detail = 5
 [node name="LiquidDispenser" type="Node2D" unique_id=956457883 node_paths=PackedStringArray("spillPosition")]
 script = ExtResource("1_1qtch")
 dropsPerSecondRate = 20.0
+spillRadius = null
 spillPosition = NodePath("Spout")
 
 [node name="Spout" type="Node2D" parent="." unique_id=402710621]
