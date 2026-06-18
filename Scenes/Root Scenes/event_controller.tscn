@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bdwpf4bymmnkk"]
-
-[ext_resource type="Script" uid="uid://16kx4o1hf44n" path="res://Scripts/EventController.cs" id="1_e8hob"]
-
-[node name="EventController" type="Node" unique_id=1527729894]
-script = ExtResource("1_e8hob")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://1q8sybp70ruv"]
 
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_ccmx4"]
-[ext_resource type="Script" uid="uid://cijr1eidkk6il" path="res://Scripts/Garnish.cs" id="1_e8ite"]
+[ext_resource type="Script" uid="uid://cijr1eidkk6il" path="res://Scripts/MouseDrag/Garnish.cs" id="1_e8ite"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ccmx4"]
 

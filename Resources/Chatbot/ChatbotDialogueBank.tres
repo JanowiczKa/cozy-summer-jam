@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ChatBotDialogueBank" format=3 uid="uid://tec2pb576vq6"]
 
-[ext_resource type="Script" uid="uid://ejqd4lbb2hy4" path="res://Scripts/ChatBotDialogueBank.cs" id="1_wy7fp"]
+[ext_resource type="Script" uid="uid://ejqd4lbb2hy4" path="res://Scripts/Chatbot/ChatBotDialogueBank.cs" id="1_wy7fp"]
 
 [resource]
 script = ExtResource("1_wy7fp")

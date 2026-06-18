@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://cr6h4joq7i5bi"]
+
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="1_tm1fi"]
+
+[resource]
+script = ExtResource("1_tm1fi")
+LiquidName = "Whale Milk"
+Color = Color(0.768, 0.96, 0.8895999, 0.78431374)
+metadata/_custom_type_script = "uid://bgg4was383e8n"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjoyjip4hou8r"]
 
 [ext_resource type="Script" uid="uid://chmls05qbt8nh" path="res://Scripts/DrinkContainer.cs" id="1_mqeui"]
-[ext_resource type="Script" uid="uid://br6r2enpgrafi" path="res://Scripts/LiquidContainer.cs" id="2_0gmqp"]
+[ext_resource type="Script" uid="uid://br6r2enpgrafi" path="res://Scripts/Liquids/LiquidContainer.cs" id="2_0gmqp"]
 [ext_resource type="Shader" uid="uid://0kd3xkqjxmvj" path="res://Shaders/DrinkGlassLiquid.gdshader" id="2_mqeui"]
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="2_rax88"]
 [ext_resource type="Script" uid="uid://dt06wv2a4kxp7" path="res://Sprites/GarnishObserver.cs" id="5_0gmqp"]

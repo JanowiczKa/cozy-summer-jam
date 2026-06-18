@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://bdnktcsklt801"]
+
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="1_38spu"]
+
+[resource]
+script = ExtResource("1_38spu")
+LiquidName = "Crabshell Cola"
+Color = Color(0.26, 0.09533333, 0, 0.49019608)
+IsFizzy = true
+metadata/_custom_type_script = "uid://bgg4was383e8n"
