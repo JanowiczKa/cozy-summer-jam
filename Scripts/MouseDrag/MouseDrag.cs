@@ -16,6 +16,9 @@ public partial class MouseDrag : RigidBody2D
 
 	public override void _Ready()
 	{
+		MouseDragController.Instance.RegisterMouseDrag(this);
+
+		//GD.Print("I've been added to the tree");
 		//These 2 are needed for the object to interract correctly with physics when picked up
 		FreezeMode = FreezeModeEnum.Kinematic;
 		InputPickable = true;
@@ -47,8 +50,10 @@ public partial class MouseDrag : RigidBody2D
 			BeginDragging();
 	}
 
-	private void BeginDragging()
+	public void BeginDragging()
 	{
+		GD.Print("Began dragging");
+
 		mouseClickOffset = GlobalPosition - GetGlobalMousePosition();
 		isHeld = true;
 		Freeze = true;

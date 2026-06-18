@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://tec2pb576vq6" path="res://Resources/Chatbot/ChatbotDialogueBank.tres" id="19_rvx5e"]
 [ext_resource type="Script" uid="uid://dxeu7qbij4t8n" path="res://Scripts/ChatBotRecipe.cs" id="20_10ytx"]
 [ext_resource type="Resource" uid="uid://cu384u56l0w3g" path="res://Resources/ListOfIngredients.tres" id="21_ddpem"]
+[ext_resource type="PackedScene" uid="uid://beworw7g3u1d3" path="res://Scenes/SceneSpawner.tscn" id="22_tcgbs"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -53,7 +54,7 @@ script = ExtResource("6_r4now")
 
 [node name="Sprite2D" type="Sprite2D" parent="BarScene" unique_id=1607842691]
 self_modulate = Color(0.35, 0.21186666, 0.091, 1)
-position = Vector2(2, 181)
+position = Vector2(1, 174)
 scale = Vector2(14.97, 2)
 texture = ExtResource("1_gr58c")
 
@@ -88,6 +89,7 @@ position = Vector2(0, 301)
 
 [node name="Visuals" type="Sprite2D" parent="BarScene/Table" unique_id=367679077]
 modulate = Color(0.56, 0.33898667, 0.14559999, 1)
+z_index = -2
 position = Vector2(0, 159)
 scale = Vector2(15, 2.5)
 texture = ExtResource("1_gr58c")
@@ -98,7 +100,6 @@ scale = Vector2(9, 2)
 shape = SubResource("WorldBoundaryShape2D_gr58c")
 
 [node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
-position = Vector2(410, 88)
 
 [node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
 position = Vector2(20, 165)
@@ -204,5 +205,12 @@ scroll_active = false
 vertical_alignment = 1
 script = ExtResource("20_10ytx")
 ingredientList = ExtResource("21_ddpem")
+
+[node name="SceneSpawner" parent="." unique_id=1504049884 instance=ExtResource("22_tcgbs")]
+position = Vector2(-865, 447)
+spawnableScene = ExtResource("8_fvivi")
+
+[node name="Garnish" parent="." unique_id=461255926 instance=ExtResource("8_fvivi")]
+position = Vector2(-470, 251)
 
 [editable path="Characters"]

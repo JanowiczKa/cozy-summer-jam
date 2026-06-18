@@ -1,0 +1,303 @@
+[gd_scene format=3 uid="uid://80mxvochxghw"]
+
+[ext_resource type="Script" path="res://Scripts/Liquids/LiquidDispenser.cs" id="1_1qtch"]
+[ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_6ra8a"]
+[ext_resource type="Script" path="res://Scripts/Liquids/LiquidDispenserButton.cs" id="3_etaux"]
+[ext_resource type="Resource" path="res://Resources/Liquids/SeaWater.tres" id="4_suje7"]
+[ext_resource type="Resource" path="res://Resources/Liquids/CrabshellCola.tres" id="5_m3s6g"]
+[ext_resource type="Resource" path="res://Resources/Liquids/ShavedIceberg.tres" id="6_kqyic"]
+[ext_resource type="Resource" path="res://Resources/Liquids/WhaleMilk.tres" id="7_m3s6g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ra8a"]
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ra8a"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.09985284, 0.8238249, 0.09985284, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qtch"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.78, 0.026000021, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_etaux"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.09803922, 0.8235294, 0.09803922, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="LiquidDispenser" type="Node2D" unique_id=956457883 node_paths=PackedStringArray("spillPosition")]
+script = ExtResource("1_1qtch")
+dropsPerSecondRate = 20.0
+spillRadius = null
+spillPosition = NodePath("Spout")
+
+[node name="Spout" type="Node2D" parent="." unique_id=402710621]
+position = Vector2(0, 102)
+
+[node name="Visuals" type="Node2D" parent="." unique_id=76722925]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1635729996]
+modulate = Color(0.59, 0.59, 0.59, 1)
+position = Vector2(0, -20)
+scale = Vector2(1.7, 1.5)
+texture = ExtResource("1_6ra8a")
+
+[node name="Nozzle" type="Sprite2D" parent="Visuals" unique_id=1342881202]
+modulate = Color(0.44, 0.44, 0.44, 1)
+position = Vector2(0, 85.5)
+scale = Vector2(0.5, 0.15)
+texture = ExtResource("1_6ra8a")
+
+[node name="Sea Water" type="Control" parent="." unique_id=1649482710]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -106.0
+offset_right = 100.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Sea Water" unique_id=1098482576]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Sea Water" unique_id=1602263177]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.5
+offset_top = -22.5
+offset_right = 101.5
+offset_bottom = 22.5
+grow_vertical = 2
+text = "Sea Water"
+label_settings = SubResource("LabelSettings_6ra8a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Sea Water" unique_id=873481189 node_paths=PackedStringArray("parentDispenser")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -15.0
+offset_right = -5.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
+theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
+script = ExtResource("3_etaux")
+liquid = ExtResource("4_suje7")
+parentDispenser = NodePath("../..")
+
+[node name="Crabshell Cola" type="Control" parent="." unique_id=363961239]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -63.0
+offset_right = 100.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Crabshell Cola" unique_id=656797224]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Crabshell Cola" unique_id=122055485]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.5
+offset_top = -22.5
+offset_right = 141.5
+offset_bottom = 22.5
+grow_vertical = 2
+text = "Crabshell Cola"
+label_settings = SubResource("LabelSettings_6ra8a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Crabshell Cola" unique_id=144628869 node_paths=PackedStringArray("parentDispenser")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -15.0
+offset_right = -5.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
+theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
+script = ExtResource("3_etaux")
+liquid = ExtResource("5_m3s6g")
+parentDispenser = NodePath("../..")
+
+[node name="Shaved Iceberg" type="Control" parent="." unique_id=1586523447]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Shaved Iceberg" unique_id=154269878]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Shaved Iceberg" unique_id=538543100]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.5
+offset_top = -22.5
+offset_right = 150.5
+offset_bottom = 22.5
+grow_vertical = 2
+text = "Shaved Iceberg"
+label_settings = SubResource("LabelSettings_6ra8a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Shaved Iceberg" unique_id=708266789 node_paths=PackedStringArray("parentDispenser")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -15.0
+offset_right = -5.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
+theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
+script = ExtResource("3_etaux")
+liquid = ExtResource("6_kqyic")
+parentDispenser = NodePath("../..")
+
+[node name="Whale Milk" type="Control" parent="." unique_id=515800124]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 23.0
+offset_right = 100.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Whale Milk" unique_id=1358049738]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Whale Milk" unique_id=374443026]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.5
+offset_top = -22.5
+offset_right = 110.5
+offset_bottom = 22.5
+grow_vertical = 2
+text = "Whale Milk"
+label_settings = SubResource("LabelSettings_6ra8a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Whale Milk" unique_id=999809640 node_paths=PackedStringArray("parentDispenser")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -15.0
+offset_right = -5.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
+theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
+script = ExtResource("3_etaux")
+liquid = ExtResource("7_m3s6g")
+parentDispenser = NodePath("../..")
