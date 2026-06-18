@@ -6,9 +6,10 @@ public partial class Chatbot : Sprite2D
 	[Export]
 	public float velocity;	// 50.0
 	private float currentVelocity;
-	private bool isAnimated;
-	private bool isExtended;
+	public bool isAnimated;
+	public bool isExtended;
 	private ChatBotDialogue dialogueNode;
+	private ChatBotRecipe recipeNode;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -17,6 +18,7 @@ public partial class Chatbot : Sprite2D
 		isExtended = false;
 		currentVelocity = (float)0.0;
 		dialogueNode = GetChild<ChatBotDialogue>(0);
+		recipeNode = GetChild<ChatBotRecipe>(1);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -75,10 +77,16 @@ public partial class Chatbot : Sprite2D
 		Position = new Vector2(Position.X, Position.Y + currentVelocity);
 		currentVelocity = currentVelocity /2;
 		float difference = currentVelocity / velocity;
+
 		dialogueNode.ChangeOpacity(dialogueNode.Modulate.A - difference,
 		dialogueNode.Modulate.B - difference,
 		dialogueNode.Modulate.G - difference,
 		dialogueNode.Modulate.R - difference);
+
+		recipeNode.ChangeOpacity(recipeNode.Modulate.A + difference,
+		recipeNode.Modulate.B + difference,
+		recipeNode.Modulate.G + difference,
+		recipeNode.Modulate.R + difference);
 
 		if (currentVelocity <= 1)
 		{
@@ -92,10 +100,16 @@ public partial class Chatbot : Sprite2D
 		Position = new Vector2(Position.X, Position.Y - currentVelocity);
 		currentVelocity = currentVelocity /2;
 		float difference = currentVelocity / velocity;
+
 		dialogueNode.ChangeOpacity(dialogueNode.Modulate.A + difference,
 		dialogueNode.Modulate.B + difference,
 		dialogueNode.Modulate.G + difference,
 		dialogueNode.Modulate.R + difference);
+
+		recipeNode.ChangeOpacity(recipeNode.Modulate.A - difference,
+		recipeNode.Modulate.B - difference,
+		recipeNode.Modulate.G - difference,
+		recipeNode.Modulate.R - difference);
 
 		if (currentVelocity <= 1)
 		{

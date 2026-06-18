@@ -27,8 +27,8 @@ public partial class CharacterSprite : Sprite2D
 
 	[Signal]
 	private delegate void FadeInFinishedEventHandler();
-	[Signal]
-	private delegate void FadeOutFinishedEventHandler();
+	//[Signal]
+	//private delegate void FadeOutFinishedEventHandler();
 	[Signal]
 	private delegate void VoiceSoundEffectEventHandler();
 	[Signal]
@@ -242,7 +242,7 @@ public partial class CharacterSprite : Sprite2D
 				{
 				is_animated = false;
 				animtp = AnimationType.Static;
-				EmitSignal(SignalName.FadeOutFinished);
+				//EmitSignal(SignalName.FadeOutFinished);
 				}
 		}
 	}

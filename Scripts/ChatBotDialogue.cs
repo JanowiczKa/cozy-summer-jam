@@ -7,7 +7,7 @@ public partial class ChatBotDialogue : RichTextLabel
 	public ChatBotDialogueBank dialogueBank;
 	[Export]
 	public bool autoExtend;
-	enum DialogueMode
+	public enum DialogueMode
 	{
 		Intro,
 		Result,
@@ -17,12 +17,14 @@ public partial class ChatBotDialogue : RichTextLabel
 		Default
 	}
 
-	DialogueMode dlgMode;
+	public DialogueMode dlgMode;
 	private double total_time_elapsed;
 
 	private string textTemp;
 	private int thinkingCounter;
 	private Color rgb_modulation;
+	private ChatBotAudio audio;
+	private bool is_player_scored;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -31,9 +33,11 @@ public partial class ChatBotDialogue : RichTextLabel
 		Text = "Awaiting orders...";
 		VisibleCharacters = Text.Length;
 		dlgMode = DialogueMode.Default;
+		is_player_scored = false;
 		textTemp = "";
 		thinkingCounter = 0;
 		rgb_modulation = new Color((float)0.0, (float)0.0, (float)0.0, (float)0.0);
+		audio = GetNode<ChatBotAudio>("../ChatBotAudio");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,9 +52,36 @@ public partial class ChatBotDialogue : RichTextLabel
 				{
 					VisibleCharacters += 1;
 					total_time_elapsed = 0.0;
+					string blank_space_check = Text;
+
 					if (VisibleCharacters == Text.Length)
 					{
 						dlgMode = DialogueMode.Awaiting;
+						break;
+					}
+
+					if (blank_space_check[VisibleCharacters] != ' ' && blank_space_check[VisibleCharacters] != '.')
+					{
+						audio.PlayVoiceSE();
+					}
+				}
+				break;
+			case DialogueMode.Result:
+				if (total_time_elapsed >= 0.05 && VisibleCharacters < Text.Length)
+				{
+					VisibleCharacters += 1;
+					total_time_elapsed = 0.0;
+					string blank_space_check = Text;
+
+					if (VisibleCharacters == Text.Length)
+					{
+						dlgMode = DialogueMode.Awaiting;
+						break;
+					}
+
+					if (blank_space_check[VisibleCharacters] != ' ' && blank_space_check[VisibleCharacters] != '.')
+					{
+						audio.PlayVoiceSE();
 					}
 				}
 				break;
@@ -58,7 +89,7 @@ public partial class ChatBotDialogue : RichTextLabel
 				AnimateThinking(total_time_elapsed);
 				break;
 			case DialogueMode.Awaiting:
-				if (total_time_elapsed >= 1.0)
+				if (total_time_elapsed >= 1.0 && is_player_scored == false)
 				{
 					dlgMode = DialogueMode.Gameplay;
 					EventController controller = GetNode<EventController>("/root/BarScene/EventController");
@@ -67,6 +98,14 @@ public partial class ChatBotDialogue : RichTextLabel
 					bot.AnimationStart();
 					ChatBotRecipe recipe = GetNode<ChatBotRecipe>("../ChatBotRecipe");
 					recipe.CreateRecipe();
+					Text = "Awaiting orders...";
+				} else if (total_time_elapsed >= 1.0 && is_player_scored == true)
+				{
+					is_player_scored = false;
+					dlgMode = DialogueMode.Default;
+					Text = "Awaiting orders...";
+					EventController controller = GetNode<EventController>("/root/BarScene/EventController");
+					controller.ChangeGameState("End");
 				}
 				break;
 		}
@@ -90,6 +129,31 @@ public partial class ChatBotDialogue : RichTextLabel
 		dlgMode = DialogueMode.Thinking;
 	}
 
+	public void PlayOutro(double score)
+	{
+		string dialogueAndScore = "";
+
+		if (score >= 95)
+		{
+			dialogueAndScore = Tr(dialogueBank.OutroDialogue[0]).Replace("{score}", score.ToString());
+		} else if (score >= 50)
+		{
+			dialogueAndScore = Tr(dialogueBank.OutroDialogue[1]).Replace("{score}", score.ToString());
+		}
+		else if (score > 0.0)
+		{
+			dialogueAndScore = Tr(dialogueBank.OutroDialogue[2]).Replace("{score}", score.ToString());
+		} else
+		{
+			dialogueAndScore = Tr(dialogueBank.OutroDialogue[3]).Replace("{score}", score.ToString());
+		}
+		textTemp = dialogueAndScore;
+		Text = "Thinking...";
+		VisibleCharacters = 8;
+		is_player_scored = true;
+		dlgMode = DialogueMode.Thinking;
+	}
+
 	private void AnimateThinking(double time)
 	{
 		if (total_time_elapsed >= 0.5 && VisibleCharacters < Text.Length)
@@ -105,7 +169,14 @@ public partial class ChatBotDialogue : RichTextLabel
 			if (thinkingCounter >= 2)
 			{
 				thinkingCounter = 0;
-				dlgMode = DialogueMode.Intro;
+				if (is_player_scored == false)
+				{
+					dlgMode = DialogueMode.Intro;
+				}
+				else
+				{
+					dlgMode = DialogueMode.Result;
+				}
 				VisibleCharacters = 0;
 				Text = textTemp;
 				textTemp = "";

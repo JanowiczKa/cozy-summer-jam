@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_wy7fp")
 IntroDialogue = PackedStringArray("Ah yes, {drink} - a true classic. Here\'s a recipe, as you requested.")
+OutroDialogue = PackedStringArray("Great job, the customer gave you a score of {score}%! A happy customer is not just an achievement - it\'s a stepping stone towards your next positive work evaluation meeting.", "It seems the customer gave you a score of {score}%, but don\'t worry - there\'s always the next time! Make sure you follow my recipies to the letter and you\'ll be meeting our customers\' (and shareholders\') expectations in no time.", "Unfortunately, the customer gave your drink a score of {score}%. Please be careful not to deviate from the provided recipe - the shareholders are watching!", "Please stop loitering, company time is our most valuable asset.")

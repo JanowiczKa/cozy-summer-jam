@@ -21,6 +21,8 @@
 [ext_resource type="Resource" uid="uid://tec2pb576vq6" path="res://Resources/Chatbot/ChatbotDialogueBank.tres" id="19_rvx5e"]
 [ext_resource type="Script" uid="uid://dxeu7qbij4t8n" path="res://Scripts/ChatBotRecipe.cs" id="20_10ytx"]
 [ext_resource type="Resource" uid="uid://cu384u56l0w3g" path="res://Resources/ListOfIngredients.tres" id="21_ddpem"]
+[ext_resource type="AudioStream" uid="uid://i75pnj0w06um" path="res://Audio/Chatbot/mixr_dial1.wav" id="22_8yvl4"]
+[ext_resource type="Script" uid="uid://hlbtnj17hakv" path="res://Scripts/ChatBotAudio.cs" id="22_tcgbs"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -204,5 +206,9 @@ scroll_active = false
 vertical_alignment = 1
 script = ExtResource("20_10ytx")
 ingredientList = ExtResource("21_ddpem")
+
+[node name="ChatBotAudio" type="AudioStreamPlayer" parent="Chatbot" unique_id=97269127]
+stream = ExtResource("22_8yvl4")
+script = ExtResource("22_tcgbs")
 
 [editable path="Characters"]
