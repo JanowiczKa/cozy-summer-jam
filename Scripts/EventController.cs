@@ -20,6 +20,10 @@ public partial class EventController : Node
 	private bool waiting_for_text_to_finish;
 	private GameState gmstate { get; set; }
 	private Random rand;
+	private CharacterSprite characterSprite;
+	private Chatbot chatbot;
+	private ChatBotDialogue chatbotDialogue;
+	public double score;
 
 	[Export]
 	public CustomerData customerData;
@@ -51,6 +55,10 @@ public partial class EventController : Node
 		total_time_elapsed = 0.0;
 		rand = new Random();
 		waiting_for_text_to_finish = false;
+		score = 0.0;
+		characterSprite = GetNode<CharacterSprite>("../Characters/CharacterSprite");
+		chatbot = GetNode<Chatbot>("../Chatbot");
+		chatbotDialogue = GetNode<ChatBotDialogue>("../Chatbot/ChatBotDialogue");
 
 		gmstate = GameState.Idle;
 		var charactersNode = GetNode<Node2D>("../Characters");
@@ -64,7 +72,10 @@ public partial class EventController : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		total_time_elapsed += delta;
+		if (chatbot.isExtended != true)
+		{
+			total_time_elapsed += delta;
+		}
 
 		if (gmstate == GameState.Gameplay && total_time_elapsed >= 10.0 && waiting_for_text_to_finish == false)
 		{
@@ -83,13 +94,14 @@ public partial class EventController : Node
 				switch(gmstate)
 				{
 					case GameState.Introduction:
-						EmitSignal(SignalName.ClearDialogAndExpression);
-						EmitSignal(SignalName.StartBounceAnimation);
-						ChatBotDialogue chatbotDialogue = GetNode<ChatBotDialogue>("../Chatbot/ChatBotDialogue");
-						chatbotDialogue.PlayIntro(customerData.Final_drink_target.DrinkName);
+						if (chatbotDialogue.dlgMode == ChatBotDialogue.DialogueMode.Default)
+						{
+							EmitSignal(SignalName.ClearDialogAndExpression);
+							EmitSignal(SignalName.StartBounceAnimation);
+							chatbotDialogue.PlayIntro(customerData.Final_drink_target.DrinkName);
+						}
 						break;
 					case GameState.Outro:
-						CharacterSprite characterSprite = GetNode<CharacterSprite>("../Characters/CharacterSprite");
 						if (characterSprite.is_animated)
 							break;
 						EmitSignal(SignalName.StartDrinkingAnimation);
@@ -98,6 +110,8 @@ public partial class EventController : Node
 					case GameState.Result:
 						EmitSignal(SignalName.StartFadeOut);
 
+						chatbotDialogue.PlayOutro(score);
+
 						EmitSignal(SignalName.ClearDialogAndExpression);
 						break;
 				}
@@ -105,13 +119,17 @@ public partial class EventController : Node
 			}
 
 			// If not at the end of a dialog sequence
-			TriggerNextDialogLine();
+			if (characterSprite.is_animated != true)
+			{
+				TriggerNextDialogLine();
+			}
+				
 		}
 
 		// testing purposes only
 		if (@event.IsActionPressed("FadeOut"))
 		{
-			MoveToOutroAndScoringSequence();
+			MoveToOutroAndScoringSequence(true);
 		}
 
 		// testing purposes only
@@ -140,8 +158,14 @@ public partial class EventController : Node
 
 	// To be called when the gameplay timer ends or when the player passes the finished drink to the customer;
 	// Starts the dialog leading into the score
-	public void MoveToOutroAndScoringSequence()
+	public void MoveToOutroAndScoringSequence(bool out_of_time)
 	{
+		// Check if the player ran out of time
+		if (out_of_time == true)
+		{
+			ChangeGameState("OutOfTime");
+			return;
+		}
 		// Check if drink is empty
 		DrinkContainer container = GetNode<DrinkContainer>("../DrinkGlass");
 		List<LiquidData> drink = container.liquidContainer.liquids;
@@ -254,7 +278,7 @@ public partial class EventController : Node
 		}
 	}
 	
-	private void ChangeGameState(string sequence)
+	public void ChangeGameState(string sequence)
 	{
 		switch (sequence)
 		{
@@ -280,7 +304,7 @@ public partial class EventController : Node
 			case "Result":
 				sequence_index = 0;
 				gmstate = GameState.Result;
-				double score = VerifyDrinkAndScore();
+				score = VerifyDrinkAndScore();
 				DetermineResult(score);
 				GD.Print(score);
 				sequence_index = 0;
@@ -289,9 +313,18 @@ public partial class EventController : Node
 			case "End":
 				gmstate = GameState.Idle;
 				sequence_index = 0;
+				score = 0.0;
 
 				// Signals the game manager that the entire customer sequence has finished
 				EmitSignal(SignalName.EndOfCustomerSequence);
+				break;
+			case "OutOfTime":
+				sequence_index = 0;
+				gmstate = GameState.Result;
+				speech_sequence = customerData.Result_out_of_time.Dialog;
+				expression_sequence = customerData.Result_out_of_time.Expression;
+				sequence_index = 0;
+				TriggerNextDialogLine();
 				break;
 		}
 	}

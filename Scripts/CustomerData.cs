@@ -24,6 +24,9 @@ public partial class CustomerData : Resource
 
 	[Export]
 	public DialogAndExpression Result_empty {get; set;}
+
+	[Export]
+	public DialogAndExpression Result_out_of_time {get; set;}
 	
 	[Export]
 	public DialogAndExpression Outro_dialog_and_expressions {get; set;}
@@ -34,11 +37,11 @@ public partial class CustomerData : Resource
 	[Export]
 	public SpriteFrames Customer_expression_textures {get; set;}
 
-	public CustomerData() : this(null, null, null, null, null, null, null, null, null, null) {}
+	public CustomerData() : this(null, null, null, null, null, null, null, null, null, null, null) {}
 
 	public CustomerData(Drink drink_target, DialogAndExpression intro, 
 	DialogAndExpression gameplay, DialogAndExpression resultPerfect, DialogAndExpression resultMixed, 
-	DialogAndExpression resultBad, DialogAndExpression resultEmpty, DialogAndExpression outro, Texture2D base_tex, SpriteFrames frames)
+	DialogAndExpression resultBad, DialogAndExpression resultEmpty, DialogAndExpression resultTime,DialogAndExpression outro, Texture2D base_tex, SpriteFrames frames)
 	{
 		Final_drink_target = drink_target;
 		Intro_dialog_and_expressions = intro;
@@ -50,5 +53,6 @@ public partial class CustomerData : Resource
 		Outro_dialog_and_expressions = outro;
 		Base_customer_texture = base_tex;
 		Customer_expression_textures = frames;
+		Result_out_of_time = resultTime;
 	}
 }

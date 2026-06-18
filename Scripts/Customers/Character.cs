@@ -29,7 +29,6 @@ public partial class Character : Node2D
 	{
 		var spriteNode = GetNode<Sprite2D>("./CharacterSprite");
 		spriteNode.Connect("FadeInFinished", new Callable(this, MethodName.StartDialogWhenFinishedFadingIn));
-		spriteNode.Connect("FadeOutFinished", new Callable(this, MethodName.StartDialogWhenFinishedFadingOut));
 		var controllerNode = GetNode<Node>("../EventController");
 		controllerNode.Connect("StartNextDialog", new Callable(this, MethodName.PlayDialog));
 		controllerNode.Connect("StartBounceAnimation", new Callable(this, MethodName.AnimateBouncing));

@@ -9,17 +9,29 @@ public partial class ChatBotRecipe : RichTextLabel
 	public ListOfIngredients ingredientList;
 	private EventController controller;
 	private Random rand;
+	private Color rgb_modulation;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		controller = GetNode<EventController>("/root/BarScene/EventController");
 		Text = "";
 		rand = new Random();
+		rgb_modulation = new Color((float)0.0, (float)0.0, (float)0.0, (float)0.0);
+		Modulate = rgb_modulation;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+
+	public void ChangeOpacity(float a, float b, float g, float r)
+	{
+		rgb_modulation.A = a;
+		rgb_modulation.B = b;
+		rgb_modulation.G = g;
+		rgb_modulation.R = r;
+		Modulate = rgb_modulation;
 	}
 
 	public void CreateRecipe()
@@ -48,7 +60,7 @@ public partial class ChatBotRecipe : RichTextLabel
 	private (List<LiquidData>, List<string>) RandomizeRecipe(List<LiquidData> recipe, List<string> ingredientNames)
 	{
 		int howManyToReplace = rand.Next(1, ingredientNames.Count());
-		GD.Print("Replacing " + howManyToReplace + " ingredients");
+		//GD.Print("Replacing " + howManyToReplace + " ingredients");
 		int randomIngredientToRemove = 0;
 		int randomIngredientToAdd = 0;
 		int[] removedIngredientCount = new int[howManyToReplace];
@@ -58,7 +70,7 @@ public partial class ChatBotRecipe : RichTextLabel
 			randomIngredientToRemove = rand.Next(ingredientNames.Count());
 			int count = recipe.Count(x => x.LiquidName == ingredientNames[randomIngredientToRemove]);
 			removedIngredientCount[i] = count;
-			GD.Print("Removed " + removedIngredientCount[i] + " " + ingredientNames[randomIngredientToRemove]);
+			//GD.Print("Removed " + removedIngredientCount[i] + " " + ingredientNames[randomIngredientToRemove]);
 			recipe = recipe.Where(x => x.LiquidName != ingredientNames[randomIngredientToRemove]).ToList();
 
 			ingredientNames = ingredientNames.Where(x => x != ingredientNames[randomIngredientToRemove]).ToList();
@@ -69,7 +81,7 @@ public partial class ChatBotRecipe : RichTextLabel
 			randomIngredientToAdd = rand.Next(rand.Next(ingredientList.liquids.Length));
 			if (ingredientNames.Contains(ingredientList.liquids[randomIngredientToAdd].LiquidName) == false)
 				ingredientNames.Add(ingredientList.liquids[randomIngredientToAdd].LiquidName);
-			GD.Print("Added " + removedIngredientCount[i] + " " + ingredientList.liquids[randomIngredientToAdd].LiquidName);
+			//GD.Print("Added " + removedIngredientCount[i] + " " + ingredientList.liquids[randomIngredientToAdd].LiquidName);
 
 			for (int ii = 0; ii < removedIngredientCount[i]; ii++)
 			{
