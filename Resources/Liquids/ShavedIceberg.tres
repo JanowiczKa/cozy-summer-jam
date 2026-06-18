@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://cwhh162v21u7p"]
+
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="1_lcq0l"]
+
+[resource]
+script = ExtResource("1_lcq0l")
+LiquidName = "Shaved Iceberg"
+Color = Color(0.48384008, 0.2592, 0.54, 0.5882353)
+IsFizzy = true
+metadata/_custom_type_script = "uid://bgg4was383e8n"

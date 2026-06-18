@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://8p6xa3d27tp2"]
 
-[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/LiquidData.cs" id="1_7mlfj"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="1_7mlfj"]
 
 [resource]
 script = ExtResource("1_7mlfj")

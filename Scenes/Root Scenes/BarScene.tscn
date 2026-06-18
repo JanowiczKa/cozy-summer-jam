@@ -7,20 +7,23 @@
 [ext_resource type="Script" uid="uid://cuaj5mroc22rv" path="res://Scripts/GameRound.cs" id="3_85wtc"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
 [ext_resource type="Resource" uid="uid://b5qte3llaamjx" path="res://Resources/Customers/Sans/SansData.tres" id="3_kc8my"]
-[ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/Root Scenes/character.tscn" id="5_4aloy"]
+[ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/character.tscn" id="5_4aloy"]
 [ext_resource type="Script" uid="uid://d06fruxa5ksow" path="res://Scripts/DrinkSubmissionArea.cs" id="6_5lf26"]
+[ext_resource type="Script" uid="uid://q14hrtgyhxvm" path="res://Scripts/DropletSpawner.cs" id="6_8yvl4"]
 [ext_resource type="Script" uid="uid://16kx4o1hf44n" path="res://Scripts/EventController.cs" id="6_r4now"]
+[ext_resource type="PackedScene" uid="uid://cspb5c30a5a15" path="res://Scenes/Droplet.tscn" id="7_0s30y"]
 [ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="8_3btq8"]
 [ext_resource type="PackedScene" uid="uid://1q8sybp70ruv" path="res://Scenes/Garnish.tscn" id="8_fvivi"]
 [ext_resource type="Texture2D" uid="uid://dmjldvrplv4dr" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="10_x7ban"]
 [ext_resource type="SpriteFrames" uid="uid://dkmbybe3cj75j" path="res://Resources/Customers/Sans/SansFrames.tres" id="11_45dlq"]
 [ext_resource type="Texture2D" uid="uid://bmu3j1aux3gli" path="res://Sprites/mixrplaceholder.png" id="15_bx64k"]
-[ext_resource type="Script" uid="uid://dyknpy1p1lj4p" path="res://Scripts/Chatbot.cs" id="16_k4kfc"]
+[ext_resource type="Script" uid="uid://dyknpy1p1lj4p" path="res://Scripts/Chatbot/Chatbot.cs" id="16_k4kfc"]
 [ext_resource type="FontFile" uid="uid://3hs0qfi7pbwn" path="res://Fonts/font.ttf" id="17_k4kfc"]
-[ext_resource type="Script" uid="uid://dt1tgpfadxasn" path="res://Scripts/ChatBotDialogue.cs" id="18_6f4cw"]
+[ext_resource type="Script" uid="uid://dt1tgpfadxasn" path="res://Scripts/Chatbot/ChatBotDialogue.cs" id="18_6f4cw"]
 [ext_resource type="Resource" uid="uid://tec2pb576vq6" path="res://Resources/Chatbot/ChatbotDialogueBank.tres" id="19_rvx5e"]
-[ext_resource type="Script" uid="uid://dxeu7qbij4t8n" path="res://Scripts/ChatBotRecipe.cs" id="20_10ytx"]
+[ext_resource type="Script" uid="uid://dxeu7qbij4t8n" path="res://Scripts/Chatbot/ChatBotRecipe.cs" id="20_10ytx"]
 [ext_resource type="Resource" uid="uid://cu384u56l0w3g" path="res://Resources/ListOfIngredients.tres" id="21_ddpem"]
+[ext_resource type="PackedScene" uid="uid://cglv6s5c0ixwc" path="res://Scenes/LiquidDispenser.tscn" id="22_tcgbs"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -48,6 +51,10 @@ drinkSubmissionArea = NodePath("../BarScene/BarCounter")
 
 [node name="EventController" type="Node" parent="." unique_id=838439069]
 script = ExtResource("6_r4now")
+
+[node name="DropletSpawner" type="Node2D" parent="." unique_id=1740632994]
+script = ExtResource("6_8yvl4")
+dropletScene = ExtResource("7_0s30y")
 
 [node name="BarScene" type="Node2D" parent="." unique_id=413730612]
 
@@ -80,7 +87,7 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/BarCounter/Area2D" unique_id=302225844]
 position = Vector2(1, -16.5)
-scale = Vector2(96, 1)
+scale = Vector2(10, 1)
 shape = SubResource("RectangleShape2D_5lf26")
 
 [node name="Table" type="StaticBody2D" parent="BarScene" unique_id=1237125352]
@@ -204,5 +211,8 @@ scroll_active = false
 vertical_alignment = 1
 script = ExtResource("20_10ytx")
 ingredientList = ExtResource("21_ddpem")
+
+[node name="LiquidDispenser" parent="." unique_id=956457883 instance=ExtResource("22_tcgbs")]
+position = Vector2(789, -244)
 
 [editable path="Characters"]

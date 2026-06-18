@@ -6,7 +6,6 @@ public partial class LiquidPourSpout : Node2D
 {
 	[Export] public Node2D parentNode;
 	[Export] public LiquidData liquid;
-	[Export] PackedScene dropletScene;
 
 	[Export] public float directionalForceWhenInstanciated = 130f;
 	[Export] public float spillRadius = 5f;
@@ -18,8 +17,6 @@ public partial class LiquidPourSpout : Node2D
 	// [Export] public float spillRatePerSecondMax = 10f;
 
 	private double timer;
-
-	private Droplet dropletInsance;
 
 	private RandomNumberGenerator rand;
 
@@ -56,20 +53,16 @@ public partial class LiquidPourSpout : Node2D
 	{
 		timer = 0;
 
-		var instance = dropletScene.Instantiate<Droplet>();
-
-		instance.Setup(liquid);
+		var dropletInstance = DropletSpawner.Instance.GetDropletInstance(liquid);
 
 		var randomOffset = new Vector2(rand.RandfRange(-1, 1), rand.RandfRange(-1, 1)).Normalized() * spillRadius;
 
-		//GD.Print(randomOffset);
-
 		var spawnPosition = GlobalPosition + randomOffset;
 
-		instance.GlobalPosition = spawnPosition;
-		instance.ApplyImpulse(CurrentDirection() * directionalForceWhenInstanciated);
+		dropletInstance.GlobalPosition = spawnPosition;
+		dropletInstance.ApplyImpulse(CurrentDirection() * directionalForceWhenInstanciated);
 
-		GetTree().Root.AddChild(instance);
+		GetTree().Root.AddChild(dropletInstance);
 
 		//insanciate droplet scene at spout position
 		//add velocity maybe?

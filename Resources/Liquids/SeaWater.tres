@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://df2e0o38g5ua1"]
+
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="1_lnxeu"]
+
+[resource]
+script = ExtResource("1_lnxeu")
+LiquidName = "Sea Water"
+Color = Color(0, 0.551, 0.57, 0.39215687)
+metadata/_custom_type_script = "uid://bgg4was383e8n"
