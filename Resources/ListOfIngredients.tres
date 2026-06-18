@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ListOfIngredients" format=3 uid="uid://cu384u56l0w3g"]
+
+[ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="1_apibh"]
+[ext_resource type="Resource" uid="uid://bnty4ctmw6qgt" path="res://Resources/Liquids/MonsterEnergy.tres" id="2_868wa"]
+[ext_resource type="Resource" uid="uid://dsxl65ka21uco" path="res://Resources/Liquids/BarracudaBrandy.tres" id="3_j5g0j"]
+[ext_resource type="Resource" uid="uid://8p6xa3d27tp2" path="res://Resources/Liquids/TheAbsintheFather.tres" id="4_x1y5g"]
+[ext_resource type="Script" uid="uid://04qx731dgc1c" path="res://Scripts/ListOfIngredients.cs" id="5_d2oev"]
+
+[resource]
+script = ExtResource("5_d2oev")
+liquids = Array[Object]([ExtResource("1_apibh"), ExtResource("2_868wa"), ExtResource("3_j5g0j"), ExtResource("4_x1y5g")])

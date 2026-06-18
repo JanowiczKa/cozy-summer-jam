@@ -14,6 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://1q8sybp70ruv" path="res://Scenes/Garnish.tscn" id="8_fvivi"]
 [ext_resource type="Texture2D" uid="uid://dmjldvrplv4dr" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="10_x7ban"]
 [ext_resource type="SpriteFrames" uid="uid://dkmbybe3cj75j" path="res://Resources/Customers/Sans/SansFrames.tres" id="11_45dlq"]
+[ext_resource type="Texture2D" uid="uid://bmu3j1aux3gli" path="res://Sprites/mixrplaceholder.png" id="15_bx64k"]
+[ext_resource type="Script" uid="uid://dyknpy1p1lj4p" path="res://Scripts/Chatbot.cs" id="16_k4kfc"]
+[ext_resource type="FontFile" uid="uid://3hs0qfi7pbwn" path="res://Fonts/font.ttf" id="17_k4kfc"]
+[ext_resource type="Script" uid="uid://dt1tgpfadxasn" path="res://Scripts/ChatBotDialogue.cs" id="18_6f4cw"]
+[ext_resource type="Resource" uid="uid://tec2pb576vq6" path="res://Resources/Chatbot/ChatbotDialogueBank.tres" id="19_rvx5e"]
+[ext_resource type="Script" uid="uid://dxeu7qbij4t8n" path="res://Scripts/ChatBotRecipe.cs" id="20_10ytx"]
+[ext_resource type="Resource" uid="uid://cu384u56l0w3g" path="res://Resources/ListOfIngredients.tres" id="21_ddpem"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -101,12 +108,26 @@ input_pickable = false
 position = Vector2(-953, -818)
 
 [node name="CharacterSprite" parent="Characters" index="0" unique_id=1052017425]
-position = Vector2(953.00006, 617)
+z_index = -99
+position = Vector2(800, 617)
 scale = Vector2(0.35999998, 0.35999998)
 texture = ExtResource("10_x7ban")
 
 [node name="CharacterExpression" parent="Characters/CharacterSprite" index="0" unique_id=1294962647]
+position = Vector2(-0.00016954211, -5.555556)
 sprite_frames = ExtResource("11_45dlq")
+
+[node name="BubbleText" parent="Characters/SpeechBubble" parent_id_path=PackedInt32Array(623045154, 1476035436) index="0" unique_id=1648223998]
+anchor_left = 954.00006
+anchor_top = 366.00003
+anchor_right = 1360.0001
+anchor_bottom = 549.0
+offset_left = -6.1035156e-05
+offset_top = -3.0517578e-05
+offset_right = -0.00012207031
+offset_bottom = 0.0
+autowrap_mode = 2
+justification_flags = 162
 
 [node name="LiquidBottle" parent="." unique_id=1340305212 instance=ExtResource("3_iy0dp")]
 position = Vector2(412, 206)
@@ -125,5 +146,63 @@ position = Vector2(-306, 220)
 
 [node name="IceCube3" parent="." unique_id=1717991361 instance=ExtResource("8_fvivi")]
 position = Vector2(-370, 184)
+
+[node name="Chatbot" type="Sprite2D" parent="." unique_id=1539476651]
+position = Vector2(-4.223869e-07, -715.16846)
+scale = Vector2(1.2, 0.9838949)
+texture = ExtResource("15_bx64k")
+script = ExtResource("16_k4kfc")
+velocity = 200.0
+
+[node name="ChatBotDialogue" type="RichTextLabel" parent="Chatbot" unique_id=853212724]
+top_level = true
+anchors_preset = -1
+anchor_left = 0.303
+anchor_top = 0.82000005
+anchor_right = 0.799
+anchor_bottom = 0.88400006
+offset_left = -796.76
+offset_top = -1420.6001
+offset_right = -1262.0801
+offset_bottom = -1443.7202
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("17_k4kfc")
+theme_override_fonts/bold_font = ExtResource("17_k4kfc")
+theme_override_fonts/bold_italics_font = ExtResource("17_k4kfc")
+theme_override_fonts/italics_font = ExtResource("17_k4kfc")
+theme_override_fonts/mono_font = ExtResource("17_k4kfc")
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 34
+theme_override_font_sizes/bold_italics_font_size = 34
+theme_override_font_sizes/italics_font_size = 34
+theme_override_font_sizes/mono_font_size = 34
+text = "skib"
+scroll_active = false
+scroll_following = true
+scroll_following_visible_characters = true
+autowrap_mode = 2
+vertical_alignment = 1
+visible_characters_behavior = 1
+script = ExtResource("18_6f4cw")
+dialogueBank = ExtResource("19_rvx5e")
+autoExtend = true
+
+[node name="ChatBotRecipe" type="RichTextLabel" parent="Chatbot" unique_id=54008943]
+offset_left = -231.66666
+offset_top = -206.15164
+offset_right = 226.66666
+offset_bottom = 209.54318
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("17_k4kfc")
+theme_override_fonts/bold_font = ExtResource("17_k4kfc")
+theme_override_fonts/bold_italics_font = ExtResource("17_k4kfc")
+theme_override_fonts/italics_font = ExtResource("17_k4kfc")
+theme_override_fonts/mono_font = ExtResource("17_k4kfc")
+theme_override_font_sizes/normal_font_size = 32
+text = "recipe"
+scroll_active = false
+vertical_alignment = 1
+script = ExtResource("20_10ytx")
+ingredientList = ExtResource("21_ddpem")
 
 [editable path="Characters"]

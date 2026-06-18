@@ -212,7 +212,7 @@ public partial class CharacterSprite : Sprite2D
 
 	private void AnimateFadeIn()
 	{
-		if (total_time_elapsed >= 1.0)
+		if (total_time_elapsed >= 0.7)
 		{
 			if (rgb_modulation.A < 1.0)
 				{
@@ -231,7 +231,7 @@ public partial class CharacterSprite : Sprite2D
 	private void AnimateFadeOut()
 	{
 		GD.Print("Fade out");
-		if (total_time_elapsed >= 1.0)
+		if (total_time_elapsed >= 0.7)
 		{
 			if (rgb_modulation.A <= 1.0 && rgb_modulation.A != 0.0)
 				{

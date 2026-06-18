@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Drink" format=3 uid="uid://bf0syumkp3rne"]
+
+[ext_resource type="Resource" uid="uid://bnty4ctmw6qgt" path="res://Resources/Liquids/MonsterEnergy.tres" id="1_tl03b"]
+[ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="2_qf3ck"]
+[ext_resource type="Script" uid="uid://cvqvnbumuygs2" path="res://Scripts/Drink.cs" id="3_28efq"]
+[ext_resource type="Resource" uid="uid://dsxl65ka21uco" path="res://Resources/Liquids/BarracudaBrandy.tres" id="3_qf3ck"]
+
+[resource]
+script = ExtResource("3_28efq")
+DrinkName = "Monster Milk"
+DrinkList = Array[Object]([ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck")])

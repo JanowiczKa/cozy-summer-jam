@@ -5,4 +5,5 @@
 
 [resource]
 script = ExtResource("2_3461o")
+DrinkName = "Just Milk"
 DrinkList = Array[Object]([ExtResource("1_cn2ed"), ExtResource("1_cn2ed"), ExtResource("1_cn2ed"), ExtResource("1_cn2ed"), ExtResource("1_cn2ed"), ExtResource("1_cn2ed"), ExtResource("1_cn2ed"), ExtResource("1_cn2ed"), ExtResource("1_cn2ed"), ExtResource("1_cn2ed")])

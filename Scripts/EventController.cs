@@ -83,13 +83,10 @@ public partial class EventController : Node
 				switch(gmstate)
 				{
 					case GameState.Introduction:
-						ChangeGameState("Gameplay");
-
-						// Signals the game manager to start the gameplay timer
-						EmitSignal(SignalName.EndOfIntroduction);
-
 						EmitSignal(SignalName.ClearDialogAndExpression);
 						EmitSignal(SignalName.StartBounceAnimation);
+						ChatBotDialogue chatbotDialogue = GetNode<ChatBotDialogue>("../Chatbot/ChatBotDialogue");
+						chatbotDialogue.PlayIntro(customerData.Final_drink_target.DrinkName);
 						break;
 					case GameState.Outro:
 						CharacterSprite characterSprite = GetNode<CharacterSprite>("../Characters/CharacterSprite");
@@ -122,6 +119,14 @@ public partial class EventController : Node
 		{
 			StartCustomerSequence(GD.Load<CustomerData>("res://Resources/Customers/Sans/SansData.tres"));
 		}
+	}
+
+	public void StartGameplaySequence()
+	{
+		ChangeGameState("Gameplay");
+
+		// Signals the game manager to start the gameplay timer
+		EmitSignal(SignalName.EndOfIntroduction);
 	}
 
 	// Loads a new customer resource and fades the customer in, starting the entire sequence
@@ -191,7 +196,7 @@ public partial class EventController : Node
 		double score = 0.0;
 		List<LiquidData> target = new List<LiquidData>();
 		List<LiquidData> drink = container.liquidContainer.liquids;
-		for (int i = 0; i < customerData.Final_drink_target.DrinkList.Count(); i++)
+		for (int i = 0; i < customerData.Final_drink_target.DrinkList.Length; i++)
 		{
 			target.Add(customerData.Final_drink_target.DrinkList[i]);
 		}
