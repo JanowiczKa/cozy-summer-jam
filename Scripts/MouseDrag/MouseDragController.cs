@@ -3,35 +3,48 @@ using Godot;
 
 public partial class MouseDragController : Node2D
 {
+	public static MouseDragController Instance { get; private set; }
+
 	public MouseDrag currentDraggedObject;
 	public float objectRotationSpeed = 6f;
 
 	public Node2D holdingParentObject;
 
+    //gets called before _Ready
+	public override void _EnterTree()
+	{
+		Instance = this;
+	}
+
 	public override void _Ready()
 	{
 		//shit for performance but only happens once on load, figure out better way if we have time, oof
-		foreach (var node in GetTree().GetNodesInGroup("draggable")) //<= draggable is a group I've added to some scenes
-		{
-			//GD.Print(node.Name);
+		// foreach (var node in GetTree().GetNodesInGroup("draggable")) //<= draggable is a group I've added to some scenes
+		// {
+		// 	//GD.Print(node.Name);
 			
-			var mouseDragScript = node as MouseDrag; //What a weird way to access the script attached to a node, defo doesn't feel safe
+		// 	var mouseDragScript = node as MouseDrag; //What a weird way to access the script attached to a node, defo doesn't feel safe
 
-			//var mouseDragScript = node.GetScript().As<MouseDrag>(); <- straight up doesn't work
+		// 	//var mouseDragScript = node.GetScript().As<MouseDrag>(); <- straight up doesn't work
 
-			//GD.Print(mouseDragScript);
+		// 	//GD.Print(mouseDragScript);
 
-			if (mouseDragScript == null) continue;
+		// 	if (mouseDragScript == null) continue;
 
-			mouseDragScript.OnBeginDragging += ObjectBeganDrag;
-		}
+		// 	mouseDragScript.OnBeginDragging += ObjectBeganDrag;
+		// }
 
 		holdingParentObject = GetNode<Node2D>("HoldingObjectParent");
 
 		GD.Print(holdingParentObject);
 	}
 
-	private void ObjectBeganDrag(MouseDrag mouseDrag)
+	public void RegisterMouseDrag(MouseDrag mouseDragObject)
+	{
+		mouseDragObject.OnBeginDragging += ObjectBeganDrag;
+	}
+
+	public void ObjectBeganDrag(MouseDrag mouseDrag)
 	{
 		currentDraggedObject = mouseDrag;
 
@@ -39,7 +52,7 @@ public partial class MouseDragController : Node2D
 
 		currentDraggedObject.Reparent(holdingParentObject);
 
-		//GD.Print("Controller knows of drag");
+		GD.Print("Controller knows of drag");
 	}
 
 	public override void _Process(double delta)
