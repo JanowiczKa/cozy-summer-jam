@@ -11,7 +11,7 @@ public partial class GameManager : Node
 	private int currentRoundIndex = 0;
 	private int currentCustomerIndex = 0;
 
-    [Export] public double allowedTimeToMixDrinks = 40;
+	[Export] public double allowedTimeToMixDrinks = 40;
 	private double timer;
 	private bool timerIsEnabled = false;
 
@@ -43,7 +43,7 @@ public partial class GameManager : Node
 	{
 		var currentCustomer = currentRound.GetCustomerAtIndex(currentCustomerIndex);
 
-        //means we've run out of customers for this round, play the next round instead;
+		//means we've run out of customers for this round, play the next round instead;
 		if (currentCustomer == null)
 		{
 			//wrong place for this logic but out of time to figure out where to make it go
@@ -68,23 +68,23 @@ public partial class GameManager : Node
 		StartNextCustomerInteraction();
 	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		if (!timerIsEnabled) return;
 
-        timer += delta;
+		timer += delta;
 
 		if (timer < allowedTimeToMixDrinks) return;
 
 		//time ran out, so maybe we should do some sort of override to give score of 0? handle later
 		//EndCurrentCustomerInteraction();
-    }
+	}
 
 	public void SubmitDrinkToCustomer(DrinkContainer drink)
 	{
 		//pass drink data
 		//EndCurrentCustomerInteraction();
-		eventController.MoveToOutroAndScoringSequence();
+		eventController.MoveToOutroAndScoringSequence(false);
 
 		GD.Print("Submitted drink!");
 	}

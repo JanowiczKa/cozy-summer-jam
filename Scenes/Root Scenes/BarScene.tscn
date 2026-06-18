@@ -22,6 +22,8 @@
 [ext_resource type="Script" uid="uid://dxeu7qbij4t8n" path="res://Scripts/ChatBotRecipe.cs" id="20_10ytx"]
 [ext_resource type="Resource" uid="uid://cu384u56l0w3g" path="res://Resources/ListOfIngredients.tres" id="21_ddpem"]
 [ext_resource type="PackedScene" uid="uid://beworw7g3u1d3" path="res://Scenes/SceneSpawner.tscn" id="22_tcgbs"]
+[ext_resource type="AudioStream" uid="uid://i75pnj0w06um" path="res://Audio/Chatbot/mixr_dial1.wav" id="22_8yvl4"]
+[ext_resource type="Script" uid="uid://hlbtnj17hakv" path="res://Scripts/ChatBotAudio.cs" id="22_tcgbs"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -212,5 +214,9 @@ spawnableScene = ExtResource("8_fvivi")
 
 [node name="Garnish" parent="." unique_id=461255926 instance=ExtResource("8_fvivi")]
 position = Vector2(-470, 251)
+
+[node name="ChatBotAudio" type="AudioStreamPlayer" parent="Chatbot" unique_id=97269127]
+stream = ExtResource("22_8yvl4")
+script = ExtResource("22_tcgbs")
 
 [editable path="Characters"]
