@@ -16,6 +16,11 @@ public partial class MouseDragController : Node2D
 		Instance = this;
 	}
 
+	public bool IsHoldingObject()
+	{
+		return currentDraggedObject != null;
+	}
+
 	public override void _Ready()
 	{
 		//shit for performance but only happens once on load, figure out better way if we have time, oof

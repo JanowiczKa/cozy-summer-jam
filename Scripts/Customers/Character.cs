@@ -29,7 +29,8 @@ public partial class Character : Node2D
 	{
 		var spriteNode = GetNode<Sprite2D>("./CharacterSprite");
 		spriteNode.Connect("FadeInFinished", new Callable(this, MethodName.StartDialogWhenFinishedFadingIn));
-		var controllerNode = GetNode<Node>("../EventController");
+		
+		var controllerNode = EventController.Instance;
 		controllerNode.Connect("StartNextDialog", new Callable(this, MethodName.PlayDialog));
 		controllerNode.Connect("StartBounceAnimation", new Callable(this, MethodName.AnimateBouncing));
 		controllerNode.Connect("ChangeExpression", new Callable(this, MethodName.PlayExpression));
@@ -83,6 +84,7 @@ public partial class Character : Node2D
 
 	private void StartFadeInSequence()
 	{
+		GD.Print("Staring fade in!");
 		EmitSignal(SignalName.FadeInAction);
 	}
 

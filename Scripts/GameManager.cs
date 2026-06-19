@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations.Schema;
 using Godot;
 
 public partial class GameManager : Node
@@ -7,6 +6,7 @@ public partial class GameManager : Node
 	[Export(PropertyHint.FilePath)] EventController eventController;
 	[Export(PropertyHint.FilePath)] DrinkSubmissionArea drinkSubmissionArea;
 	[Export(PropertyHint.FilePath)] Label timerLabel;
+	[Export(PropertyHint.FilePath)] Timer startGameTimer;
 
 	private GameRound currentRound;
 	private int currentRoundIndex = 0;
@@ -18,13 +18,13 @@ public partial class GameManager : Node
 
 	public override void _Ready()
 	{
-		StartNextRound();
-
 		eventController.Connect("EndOfIntroduction", new Callable(this, MethodName.StartCurrentCustomerDrinkMakingSection));
 		eventController.Connect("EndOfCustomerSequence", new Callable(this, MethodName.EndCurrentCustomerInteraction));
 
 		drinkSubmissionArea.OnDrinkSubmitted += SubmitDrinkToCustomer;
 		timerLabel.Text = "";
+
+		startGameTimer.Timeout += StartNextRound;
 	}
 
 	private void StartNextRound()
