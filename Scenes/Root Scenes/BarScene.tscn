@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://6cbblhldwrgf" path="res://Scripts/MouseDrag/MouseDragController.cs" id="1_gqqm6"]
 [ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
 [ext_resource type="Script" uid="uid://djc871d8462ux" path="res://Scripts/GameManager.cs" id="2_fvivi"]
-[ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="2_kgahu"]
 [ext_resource type="Script" uid="uid://cuaj5mroc22rv" path="res://Scripts/GameRound.cs" id="3_85wtc"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
 [ext_resource type="Resource" uid="uid://bltfn3xdu66qf" path="res://Resources/Customers/Finn/Finn_Shift_1.tres" id="4_3kb3r"]
@@ -55,14 +54,14 @@
 [ext_resource type="Resource" uid="uid://pg870q0yfr6t" path="res://Resources/Liquids/Ink.tres" id="52_tihuo"]
 [ext_resource type="Resource" uid="uid://du8yasniwhsxb" path="res://Resources/Liquids/Kelp.tres" id="53_tkdt8"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_kgahu"]
-font_size = 50
-font_color = Color(1, 0, 0, 1)
-
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
 customers = Array[Object]([ExtResource("3_kc8my"), ExtResource("3_kc8my")])
 metadata/_custom_type_script = "uid://cuaj5mroc22rv"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ix8wc"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e5jey"]
 load_path = "res://.godot/imported/bar_counter.png-172b884e861448a0657ae2e42b3ba574.ctex"
@@ -88,38 +87,16 @@ load_path = "res://.godot/imported/mixr_face.png-023bd0a785a4eb8cefb9319754b9781
 [node name="BarScene" type="Node2D" unique_id=284124051]
 script = ExtResource("1_gqqm6")
 
-[node name="Node2D2" type="Node2D" parent="." unique_id=1920048092]
-
-[node name="BlackScreen" type="Sprite2D" parent="Node2D2" unique_id=2058746546]
-self_modulate = Color(0, 0, 0, 1)
-z_index = 100
-scale = Vector2(20, 20)
-texture = ExtResource("2_kgahu")
-
-[node name="Label" type="Label" parent="Node2D2" unique_id=584497680]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -717.9999
-offset_top = -779.99994
-offset_right = -411.99988
-offset_bottom = -498.99994
-grow_horizontal = 2
-grow_vertical = 2
-text = "Fin"
-label_settings = SubResource("LabelSettings_kgahu")
-
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1962037065]
 
-[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea", "timerLabel", "startGameTimer", "glass", "finishScreen")]
+[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea", "timerLabel", "startGameTimer", "glass")]
 script = ExtResource("2_fvivi")
 gameRounds = Array[Resource]([SubResource("Resource_5lf26")])
 eventController = NodePath("../EventController")
 drinkSubmissionArea = NodePath("../BarScene/DrinkSubmissionArea")
-timerLabel = NodePath("../Node2D2/Label")
+timerLabel = NodePath("../Control/Label")
 startGameTimer = NodePath("Timer")
 glass = NodePath("../DrinkGlass")
-finishScreen = NodePath("../Node2D2")
 allowedTimeToMixDrinks = 30.0
 
 [node name="Timer" type="Timer" parent="GameManager" unique_id=843113400]
@@ -130,6 +107,21 @@ autostart = true
 [node name="EventController" type="Node" parent="." unique_id=838439069 node_paths=PackedStringArray("characterInteractionArea")]
 script = ExtResource("6_r4now")
 characterInteractionArea = NodePath("../Characters/CharacterInteractionArea")
+
+[node name="Control" type="Control" parent="." unique_id=1284454079]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1319892436]
+layout_mode = 0
+offset_left = 565.0
+offset_top = -487.0
+offset_right = 900.0
+offset_bottom = -418.0
+text = "Time Left: 40s"
+label_settings = SubResource("LabelSettings_ix8wc")
 
 [node name="DropletSpawner" type="Node2D" parent="." unique_id=1740632994]
 script = ExtResource("6_8yvl4")
@@ -195,7 +187,6 @@ scale = Vector2(0.4577777, 0.4577777)
 
 [node name="CharacterExpression" parent="Characters/CharacterSprite" index="0" unique_id=1294962647]
 position = Vector2(-9.536743e-07, -2.1844597)
-animation = &""
 
 [node name="SpeechBubble" parent="Characters" index="1" unique_id=1476035436]
 position = Vector2(131, -383)
