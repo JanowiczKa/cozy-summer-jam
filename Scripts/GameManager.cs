@@ -9,6 +9,7 @@ public partial class GameManager : Node
 	[Export(PropertyHint.FilePath)] Label timerLabel;
 	[Export(PropertyHint.FilePath)] Timer startGameTimer;
 	[Export(PropertyHint.FilePath)] public DrinkContainer glass;
+	[Export(PropertyHint.FilePath)] public Node2D finishScreen;
 
 	//public List<>
 
@@ -32,6 +33,8 @@ public partial class GameManager : Node
 		timerLabel.Text = "";
 
 		startGameTimer.Timeout += StartNextRound;
+
+		finishScreen.Visible = false;
 	}
 
 	private void RespawnGlass()
@@ -67,9 +70,10 @@ public partial class GameManager : Node
 		//means we've run out of customers for this round, play the next round instead;
 		if (currentCustomer == null)
 		{
+		    finishScreen.Visible = true;
 			//wrong place for this logic but out of time to figure out where to make it go
-			EndCurrentRound();
-			StartNextRound();
+			// EndCurrentRound();
+			// StartNextRound();
 			return;
 		}
 
