@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class GameManager : Node
@@ -59,12 +60,14 @@ public partial class GameManager : Node
 
 	private void StartCurrentCustomerDrinkMakingSection()
 	{
-		timer = 0;
+		GD.Print("Starting Current Customer Drink Making Section");
+		timer = allowedTimeToMixDrinks;
 		timerIsEnabled = true;
 	}
 
 	private void EndCurrentCustomerInteraction()
 	{
+		GD.Print("Ending customer interaction");
 		currentCustomerIndex++;
 
 		StartNextCustomerInteraction();
@@ -73,16 +76,17 @@ public partial class GameManager : Node
 
 	private void UpdateTimerWithDelta(double delta)
 	{
-		timer += delta;
-		timerLabel.Text = $"Time Left: {timer}s";
+		timer -= delta;
+		timerLabel.Text = $"Time Left: {Math.Round(timer)}s";
 	}
 
 	public override void _Process(double delta)
 	{
 		if (!timerIsEnabled) return;
 
+		UpdateTimerWithDelta(delta);
 
-		if (timer < allowedTimeToMixDrinks) return;
+		if (timer < 0) return;
 
 		//time ran out, so maybe we should do some sort of override to give score of 0? handle later
 		//EndCurrentCustomerInteraction();

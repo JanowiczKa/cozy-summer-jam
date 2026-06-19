@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cuaj5mroc22rv" path="res://Scripts/GameRound.cs" id="3_85wtc"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
 [ext_resource type="Resource" uid="uid://b5qte3llaamjx" path="res://Resources/Customers/Sans/SansData.tres" id="3_kc8my"]
+[ext_resource type="Resource" uid="uid://bltfn3xdu66qf" path="res://Resources/Customers/Finn/Finn_Shift_1.tres" id="4_3kb3r"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/character.tscn" id="5_4aloy"]
 [ext_resource type="Script" uid="uid://d06fruxa5ksow" path="res://Scripts/DrinkSubmissionArea.cs" id="6_5lf26"]
 [ext_resource type="Script" uid="uid://q14hrtgyhxvm" path="res://Scripts/DropletSpawner.cs" id="6_8yvl4"]
@@ -35,7 +36,7 @@
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
-customers = Array[Object]([ExtResource("3_kc8my")])
+customers = Array[Object]([ExtResource("3_kc8my"), ExtResource("4_3kb3r")])
 metadata/_custom_type_script = "uid://cuaj5mroc22rv"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ix8wc"]
