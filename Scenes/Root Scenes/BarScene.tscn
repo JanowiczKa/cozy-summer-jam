@@ -61,11 +61,12 @@ script = ExtResource("1_gqqm6")
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1962037065]
 
-[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea")]
+[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea", "glass")]
 script = ExtResource("2_fvivi")
 gameRounds = Array[Resource]([SubResource("Resource_5lf26")])
 eventController = NodePath("../EventController")
 drinkSubmissionArea = NodePath("../BarScene/BarCounter")
+glass = NodePath("../DrinkGlass")
 
 [node name="EventController" type="Node" parent="." unique_id=838439069]
 script = ExtResource("6_r4now")
