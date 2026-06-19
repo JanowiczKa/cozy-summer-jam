@@ -12,6 +12,7 @@ public partial class Chatbot : Sprite2D
 	public bool isExtended;
 	private ChatBotDialogue dialogueNode;
 	private ChatBotRecipe recipeNode;
+	private EventController controller;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -23,6 +24,7 @@ public partial class Chatbot : Sprite2D
 		recipeNode = GetChild<ChatBotRecipe>(1);
 
 		clickableArea.InputEvent += OnInputEvent;
+		controller = GetNode<EventController>("/root/BarScene/EventController");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -58,8 +60,11 @@ public partial class Chatbot : Sprite2D
 
 	public void AnimationStart()
 	{
-		isAnimated = true;
-		currentVelocity = velocity;
+		if (controller.gmstate == EventController.GameState.Gameplay)
+		{
+			isAnimated = true;
+			currentVelocity = velocity;
+		}
 	}
 
 	private void TerminateAnimation()

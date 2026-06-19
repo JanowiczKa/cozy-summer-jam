@@ -8,6 +8,7 @@ public partial class GameManager : Node
 	[Export(PropertyHint.FilePath)] DrinkSubmissionArea drinkSubmissionArea;
 	[Export(PropertyHint.FilePath)] Label timerLabel;
 	[Export(PropertyHint.FilePath)] Timer startGameTimer;
+	[Export(PropertyHint.FilePath)] public DrinkContainer glass;
 
 	private GameRound currentRound;
 	private int currentRoundIndex = 0;
@@ -21,11 +22,26 @@ public partial class GameManager : Node
 	{
 		eventController.Connect("EndOfIntroduction", new Callable(this, MethodName.StartCurrentCustomerDrinkMakingSection));
 		eventController.Connect("EndOfCustomerSequence", new Callable(this, MethodName.EndCurrentCustomerInteraction));
+		VisibleOnScreenNotifier2D glassVisible = glass.GetChild<VisibleOnScreenNotifier2D>(5);
+		glassVisible.Connect("screen_exited", new Callable(this, MethodName.RespawnGlass));
+		
 
 		drinkSubmissionArea.OnDrinkSubmitted += SubmitDrinkToCustomer;
 		timerLabel.Text = "";
 
 		startGameTimer.Timeout += StartNextRound;
+	}
+
+	private void RespawnGlass()
+	{
+		glass.QueueFree();
+		var newGlass = GD.Load<PackedScene>("res://Scenes/DrinkGlass.tscn");
+		var instance = newGlass.Instantiate();
+		AddChild(instance);
+		glass = (DrinkContainer)instance;
+		glass.GlobalPosition = new Vector2(385, 408);
+		VisibleOnScreenNotifier2D glassVisible = glass.GetChild<VisibleOnScreenNotifier2D>(5);
+		glassVisible.Connect("screen_exited", new Callable(this, MethodName.RespawnGlass));
 	}
 
 	private void StartNextRound()
@@ -96,9 +112,13 @@ public partial class GameManager : Node
 	{
 		//pass drink data
 		//EndCurrentCustomerInteraction();
-		eventController.MoveToOutroAndScoringSequence(false);
-
-		GD.Print("Submitted drink!");
+		
+		if (eventController.gmstate == EventController.GameState.Gameplay)
+		{
+			DrinkContainer lastGlass = glass;
+			eventController.MoveToOutroAndScoringSequence(false, lastGlass);
+			RespawnGlass();
+		}
 	}
 }
 

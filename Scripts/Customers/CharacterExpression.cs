@@ -23,11 +23,14 @@ public partial class CharacterExpression : AnimatedSprite2D
 		
 		switch(expression)
 		{
-			case "DefaultExp":
+			case "Neutral":
 				Frame = 0;
 				break;
-			case "Mog":
+			case "Angry":
 				Frame = 1;
+				break;
+			case "Happy":
+				Frame = 2;
 				break;
 			default:
 				Frame = 0;

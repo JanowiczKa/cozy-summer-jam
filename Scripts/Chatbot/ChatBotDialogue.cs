@@ -98,7 +98,7 @@ public partial class ChatBotDialogue : RichTextLabel
 					bot.AnimationStart();
 					ChatBotRecipe recipe = GetNode<ChatBotRecipe>("../ChatBotRecipe");
 					recipe.CreateRecipe();
-					Text = "Awaiting orders...";
+					Text = "Recipe ready!";
 				} else if (total_time_elapsed >= 1.0 && is_player_scored == true)
 				{
 					is_player_scored = false;
@@ -133,7 +133,7 @@ public partial class ChatBotDialogue : RichTextLabel
 	{
 		string dialogueAndScore = "";
 
-		if (score >= 95)
+		if (score >= 85)
 		{
 			dialogueAndScore = Tr(dialogueBank.OutroDialogue[0]).Replace("{score}", score.ToString());
 		} else if (score >= 50)

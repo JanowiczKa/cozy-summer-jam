@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cspb5c30a5a15" path="res://Scenes/Droplet.tscn" id="7_0s30y"]
 [ext_resource type="Texture2D" uid="uid://n7dd6g735fis" path="res://Bar Assets/Environment/Poles.png" id="9_41v4r"]
 [ext_resource type="Texture2D" uid="uid://dt8ueawr0aqk5" path="res://Bar Assets/Environment/Shelves.png" id="10_lfljr"]
-[ext_resource type="Texture2D" uid="uid://dmjldvrplv4dr" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="10_x7ban"]
+[ext_resource type="Texture2D" uid="uid://bna6piuhhnyu5" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="10_x7ban"]
 [ext_resource type="SpriteFrames" uid="uid://dkmbybe3cj75j" path="res://Resources/Customers/Sans/SansFrames.tres" id="11_45dlq"]
 [ext_resource type="Texture2D" uid="uid://c5gmlrdktslk" path="res://Bar Assets/Environment/Garnish trays.png" id="11_ix8wc"]
 [ext_resource type="PackedScene" uid="uid://ch7rr4ovwg62a" path="res://Scenes/bottle_catcher.tscn" id="12_lfljr"]
@@ -31,8 +31,30 @@
 [ext_resource type="PackedScene" uid="uid://cw8f807dw5q3n" path="res://Scenes/FishEye.tscn" id="25_41v4r"]
 [ext_resource type="PackedScene" uid="uid://80mxvochxghw" path="res://Scenes/LiquidDispenser.tscn" id="26_e5jey"]
 [ext_resource type="Resource" uid="uid://cywo6mwtk4ro8" path="res://Resources/Garnishes/FishEye.tres" id="26_ix8wc"]
+[ext_resource type="PackedScene" uid="uid://dt0qlcxutkic5" path="res://Scenes/Gravel.tscn" id="27_7gwqm"]
+[ext_resource type="Resource" uid="uid://ef4dm5hjpre8" path="res://Resources/Garnishes/Gravel.tres" id="28_50n6l"]
+[ext_resource type="PackedScene" uid="uid://feoqabf4jtio" path="res://Scenes/Caviar.tscn" id="29_4xfta"]
+[ext_resource type="Resource" uid="uid://1auiputy7lfx" path="res://Resources/Garnishes/Caviar.tres" id="30_org7b"]
+[ext_resource type="PackedScene" uid="uid://ba5xnku55d7gj" path="res://Scenes/CoralDust.tscn" id="31_08sjm"]
+[ext_resource type="Resource" uid="uid://dbpg6bupq7orw" path="res://Resources/Garnishes/CoralDust.tres" id="32_1janj"]
 [ext_resource type="Resource" uid="uid://8p6xa3d27tp2" path="res://Resources/Liquids/TheAbsintheFather.tres" id="32_ix8wc"]
 [ext_resource type="Resource" uid="uid://dsxl65ka21uco" path="res://Resources/Liquids/BarracudaBrandy.tres" id="33_3kb3r"]
+[ext_resource type="PackedScene" uid="uid://ccslpkbb0akay" path="res://Scenes/FishFlake.tscn" id="33_3u0o2"]
+[ext_resource type="Resource" uid="uid://yjc15y85ywpm" path="res://Resources/Liquids/JimBream.tres" id="33_rct87"]
+[ext_resource type="Resource" uid="uid://xbv0mwsjwbi" path="res://Resources/Liquids/Tequila.tres" id="34_ia1q3"]
+[ext_resource type="Resource" uid="uid://bobuaeewdmqk2" path="res://Resources/Garnishes/FishFlake.tres" id="34_sgcri"]
+[ext_resource type="Resource" uid="uid://bl37k2n4k7rov" path="res://Resources/Liquids/Sludge.tres" id="35_ia1q3"]
+[ext_resource type="PackedScene" uid="uid://bonpbbhkikjdd" path="res://Scenes/Octopus.tscn" id="35_sgcri"]
+[ext_resource type="Resource" uid="uid://cugq7x0nu1pdn" path="res://Resources/Garnishes/Octopus.tres" id="36_ectd1"]
+[ext_resource type="Resource" uid="uid://davb6hd8mqn8f" path="res://Resources/Liquids/Vermouth.tres" id="36_omxjo"]
+[ext_resource type="Resource" uid="uid://dfo4f18hltw2e" path="res://Resources/Liquids/Vodka.tres" id="37_6acwc"]
+[ext_resource type="PackedScene" uid="uid://btdh4e3vfe2ft" path="res://Scenes/Worm.tscn" id="37_lva6t"]
+[ext_resource type="Resource" uid="uid://diimorm2q47rr" path="res://Resources/Garnishes/Worm.tres" id="38_r8mpj"]
+[ext_resource type="Resource" uid="uid://1yti2v13uwic" path="res://Resources/Liquids/Rum.tres" id="46_kgahu"]
+[ext_resource type="Resource" uid="uid://grmjk7wtacrx" path="res://Resources/Liquids/Agave.tres" id="50_r8mpj"]
+[ext_resource type="Resource" uid="uid://dnk3frkuo8tfi" path="res://Resources/Liquids/Bait.tres" id="51_ysdqf"]
+[ext_resource type="Resource" uid="uid://pg870q0yfr6t" path="res://Resources/Liquids/Ink.tres" id="52_tihuo"]
+[ext_resource type="Resource" uid="uid://du8yasniwhsxb" path="res://Resources/Liquids/Kelp.tres" id="53_tkdt8"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -69,13 +91,14 @@ script = ExtResource("1_gqqm6")
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1962037065]
 
-[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea", "timerLabel", "startGameTimer")]
+[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea", "timerLabel", "startGameTimer", "glass")]
 script = ExtResource("2_fvivi")
 gameRounds = Array[Resource]([SubResource("Resource_5lf26")])
 eventController = NodePath("../EventController")
 drinkSubmissionArea = NodePath("../BarScene/DrinkSubmissionArea")
 timerLabel = NodePath("../Control/Label")
 startGameTimer = NodePath("Timer")
+glass = NodePath("../DrinkGlass")
 
 [node name="Timer" type="Timer" parent="GameManager" unique_id=843113400]
 wait_time = 2.0
@@ -291,24 +314,128 @@ metadata/GarnishData = ExtResource("26_ix8wc")
 position = Vector2(-759, 439)
 metadata/GarnishData = ExtResource("26_ix8wc")
 
-[node name="Alcohols" type="Node2D" parent="." unique_id=1684555991]
+[node name="GravelSpawner" parent="." unique_id=2040881669 instance=ExtResource("24_0s30y")]
+position = Vector2(-623, 439)
+spawnableScene = ExtResource("27_7gwqm")
+metadata/GarnishData = ExtResource("28_50n6l")
 
-[node name="Absinthe" parent="Alcohols" unique_id=1570976637 instance=ExtResource("3_iy0dp")]
-position = Vector2(-900, -225)
-metadata/Liquid = ExtResource("32_ix8wc")
+[node name="CaviarSpawner" parent="." unique_id=362460524 instance=ExtResource("24_0s30y")]
+position = Vector2(-350, 439)
+spawnableScene = ExtResource("29_4xfta")
+metadata/GarnishData = ExtResource("30_org7b")
 
-[node name="BottleCatcher" parent="Alcohols/Absinthe" unique_id=72906268 instance=ExtResource("12_lfljr")]
-position = Vector2(-901, -122)
+[node name="CoralDustSpawner" parent="." unique_id=876349438 instance=ExtResource("24_0s30y")]
+position = Vector2(63, 440)
+spawnableScene = ExtResource("31_08sjm")
+metadata/GarnishData = ExtResource("32_1janj")
 
-[node name="Brandy" parent="Alcohols" unique_id=537746372 instance=ExtResource("3_iy0dp")]
-position = Vector2(-756, -228)
-metadata/Liquid = ExtResource("33_3kb3r")
+[node name="FishFlakeSpawner" parent="." unique_id=153921981 instance=ExtResource("24_0s30y")]
+position = Vector2(-212, 439)
+spawnableScene = ExtResource("33_3u0o2")
+metadata/GarnishData = ExtResource("34_sgcri")
 
-[node name="BottleCatcher" parent="Alcohols/Brandy" unique_id=741567597 instance=ExtResource("12_lfljr")]
-position = Vector2(-759, -122)
+[node name="OctopusSpawner" parent="." unique_id=2087098922 instance=ExtResource("24_0s30y")]
+position = Vector2(-73, 439)
+spawnableScene = ExtResource("35_sgcri")
+metadata/GarnishData = ExtResource("36_ectd1")
+
+[node name="WormSpawner" parent="." unique_id=1211788360 instance=ExtResource("24_0s30y")]
+position = Vector2(-487, 440)
+spawnableScene = ExtResource("37_lva6t")
+metadata/GarnishData = ExtResource("38_r8mpj")
 
 [node name="LiquidDispenser" parent="." unique_id=956457883 instance=ExtResource("26_e5jey")]
 z_index = -6
 position = Vector2(842, 116)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=602345615]
+show_behind_parent = true
+z_index = -100
+z_as_relative = false
+texture = ExtResource("24_87gjg")
+
+[node name="Absinthe" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
+position = Vector2(-900, -225)
+metadata/Liquid = ExtResource("32_ix8wc")
+
+[node name="BottleCatcher" parent="Absinthe" unique_id=72906268 instance=ExtResource("12_lfljr")]
+position = Vector2(-901, -122)
+
+[node name="Brandy" parent="." unique_id=537746372 instance=ExtResource("3_iy0dp")]
+position = Vector2(-756, -228)
+metadata/Liquid = ExtResource("33_3kb3r")
+
+[node name="BottleCatcher" parent="Brandy" unique_id=741567597 instance=ExtResource("12_lfljr")]
+position = Vector2(-759, -122)
+
+[node name="JimBream" parent="." unique_id=1540940447 instance=ExtResource("3_iy0dp")]
+position = Vector2(-613, -225)
+metadata/Liquid = ExtResource("33_rct87")
+
+[node name="BottleCatcher" parent="JimBream" unique_id=1605546335 instance=ExtResource("12_lfljr")]
+position = Vector2(-617, -123)
+
+[node name="Rum" parent="." unique_id=948928079 instance=ExtResource("3_iy0dp")]
+position = Vector2(-899, -481)
+metadata/Liquid = ExtResource("46_kgahu")
+
+[node name="BottleCatcher" parent="Rum" unique_id=277625870 instance=ExtResource("12_lfljr")]
+position = Vector2(-901, -394)
+
+[node name="Sludge" parent="." unique_id=487011043 instance=ExtResource("3_iy0dp")]
+position = Vector2(-756, -483)
+metadata/Liquid = ExtResource("35_ia1q3")
+
+[node name="BottleCatcher" parent="Sludge" unique_id=606814033 instance=ExtResource("12_lfljr")]
+position = Vector2(-759, -394)
+
+[node name="Tequila" parent="." unique_id=29028941 instance=ExtResource("3_iy0dp")]
+position = Vector2(-613, -483)
+metadata/Liquid = ExtResource("34_ia1q3")
+
+[node name="BottleCatcher" parent="Tequila" unique_id=775924253 instance=ExtResource("12_lfljr")]
+position = Vector2(-613, -394)
+
+[node name="Vermouth" parent="." unique_id=2135720493 instance=ExtResource("3_iy0dp")]
+position = Vector2(665, -482)
+metadata/Liquid = ExtResource("36_omxjo")
+
+[node name="BottleCatcher" parent="Vermouth" unique_id=1724994833 instance=ExtResource("12_lfljr")]
+position = Vector2(666, -394)
+
+[node name="Vodka" parent="." unique_id=401432122 instance=ExtResource("3_iy0dp")]
+position = Vector2(843, -480)
+metadata/Liquid = ExtResource("37_6acwc")
+
+[node name="BottleCatcher" parent="Vodka" unique_id=1659570102 instance=ExtResource("12_lfljr")]
+position = Vector2(846, -394)
+
+[node name="AgaveSyrup" parent="." unique_id=468273624 instance=ExtResource("3_iy0dp")]
+position = Vector2(-936, 130)
+metadata/Liquid = ExtResource("50_r8mpj")
+
+[node name="BottleCatcher" parent="AgaveSyrup" unique_id=2023703862 instance=ExtResource("12_lfljr")]
+position = Vector2(-905, 155)
+
+[node name="BaitSyrup" parent="." unique_id=1576688945 instance=ExtResource("3_iy0dp")]
+position = Vector2(-829, 139)
+metadata/Liquid = ExtResource("51_ysdqf")
+
+[node name="BottleCatcher" parent="BaitSyrup" unique_id=1189822631 instance=ExtResource("12_lfljr")]
+position = Vector2(-807, 155)
+
+[node name="InkSyrup" parent="." unique_id=587771366 instance=ExtResource("3_iy0dp")]
+position = Vector2(-701, 144)
+metadata/Liquid = ExtResource("52_tihuo")
+
+[node name="BottleCatcher" parent="InkSyrup" unique_id=1197500608 instance=ExtResource("12_lfljr")]
+position = Vector2(-708, 155)
+
+[node name="KelpSyrup" parent="." unique_id=1466005629 instance=ExtResource("3_iy0dp")]
+position = Vector2(-594, 135)
+metadata/Liquid = ExtResource("53_tkdt8")
+
+[node name="BottleCatcher" parent="KelpSyrup" unique_id=612455669 instance=ExtResource("12_lfljr")]
+position = Vector2(-610, 155)
 
 [editable path="Characters"]

@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" script_class="Drink" format=3 uid="uid://byijqb68l806b"]
 
-[ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="1_cn2ed"]
+[ext_resource type="Resource" uid="uid://cr6h4joq7i5bi" path="res://Resources/Liquids/WhaleMilk.tres" id="1_cn2ed"]
 [ext_resource type="Script" uid="uid://cvqvnbumuygs2" path="res://Scripts/Drink.cs" id="2_3461o"]
 
 [resource]

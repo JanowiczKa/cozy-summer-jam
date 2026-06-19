@@ -78,3 +78,5 @@ modulate = Color(0.49803922, 0.7254902, 0.98039216, 0.29411766)
 position = Vector2(0, -2.005999)
 scale = Vector2(0.53125, 0.96865624)
 texture = ExtResource("2_rax88")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1195961289]

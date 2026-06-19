@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://xbv0mwsjwbi"]
+
+[ext_resource type="Texture2D" uid="uid://bafwcsmaoahiq" path="res://Bar Assets/Alcohol/Tequila.png" id="1_qdgni"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="2_hl07x"]
+
+[resource]
+script = ExtResource("2_hl07x")
+LiquidName = "Eel Jimador"
+Color = Color(0.55819964, 0.65916353, 0.82748324, 0.8666667)
+bottle = ExtResource("1_qdgni")

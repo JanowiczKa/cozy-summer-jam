@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://du8yasniwhsxb"]
+
+[ext_resource type="Texture2D" uid="uid://ccci6ploer5e6" path="res://Bar Assets/Syrup/Kelp Syrup.png" id="1_w4t5u"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="2_cn00f"]
+
+[resource]
+script = ExtResource("2_cn00f")
+LiquidName = "Kelp Sugar Syrup"
+Color = Color(0.1866318, 0.35966656, 3.3691526e-07, 0.8666667)
+bottle = ExtResource("1_w4t5u")

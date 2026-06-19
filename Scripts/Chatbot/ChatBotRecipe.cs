@@ -52,7 +52,7 @@ public partial class ChatBotRecipe : RichTextLabel
 			string liquidName = targetIngredientTypes[i];
 			int targetAmount = target.Where(x => x.LiquidName == liquidName).Select(x => x.LiquidName).Count();
 
-			string newRecipeLine = targetAmount + " " + liquidName + System.Environment.NewLine;
+			string newRecipeLine = targetAmount + " drops of " + liquidName + System.Environment.NewLine;
 			Text += newRecipeLine;
 		}
 	}

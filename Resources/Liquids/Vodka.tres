@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://dfo4f18hltw2e"]
+
+[ext_resource type="Texture2D" uid="uid://c7pgfohdre75u" path="res://Bar Assets/Alcohol/Vodka.png" id="1_3r2mx"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="2_kdfdx"]
+
+[resource]
+script = ExtResource("2_kdfdx")
+LiquidName = "Pleco's Own Vodka"
+Color = Color(0.55819964, 0.65916353, 0.82748324, 0.8666667)
+bottle = ExtResource("1_3r2mx")

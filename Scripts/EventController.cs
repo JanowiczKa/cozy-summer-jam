@@ -7,7 +7,7 @@ public partial class EventController : Node
 {
 	[Export(PropertyHint.FilePath)] Area2D characterInteractionArea;
 
-	private enum GameState
+	public enum GameState
 	{
 		Idle,
 		Introduction,
@@ -20,12 +20,13 @@ public partial class EventController : Node
 	private int sequence_index;
 	private double total_time_elapsed;
 	private bool waiting_for_text_to_finish;
-	private GameState gmstate { get; set; }
+	public GameState gmstate { get; set; }
 	private Random rand;
 	private CharacterSprite characterSprite;
 	private Chatbot chatbot;
 	private ChatBotDialogue chatbotDialogue;
 	public double score;
+	private DrinkContainer drinkContainer;
 
 	[Export]
 	public CustomerData customerData;
@@ -66,6 +67,7 @@ public partial class EventController : Node
 		rand = new Random();
 		waiting_for_text_to_finish = false;
 		score = 0.0;
+		drinkContainer = null;
 		characterSprite = GetNode<CharacterSprite>("../Characters/CharacterSprite");
 		chatbot = GetNode<Chatbot>("../Chatbot");
 		chatbotDialogue = GetNode<ChatBotDialogue>("../Chatbot/ChatBotDialogue");
@@ -104,7 +106,7 @@ public partial class EventController : Node
 			total_time_elapsed += delta;
 		}
 
-		if (gmstate == GameState.Gameplay && total_time_elapsed >= 10.0 && waiting_for_text_to_finish == false)
+		if (gmstate == GameState.Gameplay && total_time_elapsed >= 5.0 && waiting_for_text_to_finish == false)
 		{
 			LoopMessagesWhenMakingDrink();
 		}
@@ -231,8 +233,9 @@ public partial class EventController : Node
 
 	// To be called when the gameplay timer ends or when the player passes the finished drink to the customer;
 	// Starts the dialog leading into the score
-	public void MoveToOutroAndScoringSequence(bool out_of_time)
+	public void MoveToOutroAndScoringSequence(bool out_of_time, DrinkContainer drnk)
 	{
+		drinkContainer = drnk;
 		// Check if the player ran out of time
 		if (out_of_time == true)
 		{
@@ -289,7 +292,7 @@ public partial class EventController : Node
 	// vice versa.
 	private double VerifyDrinkAndScore()
 	{
-		DrinkContainer container = GetNode<DrinkContainer>("../DrinkGlass");
+		DrinkContainer container = drinkContainer;
 		double score = 0.0;
 		List<LiquidData> target = new List<LiquidData>();
 		List<LiquidData> drink = container.liquidContainer.liquids;
@@ -326,8 +329,7 @@ public partial class EventController : Node
 
 	private void DetermineResult(double score)
 	{
-		DrinkContainer container = GetNode<DrinkContainer>("../DrinkGlass");
-		List<LiquidData> drink = container.liquidContainer.liquids;
+		List<LiquidData> drink = drinkContainer.liquidContainer.liquids;
 		if (drink.Count() == 0)
 		{
 			speech_sequence = customerData.Result_empty.Dialog;
@@ -335,7 +337,7 @@ public partial class EventController : Node
 			return;
 		}
 
-		if (score >= 95)
+		if (score >= 85)
 		{
 			speech_sequence = customerData.Result_perfect.Dialog;
 			expression_sequence = customerData.Result_perfect.Expression;
