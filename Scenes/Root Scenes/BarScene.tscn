@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cuaj5mroc22rv" path="res://Scripts/GameRound.cs" id="3_85wtc"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
 [ext_resource type="Resource" uid="uid://bltfn3xdu66qf" path="res://Resources/Customers/Finn/Finn_Shift_1.tres" id="4_3kb3r"]
+[ext_resource type="Resource" uid="uid://b75xgt6lktkik" path="res://Resources/Customers/Cephanie/Cephanie_Shift_1.tres" id="4_m0ogi"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/character.tscn" id="5_4aloy"]
 [ext_resource type="Script" uid="uid://d06fruxa5ksow" path="res://Scripts/DrinkSubmissionArea.cs" id="6_5lf26"]
 [ext_resource type="Script" uid="uid://q14hrtgyhxvm" path="res://Scripts/DropletSpawner.cs" id="6_8yvl4"]
@@ -13,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cspb5c30a5a15" path="res://Scenes/Droplet.tscn" id="7_0s30y"]
 [ext_resource type="Texture2D" uid="uid://n7dd6g735fis" path="res://Bar Assets/Environment/Poles.png" id="9_41v4r"]
 [ext_resource type="Texture2D" uid="uid://dt8ueawr0aqk5" path="res://Bar Assets/Environment/Shelves.png" id="10_lfljr"]
-[ext_resource type="Texture2D" uid="uid://bna6piuhhnyu5" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="10_x7ban"]
-[ext_resource type="SpriteFrames" uid="uid://dkmbybe3cj75j" path="res://Resources/Customers/Sans/SansFrames.tres" id="11_45dlq"]
 [ext_resource type="Texture2D" uid="uid://c5gmlrdktslk" path="res://Bar Assets/Environment/Garnish trays.png" id="11_ix8wc"]
 [ext_resource type="PackedScene" uid="uid://ch7rr4ovwg62a" path="res://Scenes/bottle_catcher.tscn" id="12_lfljr"]
 [ext_resource type="Script" uid="uid://dyknpy1p1lj4p" path="res://Scripts/Chatbot/Chatbot.cs" id="16_k4kfc"]
@@ -57,7 +56,7 @@
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
-customers = Array[Object]([ExtResource("4_3kb3r")])
+customers = Array[Object]([ExtResource("4_3kb3r"), ExtResource("4_m0ogi")])
 metadata/_custom_type_script = "uid://cuaj5mroc22rv"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ix8wc"]
@@ -179,17 +178,15 @@ scale = Vector2(10, 1)
 shape = SubResource("RectangleShape2D_5lf26")
 
 [node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
-position = Vector2(-103, 0)
+position = Vector2(-103, 30)
 
 [node name="CharacterSprite" parent="Characters" index="0" unique_id=1052017425]
 z_index = -99
 position = Vector2(0, -125)
 scale = Vector2(0.4577777, 0.4577777)
-texture = ExtResource("10_x7ban")
 
 [node name="CharacterExpression" parent="Characters/CharacterSprite" index="0" unique_id=1294962647]
 position = Vector2(-9.536743e-07, -2.1844597)
-sprite_frames = ExtResource("11_45dlq")
 
 [node name="SpeechBubble" parent="Characters" index="1" unique_id=1476035436]
 position = Vector2(131, -383)
