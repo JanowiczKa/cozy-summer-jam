@@ -86,14 +86,23 @@ public partial class GameManager : Node
 		GD.Print("Ending customer interaction");
 		currentCustomerIndex++;
 
-		StartNextCustomerInteraction();
+		timerIsEnabled = false;
 		timerLabel.Text = "";
+		StartNextCustomerInteraction();
 	}
 
 	private void UpdateTimerWithDelta(double delta)
 	{
-		timer -= delta;
+		timer = timer - delta;
 		timerLabel.Text = $"Time Left: {Math.Round(timer)}s";
+	}
+
+	private void PlayerRunOutOfTime()
+	{
+		GD.Print("Player run out of time! " + timer);
+		eventController.MoveToOutroAndScoringSequence(true, null);
+		timerIsEnabled = false;
+		timerLabel.Text = "";
 	}
 
 	public override void _Process(double delta)
@@ -102,8 +111,9 @@ public partial class GameManager : Node
 
 		UpdateTimerWithDelta(delta);
 
-		if (timer < 0) return;
+		if (timer > 0) return;
 
+		PlayerRunOutOfTime();
 		//time ran out, so maybe we should do some sort of override to give score of 0? handle later
 		//EndCurrentCustomerInteraction();
 	}
@@ -111,12 +121,13 @@ public partial class GameManager : Node
 	public void SubmitDrinkToCustomer(DrinkContainer drink)
 	{
 		//pass drink data
-		//EndCurrentCustomerInteraction();
 		
 		if (eventController.gmstate == EventController.GameState.Gameplay)
 		{
 			DrinkContainer lastGlass = glass;
 			eventController.MoveToOutroAndScoringSequence(false, lastGlass);
+			timerIsEnabled = false;
+			timerLabel.Text = "";
 			RespawnGlass();
 		}
 	}
