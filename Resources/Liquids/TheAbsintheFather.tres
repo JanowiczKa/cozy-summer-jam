@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://8p6xa3d27tp2"]
 
 [ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="1_7mlfj"]
+[ext_resource type="Texture2D" uid="uid://c468fi58i7x33" path="res://Bar Assets/Alcohol/Absinthe.png" id="1_wbh3k"]
 
 [resource]
 script = ExtResource("1_7mlfj")
 LiquidName = "The Absinthe Father"
-Color = Color(0.25882354, 0.47843137, 1, 0.5372549)
+Color = Color(0.003358275, 0.1500226, 0.69173574, 0.5372549)
+bottle = ExtResource("1_wbh3k")

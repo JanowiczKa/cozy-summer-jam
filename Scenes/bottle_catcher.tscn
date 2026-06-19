@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ch7rr4ovwg62a"]
+
+[ext_resource type="Script" uid="uid://d3if8wi01vfat" path="res://Scripts/BottleCatcher.cs" id="1_gp735"]
+[ext_resource type="Script" uid="uid://c2no46gk34vd1" path="res://Scripts/CatcherArea.cs" id="1_iyfwo"]
+[ext_resource type="Texture2D" uid="uid://c468fi58i7x33" path="res://Bar Assets/Alcohol/Absinthe.png" id="3_gp735"]
+[ext_resource type="Script" uid="uid://drdo0y8ucoupy" path="res://Scripts/CatcherSprite.cs" id="4_sbtm3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wjadf"]
+size = Vector2(91, 185)
+
+[node name="BottleCatcher" type="Area2D" unique_id=741567597]
+top_level = true
+script = ExtResource("1_gp735")
+
+[node name="CatcherArea" type="CollisionShape2D" parent="." unique_id=850337713]
+position = Vector2(0, -22.5)
+shape = SubResource("RectangleShape2D_wjadf")
+script = ExtResource("1_iyfwo")
+
+[node name="CatcherSprite" type="Sprite2D" parent="." unique_id=1044979482 node_paths=PackedStringArray("parentNode")]
+self_modulate = Color(0.43134046, 0.43134016, 0.43134034, 0.14117648)
+position = Vector2(0, -23)
+texture = ExtResource("3_gp735")
+script = ExtResource("4_sbtm3")
+parentNode = NodePath("..")

@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://80mxvochxghw"]
 
 [ext_resource type="Script" uid="uid://bhbau24ohrhdo" path="res://Scripts/Liquids/LiquidDispenser.cs" id="1_1qtch"]
-[ext_resource type="Texture2D" uid="uid://muv03s1kgi88" path="res://Bar Assets/dispenser.png" id="2_6e28s"]
+[ext_resource type="Texture2D" uid="uid://cvk8lpywb0xts" path="res://Bar Assets/Environment/dispenser.png" id="2_kqyic"]
+[ext_resource type="Texture2D" uid="uid://pc4dhxcqqdx4" path="res://Bar Assets/Environment/dispenser_bttn_on.png" id="3_6e28s"]
 [ext_resource type="Script" uid="uid://dodgu2i243syh" path="res://Scripts/Liquids/LiquidDispenserButton.cs" id="3_etaux"]
-[ext_resource type="Texture2D" uid="uid://b1gfyi8o81rx" path="res://Bar Assets/dispenser_bttn_on.png" id="4_pm1xc"]
 [ext_resource type="Resource" uid="uid://df2e0o38g5ua1" path="res://Resources/Liquids/SeaWater.tres" id="4_suje7"]
 [ext_resource type="Resource" uid="uid://bdnktcsklt801" path="res://Resources/Liquids/CrabshellCola.tres" id="5_m3s6g"]
 [ext_resource type="Resource" uid="uid://cwhh162v21u7p" path="res://Resources/Liquids/ShavedIceberg.tres" id="6_kqyic"]
@@ -57,9 +57,9 @@ position = Vector2(-105, -12)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1635729996]
 modulate = Color(0.59, 0.59, 0.59, 1)
-position = Vector2(-103.500015, -118)
+position = Vector2(-865, -110)
 scale = Vector2(1.0298165, 0.9946332)
-texture = ExtResource("2_6e28s")
+texture = ExtResource("2_kqyic")
 
 [node name="Sea Water" type="Control" parent="." unique_id=1649482710]
 layout_mode = 3
@@ -92,7 +92,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
 theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
-icon = ExtResource("4_pm1xc")
+icon = ExtResource("3_6e28s")
 flat = true
 script = ExtResource("3_etaux")
 liquid = ExtResource("4_suje7")
@@ -130,7 +130,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
 theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
-icon = ExtResource("4_pm1xc")
+icon = ExtResource("3_6e28s")
 flat = true
 script = ExtResource("3_etaux")
 liquid = ExtResource("5_m3s6g")
@@ -168,7 +168,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
 theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
-icon = ExtResource("4_pm1xc")
+icon = ExtResource("3_6e28s")
 flat = true
 script = ExtResource("3_etaux")
 liquid = ExtResource("6_kqyic")
@@ -206,7 +206,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
 theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
-icon = ExtResource("4_pm1xc")
+icon = ExtResource("3_6e28s")
 flat = true
 script = ExtResource("3_etaux")
 liquid = ExtResource("7_m3s6g")

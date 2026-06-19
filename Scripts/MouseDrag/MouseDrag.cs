@@ -8,7 +8,7 @@ public partial class MouseDrag : RigidBody2D
 	public float mouseFollowSpeed = 30f;
 	public float objectRotationSpeed = 10f;
 
-	private bool isHeld = false;
+	public bool isHeld = false;
 
 	private Vector2 mouseClickOffset;
 

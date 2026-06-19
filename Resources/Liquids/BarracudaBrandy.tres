@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://dsxl65ka21uco"]
 
+[ext_resource type="Texture2D" uid="uid://cp8kcxvtrr7rp" path="res://Bar Assets/Alcohol/Brandy.png" id="1_jbsco"]
 [ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="1_on5c3"]
 
 [resource]
 script = ExtResource("1_on5c3")
 LiquidName = "Barracuda Brandy"
 Color = Color(0.53333336, 0.08235294, 0, 0.8666667)
+bottle = ExtResource("1_jbsco")

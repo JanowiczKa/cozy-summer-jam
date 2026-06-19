@@ -20,14 +20,14 @@ public partial class LiquidPourSpout : Node2D
 
 	private RandomNumberGenerator rand;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		liquid = parentNode.GetMeta("Liquid").As<LiquidData>();
 
 		spillAngleCos = MathF.Cos(spillAngle * (MathF.PI / 180f));
 
 		rand = new RandomNumberGenerator();
-    }
+	}
 
 	//based on nozzle node position from centre of it's scene 
 	private Vector2 CurrentDirection() => (GlobalPosition - parentNode.GlobalPosition).Normalized();
@@ -43,7 +43,7 @@ public partial class LiquidPourSpout : Node2D
 	{
 		var currentDropletSpawnTimer = 1 / spillRatePerSecond;
 
-        //if pointing closer to directly down the spawn rate should increase maybe?
+		//if pointing closer to directly down the spawn rate should increase maybe?
 		if (timer < currentDropletSpawnTimer) return false;
 
 		return true;

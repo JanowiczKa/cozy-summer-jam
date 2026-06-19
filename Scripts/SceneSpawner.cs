@@ -5,7 +5,7 @@ public partial class SceneSpawner : Node2D
 {
 	[Export] public Area2D clickableArea;
 
-	[Export] PackedScene spawnableScene;
+	[Export] public PackedScene spawnableScene;
 
 	public override void _Ready()
 	{

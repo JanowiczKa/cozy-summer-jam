@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="1_n23dq"]
 [ext_resource type="Script" uid="uid://ha5duy5cxl8v" path="res://Scripts/MouseDrag/MouseDrag.cs" id="1_ya3vg"]
 [ext_resource type="Script" uid="uid://cja8g1klispwg" path="res://Scripts/Liquids/LiquidPourSpout.cs" id="3_2ymyn"]
-[ext_resource type="Texture2D" uid="uid://dq1ydasae76ws" path="res://Bar Assets/Ingredients/Absinthe.png" id="3_35s6w"]
+[ext_resource type="Texture2D" uid="uid://c468fi58i7x33" path="res://Bar Assets/Alcohol/Absinthe.png" id="3_h3ff8"]
 [ext_resource type="Resource" uid="uid://bnty4ctmw6qgt" path="res://Resources/Liquids/MonsterEnergy.tres" id="4_35s6w"]
+[ext_resource type="Script" uid="uid://di0y8ratqqao1" path="res://Scripts/Base.cs" id="4_h3ff8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n23dq"]
 font_size = 6
@@ -17,11 +18,11 @@ metadata/Liquid = ExtResource("4_35s6w")
 
 [node name="Visuals" type="Node2D" parent="." unique_id=1804397802]
 
-[node name="Base" type="Sprite2D" parent="Visuals" unique_id=1517791186]
-modulate = Color(0.43137255, 0.8392157, 0.6431373, 1)
+[node name="Base" type="Sprite2D" parent="Visuals" unique_id=1517791186 node_paths=PackedStringArray("parentNode")]
 position = Vector2(0, -23)
-scale = Vector2(0.9270834, 0.9335664)
-texture = ExtResource("3_35s6w")
+texture = ExtResource("3_h3ff8")
+script = ExtResource("4_h3ff8")
+parentNode = NodePath("../..")
 
 [node name="Nozzle" type="Sprite2D" parent="Visuals/Base" unique_id=210761328]
 visible = false
@@ -67,7 +68,8 @@ scale = Vector2(3.6608653, 7.862668)
 polygon = PackedVector2Array(-4.2471046, -9.331114, -4.2471046, -5.578087, -10.03861, -5.578087, -10.03861, 10.039346, 10.03861, 10.039346, 10.03861, -5.4570217, 4.2471046, -5.4570217, 4.2471046, -9.331114, 5.405406, -9.331114, 5.405406, -10.057507, -5.405406, -10.057507, -5.405406, -9.331114)
 
 [node name="LiquidPourSpout" type="Node2D" parent="." unique_id=967450582 node_paths=PackedStringArray("parentNode")]
-position = Vector2(0, -134)
+position = Vector2(0, -116)
 script = ExtResource("3_2ymyn")
 parentNode = NodePath("..")
-liquid = ExtResource("4_35s6w")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1547848514]

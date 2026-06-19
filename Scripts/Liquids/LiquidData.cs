@@ -12,12 +12,16 @@ public partial class LiquidData : Resource
 	[Export]
 	public bool IsFizzy;
 
-	public LiquidData() : this("", new Color(1,1,1,1), false) {}
+	[Export]
+	public Texture2D bottle;
 
-	public LiquidData(string liquidName, Color color, bool isFizzy)
+	public LiquidData() : this("", new Color(1,1,1,1), false, null) {}
+
+	public LiquidData(string liquidName, Color color, bool isFizzy, Texture2D bottleSprite)
 	{
 		LiquidName = liquidName;
 		Color = color;
 		IsFizzy = isFizzy;
+		bottle = bottleSprite;
 	}
 }

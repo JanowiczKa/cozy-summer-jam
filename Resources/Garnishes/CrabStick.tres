@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GarnishData" format=3 uid="uid://daj1nlna6wa5u"]
+
+[ext_resource type="Script" uid="uid://spgfawkgyibm" path="res://Scripts/GarnishData.cs" id="1_5baed"]
+
+[resource]
+script = ExtResource("1_5baed")
+GarnishName = "Crab Stick"

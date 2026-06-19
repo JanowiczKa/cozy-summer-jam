@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://beworw7g3u1d3"]
 
 [ext_resource type="Script" uid="uid://bviaytwm2jjho" path="res://Scripts/SceneSpawner.cs" id="1_xitgr"]
+[ext_resource type="PackedScene" uid="uid://dpq3q56ghonb7" path="res://Scenes/CrabStick.tscn" id="2_o0p2t"]
 [ext_resource type="Texture2D" uid="uid://b3dcifnthf2cb" path="res://Sprites/Temp/Square.png" id="2_wil8i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0iawt"]
@@ -9,6 +10,7 @@ size = Vector2(128, 128)
 [node name="SceneSpawner" type="Node2D" unique_id=1504049884 node_paths=PackedStringArray("clickableArea")]
 script = ExtResource("1_xitgr")
 clickableArea = NodePath("Area2D")
+spawnableScene = ExtResource("2_o0p2t")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1581202202]
 modulate = Color(0.41, 0.41, 0.41, 1)

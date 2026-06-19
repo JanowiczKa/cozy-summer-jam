@@ -11,27 +11,27 @@
 [ext_resource type="Script" uid="uid://q14hrtgyhxvm" path="res://Scripts/DropletSpawner.cs" id="6_8yvl4"]
 [ext_resource type="Script" uid="uid://16kx4o1hf44n" path="res://Scripts/EventController.cs" id="6_r4now"]
 [ext_resource type="PackedScene" uid="uid://cspb5c30a5a15" path="res://Scenes/Droplet.tscn" id="7_0s30y"]
-[ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="8_3btq8"]
-[ext_resource type="PackedScene" uid="uid://1q8sybp70ruv" path="res://Scenes/Garnish.tscn" id="8_fvivi"]
-[ext_resource type="Texture2D" uid="uid://c0x0eohmu4s0k" path="res://Bar Assets/bar_counter.png" id="9_h80b4"]
-[ext_resource type="Texture2D" uid="uid://coif4dardx5ip" path="res://Bar Assets/Poles.png" id="10_41v4r"]
+[ext_resource type="Texture2D" uid="uid://n7dd6g735fis" path="res://Bar Assets/Environment/Poles.png" id="9_41v4r"]
+[ext_resource type="Texture2D" uid="uid://dt8ueawr0aqk5" path="res://Bar Assets/Environment/Shelves.png" id="10_lfljr"]
 [ext_resource type="Texture2D" uid="uid://dmjldvrplv4dr" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="10_x7ban"]
 [ext_resource type="SpriteFrames" uid="uid://dkmbybe3cj75j" path="res://Resources/Customers/Sans/SansFrames.tres" id="11_45dlq"]
-[ext_resource type="Texture2D" uid="uid://dxchdtlgg8xv3" path="res://Bar Assets/Shelves.png" id="11_lfljr"]
-[ext_resource type="Texture2D" uid="uid://cmlnic0ouj6s3" path="res://Bar Assets/garnish_trays.png" id="12_ix8wc"]
+[ext_resource type="Texture2D" uid="uid://c5gmlrdktslk" path="res://Bar Assets/Environment/Garnish trays.png" id="11_ix8wc"]
+[ext_resource type="PackedScene" uid="uid://ch7rr4ovwg62a" path="res://Scenes/bottle_catcher.tscn" id="12_lfljr"]
 [ext_resource type="Script" uid="uid://dyknpy1p1lj4p" path="res://Scripts/Chatbot/Chatbot.cs" id="16_k4kfc"]
 [ext_resource type="FontFile" uid="uid://3hs0qfi7pbwn" path="res://Fonts/font.ttf" id="17_k4kfc"]
 [ext_resource type="Script" uid="uid://dt1tgpfadxasn" path="res://Scripts/Chatbot/ChatBotDialogue.cs" id="18_6f4cw"]
-[ext_resource type="Texture2D" uid="uid://clh6ewjdnnjtb" path="res://Bar Assets/mixr_box.png" id="18_41v4r"]
 [ext_resource type="Resource" uid="uid://tec2pb576vq6" path="res://Resources/Chatbot/ChatbotDialogueBank.tres" id="19_rvx5e"]
 [ext_resource type="Script" uid="uid://dxeu7qbij4t8n" path="res://Scripts/Chatbot/ChatBotRecipe.cs" id="20_10ytx"]
 [ext_resource type="Resource" uid="uid://cu384u56l0w3g" path="res://Resources/ListOfIngredients.tres" id="21_ddpem"]
 [ext_resource type="AudioStream" uid="uid://i75pnj0w06um" path="res://Audio/Chatbot/mixr_dial1.wav" id="22_8yvl4"]
 [ext_resource type="Script" uid="uid://hlbtnj17hakv" path="res://Scripts/Chatbot/ChatBotAudio.cs" id="22_tcgbs"]
 [ext_resource type="PackedScene" uid="uid://beworw7g3u1d3" path="res://Scenes/SceneSpawner.tscn" id="24_0s30y"]
+[ext_resource type="Texture2D" uid="uid://btu3r1lradd5h" path="res://Bar Assets/Environment/Background.png" id="24_87gjg"]
+[ext_resource type="PackedScene" uid="uid://cw8f807dw5q3n" path="res://Scenes/FishEye.tscn" id="25_41v4r"]
 [ext_resource type="PackedScene" uid="uid://80mxvochxghw" path="res://Scenes/LiquidDispenser.tscn" id="26_e5jey"]
-[ext_resource type="Texture2D" uid="uid://bbj6ccsh3kqfj" path="res://Bar Assets/mixr_face.png" id="27_lfljr"]
-[ext_resource type="Texture2D" uid="uid://be4lmclnmealr" path="res://Bar Assets/gm_back.png" id="30_41v4r"]
+[ext_resource type="Resource" uid="uid://cywo6mwtk4ro8" path="res://Resources/Garnishes/FishEye.tres" id="26_ix8wc"]
+[ext_resource type="Resource" uid="uid://8p6xa3d27tp2" path="res://Resources/Liquids/TheAbsintheFather.tres" id="32_ix8wc"]
+[ext_resource type="Resource" uid="uid://dsxl65ka21uco" path="res://Resources/Liquids/BarracudaBrandy.tres" id="33_3kb3r"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -44,8 +44,17 @@ size = Vector2(1920, 12.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf26"]
 size = Vector2(20.9, 20)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e5jey"]
+load_path = "res://.godot/imported/bar_counter.png-172b884e861448a0657ae2e42b3ba574.ctex"
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -169.5
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_41v4r"]
+load_path = "res://.godot/imported/mixr_box.png-30061171882d1925b26a1b236a8e253d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lfljr"]
+load_path = "res://.godot/imported/mixr_face.png-023bd0a785a4eb8cefb9319754b97813.ctex"
 
 [node name="BarScene" type="Node2D" unique_id=284124051]
 script = ExtResource("1_gqqm6")
@@ -97,7 +106,7 @@ modulate = Color(0.56, 0.33898667, 0.14559999, 1)
 z_index = -10
 position = Vector2(1.5000589, 57.000023)
 scale = Vector2(1.0015625, 0.98113215)
-texture = ExtResource("9_h80b4")
+texture = SubResource("CompressedTexture2D_e5jey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/Table" unique_id=779099646]
 position = Vector2(0, -159)
@@ -107,19 +116,19 @@ shape = SubResource("WorldBoundaryShape2D_gr58c")
 [node name="Poles" type="Sprite2D" parent="BarScene" unique_id=1435114261]
 show_behind_parent = true
 z_index = -4
-texture = ExtResource("10_41v4r")
+texture = ExtResource("9_41v4r")
 
 [node name="Shelves" type="Sprite2D" parent="BarScene" unique_id=1746688332]
 z_index = -5
-texture = ExtResource("11_lfljr")
+texture = ExtResource("10_lfljr")
 
 [node name="Trays" type="Sprite2D" parent="BarScene" unique_id=2110182133]
-texture = ExtResource("12_ix8wc")
+texture = ExtResource("11_ix8wc")
 
 [node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
 
 [node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
-position = Vector2(218, 392)
+position = Vector2(385, 408)
 input_pickable = false
 
 [node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
@@ -132,7 +141,7 @@ scale = Vector2(0.4577777, 0.4577777)
 texture = ExtResource("10_x7ban")
 
 [node name="CharacterExpression" parent="Characters/CharacterSprite" index="0" unique_id=1294962647]
-position = Vector2(-0.00016954211, -5.555556)
+position = Vector2(-9.536743e-07, -2.1844597)
 sprite_frames = ExtResource("11_45dlq")
 
 [node name="BubbleText" parent="Characters/SpeechBubble" parent_id_path=PackedInt32Array(623045154, 1476035436) index="0" unique_id=1648223998]
@@ -148,16 +157,11 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 autowrap_mode = 2
 justification_flags = 162
 
-[node name="Absinthe" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
-position = Vector2(570, 392)
-freeze_mode = 1
-metadata/Liquid = ExtResource("8_3btq8")
-
 [node name="Chatbot" type="Sprite2D" parent="." unique_id=1539476651]
 z_index = -50
 position = Vector2(0, -701)
 scale = Vector2(1.0744218, 0.8770764)
-texture = ExtResource("18_41v4r")
+texture = SubResource("CompressedTexture2D_41v4r")
 script = ExtResource("16_k4kfc")
 velocity = 200.0
 
@@ -172,7 +176,7 @@ offset_left = -825.76
 offset_top = -1418.6001
 offset_right = -1213.0801
 offset_bottom = -1441.7202
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("17_k4kfc")
 theme_override_fonts/bold_font = ExtResource("17_k4kfc")
 theme_override_fonts/bold_italics_font = ExtResource("17_k4kfc")
@@ -195,12 +199,12 @@ dialogueBank = ExtResource("19_rvx5e")
 autoExtend = true
 
 [node name="ChatBotRecipe" type="RichTextLabel" parent="Chatbot" unique_id=54008943]
-visible = false
+z_as_relative = false
 offset_left = -293.18097
 offset_top = -266.7631
 offset_right = 301.55756
 offset_bottom = 234.97849
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("17_k4kfc")
 theme_override_fonts/bold_font = ExtResource("17_k4kfc")
 theme_override_fonts/bold_italics_font = ExtResource("17_k4kfc")
@@ -222,11 +226,16 @@ top_level = true
 z_as_relative = false
 position = Vector2(-342.6772, -476.34143)
 scale = Vector2(0.7781506, 0.74540937)
-texture = ExtResource("27_lfljr")
+texture = SubResource("CompressedTexture2D_lfljr")
 
-[node name="SceneSpawner" parent="." unique_id=1504049884 instance=ExtResource("24_0s30y")]
-position = Vector2(-855, 447)
-spawnableScene = ExtResource("8_fvivi")
+[node name="FishEyeSpawner" parent="." unique_id=1504049884 instance=ExtResource("24_0s30y")]
+position = Vector2(-895, 440)
+spawnableScene = ExtResource("25_41v4r")
+metadata/GarnishData = ExtResource("26_ix8wc")
+
+[node name="CrabStickSpawner" parent="." unique_id=820162645 instance=ExtResource("24_0s30y")]
+position = Vector2(-759, 439)
+metadata/GarnishData = ExtResource("26_ix8wc")
 
 [node name="LiquidDispenser" parent="." unique_id=956457883 instance=ExtResource("26_e5jey")]
 z_index = -6
@@ -235,6 +244,21 @@ position = Vector2(842, 116)
 [node name="Background" type="Sprite2D" parent="." unique_id=602345615]
 show_behind_parent = true
 z_index = -100
-texture = ExtResource("30_41v4r")
+z_as_relative = false
+texture = ExtResource("24_87gjg")
+
+[node name="Absinthe" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
+position = Vector2(-900, -225)
+metadata/Liquid = ExtResource("32_ix8wc")
+
+[node name="BottleCatcher" parent="Absinthe" unique_id=72906268 instance=ExtResource("12_lfljr")]
+position = Vector2(-901, -122)
+
+[node name="Brandy" parent="." unique_id=537746372 instance=ExtResource("3_iy0dp")]
+position = Vector2(-756, -228)
+metadata/Liquid = ExtResource("33_3kb3r")
+
+[node name="BottleCatcher" parent="Brandy" unique_id=741567597 instance=ExtResource("12_lfljr")]
+position = Vector2(-759, -122)
 
 [editable path="Characters"]

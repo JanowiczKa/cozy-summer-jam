@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GarnishData" format=3 uid="uid://cywo6mwtk4ro8"]
+
+[ext_resource type="Texture2D" uid="uid://bsruwkko8nedx" path="res://Bar Assets/Garnishes/Fish Eye.png" id="1_jja5v"]
+[ext_resource type="Script" uid="uid://spgfawkgyibm" path="res://Scripts/GarnishData.cs" id="2_c6m7r"]
+
+[resource]
+script = ExtResource("2_c6m7r")
+GarnishName = "FishEye"
+GarnishTexture = ExtResource("1_jja5v")
