@@ -3,6 +3,8 @@ using System;
 
 public partial class Chatbot : Sprite2D
 {
+	[Export(PropertyHint.FilePath)] Area2D clickableArea;
+
 	[Export]
 	public float velocity;	// 50.0
 	private float currentVelocity;
@@ -20,6 +22,8 @@ public partial class Chatbot : Sprite2D
 		currentVelocity = (float)0.0;
 		dialogueNode = GetChild<ChatBotDialogue>(0);
 		recipeNode = GetChild<ChatBotRecipe>(1);
+
+		clickableArea.InputEvent += OnInputEvent;
 		controller = GetNode<EventController>("/root/BarScene/EventController");
 	}
 
@@ -39,19 +43,19 @@ public partial class Chatbot : Sprite2D
 
 	}
 
-	public override void _Input(InputEvent @event)
-	{
-		// testing purposes only
-		if (@event.IsActionPressed("BotExtend"))
-		{
-			AnimationStart();
-		}
+	public void OnInputEvent(Node viewport, InputEvent @event, long shape_idx)
+	{	
+		var isMouseEvent = @event is InputEventMouseButton;
+		
+		if (!isMouseEvent) return;
+		
+		var mouseEvent = (InputEventMouseButton)@event;
 
-		// testing purposes only
-		if (@event.IsActionPressed("BotRevert"))
-		{
+		var pressed = mouseEvent.Pressed;
+		var isLeftClick = mouseEvent.GetButtonIndex() == MouseButton.Left;
+		
+		if (isLeftClick && pressed) 
 			AnimationStart();
-		}
 	}
 
 	public void AnimationStart()

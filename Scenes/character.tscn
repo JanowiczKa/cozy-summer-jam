@@ -1,29 +1,12 @@
 [gd_scene format=3 uid="uid://dhs5evb6h75wu"]
 
-[ext_resource type="Texture2D" uid="uid://v8il60nx14bi" path="res://Sprites/Customers/Sans (placeholder)/sansbase.png" id="1_3mn46"]
 [ext_resource type="Script" uid="uid://daprdl45r836x" path="res://Scripts/Customers/Character.cs" id="1_gase8"]
 [ext_resource type="Script" uid="uid://d3eai5vrvalyi" path="res://Scripts/Customers/CharacterSprite.cs" id="2_ticvp"]
-[ext_resource type="Texture2D" uid="uid://canuacfaatprt" path="res://Sprites/Customers/Sans (placeholder)/Expressions/sansexpression1.png" id="3_dk5p5"]
-[ext_resource type="Texture2D" uid="uid://bst7mggacu1fa" path="res://Sprites/Customers/Sans (placeholder)/Expressions/sansexpression2.png" id="4_d1l3k"]
 [ext_resource type="Script" uid="uid://wnmnkeqa5fh5" path="res://Scripts/Customers/CharacterExpression.cs" id="4_dk5p5"]
 [ext_resource type="FontFile" uid="uid://3hs0qfi7pbwn" path="res://Fonts/font.ttf" id="6_bvy42"]
 [ext_resource type="Script" uid="uid://2ihtqrg05bjl" path="res://Scripts/Customers/RichTextLabel.cs" id="7_ywvfl"]
 [ext_resource type="AudioStream" uid="uid://h4gfu2w0swfo" path="res://Audio/voice_sans.mp3" id="8_sh1xl"]
 [ext_resource type="Script" uid="uid://cxf55bupraocb" path="res://Scripts/Customers/AudioStreamPlayer.cs" id="9_gase8"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2esnv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_dk5p5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_d1l3k")
-}],
-"loop": true,
-"name": &"Expressions",
-"speed": 5.0
-}]
 
 [node name="Characters" type="Node2D" unique_id=623045154]
 script = ExtResource("1_gase8")
@@ -31,11 +14,9 @@ script = ExtResource("1_gase8")
 [node name="CharacterSprite" type="Sprite2D" parent="." unique_id=1052017425]
 position = Vector2(956, 588)
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_3mn46")
 script = ExtResource("2_ticvp")
 
 [node name="CharacterExpression" type="AnimatedSprite2D" parent="CharacterSprite" unique_id=1294962647]
-sprite_frames = SubResource("SpriteFrames_2esnv")
 animation = &"Expressions"
 script = ExtResource("4_dk5p5")
 

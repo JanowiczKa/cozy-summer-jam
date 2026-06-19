@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Drink" format=3 uid="uid://ly05ftyuapuf"]
+
+[ext_resource type="Resource" uid="uid://1yti2v13uwic" path="res://Resources/Liquids/Rum.tres" id="1_fn0qg"]
+[ext_resource type="Resource" uid="uid://bdnktcsklt801" path="res://Resources/Liquids/CrabshellCola.tres" id="2_yjylp"]
+[ext_resource type="Script" uid="uid://cvqvnbumuygs2" path="res://Scripts/Drink.cs" id="3_txpfv"]
+
+[resource]
+script = ExtResource("3_txpfv")
+DrinkName = "Rum and Coke"
+DrinkList = Array[Object]([ExtResource("1_fn0qg"), ExtResource("1_fn0qg"), ExtResource("1_fn0qg"), ExtResource("1_fn0qg"), ExtResource("1_fn0qg"), ExtResource("1_fn0qg"), ExtResource("1_fn0qg"), ExtResource("1_fn0qg"), ExtResource("1_fn0qg"), ExtResource("1_fn0qg"), ExtResource("2_yjylp"), ExtResource("2_yjylp"), ExtResource("2_yjylp"), ExtResource("2_yjylp"), ExtResource("2_yjylp"), ExtResource("2_yjylp"), ExtResource("2_yjylp"), ExtResource("2_yjylp"), ExtResource("2_yjylp"), ExtResource("2_yjylp")])
+metadata/_custom_type_script = "uid://cvqvnbumuygs2"

@@ -16,6 +16,11 @@ public partial class MouseDragController : Node2D
 		Instance = this;
 	}
 
+	public bool IsHoldingObject()
+	{
+		return currentDraggedObject != null;
+	}
+
 	public override void _Ready()
 	{
 		//shit for performance but only happens once on load, figure out better way if we have time, oof
@@ -36,7 +41,7 @@ public partial class MouseDragController : Node2D
 
 		holdingParentObject = GetNode<Node2D>("HoldingObjectParent");
 
-		GD.Print(holdingParentObject);
+		//GD.Print(holdingParentObject);
 	}
 
 	public void RegisterMouseDrag(MouseDrag mouseDragObject)
@@ -52,7 +57,7 @@ public partial class MouseDragController : Node2D
 
 		currentDraggedObject.Reparent(holdingParentObject);
 
-		GD.Print("Controller knows of drag");
+		//GD.Print("Controller knows of drag");
 	}
 
 	public override void _Process(double delta)

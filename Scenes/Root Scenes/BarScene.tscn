@@ -5,7 +5,8 @@
 [ext_resource type="Script" uid="uid://djc871d8462ux" path="res://Scripts/GameManager.cs" id="2_fvivi"]
 [ext_resource type="Script" uid="uid://cuaj5mroc22rv" path="res://Scripts/GameRound.cs" id="3_85wtc"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
-[ext_resource type="Resource" uid="uid://b5qte3llaamjx" path="res://Resources/Customers/Sans/SansData.tres" id="3_kc8my"]
+[ext_resource type="Resource" uid="uid://bltfn3xdu66qf" path="res://Resources/Customers/Finn/Finn_Shift_1.tres" id="4_3kb3r"]
+[ext_resource type="Resource" uid="uid://b75xgt6lktkik" path="res://Resources/Customers/Cephanie/Cephanie_Shift_1.tres" id="4_m0ogi"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/character.tscn" id="5_4aloy"]
 [ext_resource type="Script" uid="uid://d06fruxa5ksow" path="res://Scripts/DrinkSubmissionArea.cs" id="6_5lf26"]
 [ext_resource type="Script" uid="uid://q14hrtgyhxvm" path="res://Scripts/DropletSpawner.cs" id="6_8yvl4"]
@@ -13,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://cspb5c30a5a15" path="res://Scenes/Droplet.tscn" id="7_0s30y"]
 [ext_resource type="Texture2D" uid="uid://n7dd6g735fis" path="res://Bar Assets/Environment/Poles.png" id="9_41v4r"]
 [ext_resource type="Texture2D" uid="uid://dt8ueawr0aqk5" path="res://Bar Assets/Environment/Shelves.png" id="10_lfljr"]
-[ext_resource type="Texture2D" uid="uid://bna6piuhhnyu5" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="10_x7ban"]
-[ext_resource type="SpriteFrames" uid="uid://dkmbybe3cj75j" path="res://Resources/Customers/Sans/SansFrames.tres" id="11_45dlq"]
 [ext_resource type="Texture2D" uid="uid://c5gmlrdktslk" path="res://Bar Assets/Environment/Garnish trays.png" id="11_ix8wc"]
 [ext_resource type="PackedScene" uid="uid://ch7rr4ovwg62a" path="res://Scenes/bottle_catcher.tscn" id="12_lfljr"]
 [ext_resource type="Script" uid="uid://dyknpy1p1lj4p" path="res://Scripts/Chatbot/Chatbot.cs" id="16_k4kfc"]
@@ -57,14 +56,12 @@
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
-customers = Array[Object]([ExtResource("3_kc8my")])
+customers = Array[Object]([ExtResource("4_3kb3r"), ExtResource("4_m0ogi")])
 metadata/_custom_type_script = "uid://cuaj5mroc22rv"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_85wtc"]
-size = Vector2(1920, 12.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf26"]
-size = Vector2(20.9, 20)
+[sub_resource type="LabelSettings" id="LabelSettings_ix8wc"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e5jey"]
 load_path = "res://.godot/imported/bar_counter.png-172b884e861448a0657ae2e42b3ba574.ctex"
@@ -72,8 +69,17 @@ load_path = "res://.godot/imported/bar_counter.png-172b884e861448a0657ae2e42b3ba
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -169.5
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf26"]
+size = Vector2(13.200005, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kb3r"]
+size = Vector2(616, 547)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_41v4r"]
 load_path = "res://.godot/imported/mixr_box.png-30061171882d1925b26a1b236a8e253d.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ix8wc"]
+size = Vector2(742.72504, 602)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lfljr"]
 load_path = "res://.godot/imported/mixr_face.png-023bd0a785a4eb8cefb9319754b97813.ctex"
@@ -83,43 +89,53 @@ script = ExtResource("1_gqqm6")
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1962037065]
 
-[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea", "glass")]
+[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea", "timerLabel", "startGameTimer", "glass")]
 script = ExtResource("2_fvivi")
 gameRounds = Array[Resource]([SubResource("Resource_5lf26")])
 eventController = NodePath("../EventController")
-drinkSubmissionArea = NodePath("../BarScene/BarCounter")
+drinkSubmissionArea = NodePath("../BarScene/DrinkSubmissionArea")
+timerLabel = NodePath("../Control/Label")
+startGameTimer = NodePath("Timer")
 glass = NodePath("../DrinkGlass")
+allowedTimeToMixDrinks = 30.0
 
-[node name="EventController" type="Node" parent="." unique_id=838439069]
+[node name="Timer" type="Timer" parent="GameManager" unique_id=843113400]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="EventController" type="Node" parent="." unique_id=838439069 node_paths=PackedStringArray("characterInteractionArea")]
 script = ExtResource("6_r4now")
+characterInteractionArea = NodePath("../Characters/CharacterInteractionArea")
+
+[node name="Control" type="Control" parent="." unique_id=1284454079]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1319892436]
+layout_mode = 0
+offset_left = 565.0
+offset_top = -487.0
+offset_right = 900.0
+offset_bottom = -418.0
+text = "Time Left: 40s"
+label_settings = SubResource("LabelSettings_ix8wc")
 
 [node name="DropletSpawner" type="Node2D" parent="." unique_id=1740632994]
 script = ExtResource("6_8yvl4")
 dropletScene = ExtResource("7_0s30y")
 
+[node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
+
 [node name="BarScene" type="Node2D" parent="." unique_id=413730612]
 
-[node name="BarCounter" type="StaticBody2D" parent="BarScene" unique_id=1223054503 node_paths=PackedStringArray("drinkSubmissionArea")]
-position = Vector2(0, 50)
-collision_layer = 8
-collision_mask = 8
-script = ExtResource("6_5lf26")
-drinkSubmissionArea = NodePath("Area2D")
-timeToSubmit = 1.5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/BarCounter" unique_id=165915098]
-position = Vector2(0, 190)
-shape = SubResource("RectangleShape2D_85wtc")
-
-[node name="Area2D" type="Area2D" parent="BarScene/BarCounter" unique_id=32967087]
-collision_layer = 8
-collision_mask = 8
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/BarCounter/Area2D" unique_id=302225844]
-position = Vector2(333, 185)
-scale = Vector2(10, 1)
-shape = SubResource("RectangleShape2D_5lf26")
+[node name="Background" type="Sprite2D" parent="BarScene" unique_id=602345615]
+show_behind_parent = true
+z_index = -100
+z_as_relative = false
+texture = ExtResource("24_87gjg")
 
 [node name="Table" type="StaticBody2D" parent="BarScene" unique_id=1237125352]
 position = Vector2(0, 301)
@@ -132,7 +148,7 @@ scale = Vector2(1.0015625, 0.98113215)
 texture = SubResource("CompressedTexture2D_e5jey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/Table" unique_id=779099646]
-position = Vector2(0, -159)
+position = Vector2(0, -400)
 scale = Vector2(9, 2)
 shape = SubResource("WorldBoundaryShape2D_gr58c")
 
@@ -146,46 +162,65 @@ z_index = -5
 texture = ExtResource("10_lfljr")
 
 [node name="Trays" type="Sprite2D" parent="BarScene" unique_id=2110182133]
+z_index = -1
 texture = ExtResource("11_ix8wc")
 
-[node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
+[node name="DrinkSubmissionArea" type="Area2D" parent="BarScene" unique_id=32967087]
+position = Vector2(336, 227)
+collision_layer = 8
+collision_mask = 8
+monitorable = false
+script = ExtResource("6_5lf26")
+timeToSubmit = 2.0
 
-[node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
-position = Vector2(385, 408)
-input_pickable = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/DrinkSubmissionArea" unique_id=302225844]
+scale = Vector2(10, 1)
+shape = SubResource("RectangleShape2D_5lf26")
 
 [node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
-position = Vector2(-953, -818)
+position = Vector2(-103, 30)
 
 [node name="CharacterSprite" parent="Characters" index="0" unique_id=1052017425]
 z_index = -99
-position = Vector2(825, 697)
+position = Vector2(0, -125)
 scale = Vector2(0.4577777, 0.4577777)
-texture = ExtResource("10_x7ban")
 
 [node name="CharacterExpression" parent="Characters/CharacterSprite" index="0" unique_id=1294962647]
 position = Vector2(-9.536743e-07, -2.1844597)
-sprite_frames = ExtResource("11_45dlq")
 
-[node name="BubbleText" parent="Characters/SpeechBubble" parent_id_path=PackedInt32Array(623045154, 1476035436) index="0" unique_id=1648223998]
+[node name="SpeechBubble" parent="Characters" index="1" unique_id=1476035436]
+position = Vector2(131, -383)
+
+[node name="BubbleText" parent="Characters/SpeechBubble" index="0" unique_id=1648223998]
 anchor_left = 976.00006
 anchor_top = 415.00003
 anchor_right = 1382.0001
 anchor_bottom = 598.0
-offset_left = -6.1035156e-05
-offset_top = -3.0517578e-05
-offset_right = -0.00012207031
-offset_bottom = 0.0
+offset_left = -976.00006
+offset_top = -415.00003
+offset_right = -976.0001
+offset_bottom = -415.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 autowrap_mode = 2
 justification_flags = 162
 
-[node name="Chatbot" type="Sprite2D" parent="." unique_id=1539476651]
+[node name="CharacterInteractionArea" type="Area2D" parent="Characters" unique_id=101328624]
+collision_layer = 268435456
+collision_mask = 268435456
+collision_priority = 0.5
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Characters/CharacterInteractionArea" unique_id=1609009158]
+position = Vector2(0, -97.5)
+shape = SubResource("RectangleShape2D_3kb3r")
+
+[node name="Chatbot" type="Sprite2D" parent="." unique_id=1539476651 node_paths=PackedStringArray("clickableArea")]
 z_index = -50
 position = Vector2(0, -701)
 scale = Vector2(1.0744218, 0.8770764)
 texture = SubResource("CompressedTexture2D_41v4r")
 script = ExtResource("16_k4kfc")
+clickableArea = NodePath("Area2D")
 velocity = 200.0
 
 [node name="ChatBotDialogue" type="RichTextLabel" parent="Chatbot" unique_id=853212724]
@@ -199,6 +234,7 @@ offset_left = -825.76
 offset_top = -1418.6001
 offset_right = -1213.0801
 offset_bottom = -1441.7202
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("17_k4kfc")
 theme_override_fonts/bold_font = ExtResource("17_k4kfc")
@@ -227,6 +263,7 @@ offset_left = -293.18097
 offset_top = -266.7631
 offset_right = 301.55756
 offset_bottom = 234.97849
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("17_k4kfc")
 theme_override_fonts/bold_font = ExtResource("17_k4kfc")
@@ -240,6 +277,16 @@ vertical_alignment = 1
 script = ExtResource("20_10ytx")
 ingredientList = ExtResource("21_ddpem")
 
+[node name="Area2D" type="Area2D" parent="Chatbot" unique_id=910664855]
+scale = Vector2(1, 0.9999997)
+collision_layer = 1073741824
+collision_mask = 1073741824
+priority = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chatbot/Area2D" unique_id=2043200569]
+scale = Vector2(1, 0.9999999)
+shape = SubResource("RectangleShape2D_ix8wc")
+
 [node name="ChatBotAudio" type="AudioStreamPlayer" parent="Chatbot" unique_id=97269127]
 stream = ExtResource("22_8yvl4")
 script = ExtResource("22_tcgbs")
@@ -251,41 +298,48 @@ position = Vector2(-342.6772, -476.34143)
 scale = Vector2(0.7781506, 0.74540937)
 texture = SubResource("CompressedTexture2D_lfljr")
 
-[node name="FishEyeSpawner" parent="." unique_id=1504049884 instance=ExtResource("24_0s30y")]
+[node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
+position = Vector2(-176, 115)
+input_pickable = false
+
+[node name="Garnishes" type="Node2D" parent="." unique_id=396753750]
+z_index = -1
+
+[node name="FishEyeSpawner" parent="Garnishes" unique_id=1504049884 instance=ExtResource("24_0s30y")]
 position = Vector2(-895, 440)
 spawnableScene = ExtResource("25_41v4r")
 metadata/GarnishData = ExtResource("26_ix8wc")
 
-[node name="CrabStickSpawner" parent="." unique_id=820162645 instance=ExtResource("24_0s30y")]
+[node name="CrabStickSpawner" parent="Garnishes" unique_id=820162645 instance=ExtResource("24_0s30y")]
 position = Vector2(-759, 439)
 metadata/GarnishData = ExtResource("26_ix8wc")
 
-[node name="GravelSpawner" parent="." unique_id=2040881669 instance=ExtResource("24_0s30y")]
+[node name="GravelSpawner" parent="Garnishes" unique_id=2040881669 instance=ExtResource("24_0s30y")]
 position = Vector2(-623, 439)
 spawnableScene = ExtResource("27_7gwqm")
 metadata/GarnishData = ExtResource("28_50n6l")
 
-[node name="CaviarSpawner" parent="." unique_id=362460524 instance=ExtResource("24_0s30y")]
+[node name="CaviarSpawner" parent="Garnishes" unique_id=362460524 instance=ExtResource("24_0s30y")]
 position = Vector2(-350, 439)
 spawnableScene = ExtResource("29_4xfta")
 metadata/GarnishData = ExtResource("30_org7b")
 
-[node name="CoralDustSpawner" parent="." unique_id=876349438 instance=ExtResource("24_0s30y")]
+[node name="CoralDustSpawner" parent="Garnishes" unique_id=876349438 instance=ExtResource("24_0s30y")]
 position = Vector2(63, 440)
 spawnableScene = ExtResource("31_08sjm")
 metadata/GarnishData = ExtResource("32_1janj")
 
-[node name="FishFlakeSpawner" parent="." unique_id=153921981 instance=ExtResource("24_0s30y")]
+[node name="FishFlakeSpawner" parent="Garnishes" unique_id=153921981 instance=ExtResource("24_0s30y")]
 position = Vector2(-212, 439)
 spawnableScene = ExtResource("33_3u0o2")
 metadata/GarnishData = ExtResource("34_sgcri")
 
-[node name="OctopusSpawner" parent="." unique_id=2087098922 instance=ExtResource("24_0s30y")]
+[node name="OctopusSpawner" parent="Garnishes" unique_id=2087098922 instance=ExtResource("24_0s30y")]
 position = Vector2(-73, 439)
 spawnableScene = ExtResource("35_sgcri")
 metadata/GarnishData = ExtResource("36_ectd1")
 
-[node name="WormSpawner" parent="." unique_id=1211788360 instance=ExtResource("24_0s30y")]
+[node name="WormSpawner" parent="Garnishes" unique_id=1211788360 instance=ExtResource("24_0s30y")]
 position = Vector2(-487, 440)
 spawnableScene = ExtResource("37_lva6t")
 metadata/GarnishData = ExtResource("38_r8mpj")
@@ -294,94 +348,96 @@ metadata/GarnishData = ExtResource("38_r8mpj")
 z_index = -6
 position = Vector2(842, 116)
 
-[node name="Background" type="Sprite2D" parent="." unique_id=602345615]
+[node name="Background" type="Sprite2D" parent="." unique_id=2109556942]
 show_behind_parent = true
 z_index = -100
 z_as_relative = false
 texture = ExtResource("24_87gjg")
 
-[node name="Absinthe" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
+[node name="Node2D" type="Node2D" parent="." unique_id=300409803]
+
+[node name="Absinthe" parent="Node2D" unique_id=1570976637 instance=ExtResource("3_iy0dp")]
 position = Vector2(-900, -225)
 metadata/Liquid = ExtResource("32_ix8wc")
 
-[node name="BottleCatcher" parent="Absinthe" unique_id=72906268 instance=ExtResource("12_lfljr")]
+[node name="BottleCatcher" parent="Node2D/Absinthe" unique_id=72906268 instance=ExtResource("12_lfljr")]
 position = Vector2(-901, -122)
 
-[node name="Brandy" parent="." unique_id=537746372 instance=ExtResource("3_iy0dp")]
+[node name="Brandy" parent="Node2D" unique_id=537746372 instance=ExtResource("3_iy0dp")]
 position = Vector2(-756, -228)
 metadata/Liquid = ExtResource("33_3kb3r")
 
-[node name="BottleCatcher" parent="Brandy" unique_id=741567597 instance=ExtResource("12_lfljr")]
+[node name="BottleCatcher" parent="Node2D/Brandy" unique_id=741567597 instance=ExtResource("12_lfljr")]
 position = Vector2(-759, -122)
 
-[node name="JimBream" parent="." unique_id=1540940447 instance=ExtResource("3_iy0dp")]
+[node name="JimBream" parent="Node2D" unique_id=1540940447 instance=ExtResource("3_iy0dp")]
 position = Vector2(-613, -225)
 metadata/Liquid = ExtResource("33_rct87")
 
-[node name="BottleCatcher" parent="JimBream" unique_id=1605546335 instance=ExtResource("12_lfljr")]
+[node name="BottleCatcher" parent="Node2D/JimBream" unique_id=1605546335 instance=ExtResource("12_lfljr")]
 position = Vector2(-617, -123)
 
-[node name="Rum" parent="." unique_id=948928079 instance=ExtResource("3_iy0dp")]
+[node name="Rum" parent="Node2D" unique_id=948928079 instance=ExtResource("3_iy0dp")]
 position = Vector2(-899, -481)
 metadata/Liquid = ExtResource("46_kgahu")
 
-[node name="BottleCatcher" parent="Rum" unique_id=277625870 instance=ExtResource("12_lfljr")]
+[node name="BottleCatcher" parent="Node2D/Rum" unique_id=277625870 instance=ExtResource("12_lfljr")]
 position = Vector2(-901, -394)
 
-[node name="Sludge" parent="." unique_id=487011043 instance=ExtResource("3_iy0dp")]
+[node name="Sludge" parent="Node2D" unique_id=487011043 instance=ExtResource("3_iy0dp")]
 position = Vector2(-756, -483)
 metadata/Liquid = ExtResource("35_ia1q3")
 
-[node name="BottleCatcher" parent="Sludge" unique_id=606814033 instance=ExtResource("12_lfljr")]
+[node name="BottleCatcher" parent="Node2D/Sludge" unique_id=606814033 instance=ExtResource("12_lfljr")]
 position = Vector2(-759, -394)
 
-[node name="Tequila" parent="." unique_id=29028941 instance=ExtResource("3_iy0dp")]
+[node name="Tequila" parent="Node2D" unique_id=29028941 instance=ExtResource("3_iy0dp")]
 position = Vector2(-613, -483)
 metadata/Liquid = ExtResource("34_ia1q3")
 
-[node name="BottleCatcher" parent="Tequila" unique_id=775924253 instance=ExtResource("12_lfljr")]
+[node name="BottleCatcher" parent="Node2D/Tequila" unique_id=775924253 instance=ExtResource("12_lfljr")]
 position = Vector2(-613, -394)
 
-[node name="Vermouth" parent="." unique_id=2135720493 instance=ExtResource("3_iy0dp")]
-position = Vector2(665, -482)
+[node name="Vermouth" parent="Node2D" unique_id=2135720493 instance=ExtResource("3_iy0dp")]
+position = Vector2(-892, 130)
 metadata/Liquid = ExtResource("36_omxjo")
 
-[node name="BottleCatcher" parent="Vermouth" unique_id=1724994833 instance=ExtResource("12_lfljr")]
-position = Vector2(666, -394)
+[node name="BottleCatcher" parent="Node2D/Vermouth" unique_id=1724994833 instance=ExtResource("12_lfljr")]
+position = Vector2(-885, 142)
 
-[node name="Vodka" parent="." unique_id=401432122 instance=ExtResource("3_iy0dp")]
-position = Vector2(843, -480)
+[node name="Vodka" parent="Node2D" unique_id=401432122 instance=ExtResource("3_iy0dp")]
+position = Vector2(-739, 128)
 metadata/Liquid = ExtResource("37_6acwc")
 
-[node name="BottleCatcher" parent="Vodka" unique_id=1659570102 instance=ExtResource("12_lfljr")]
-position = Vector2(846, -394)
+[node name="BottleCatcher" parent="Node2D/Vodka" unique_id=1659570102 instance=ExtResource("12_lfljr")]
+position = Vector2(-744, 140)
 
-[node name="AgaveSyrup" parent="." unique_id=468273624 instance=ExtResource("3_iy0dp")]
-position = Vector2(-936, 130)
+[node name="AgaveSyrup" parent="Node2D" unique_id=468273624 instance=ExtResource("3_iy0dp")]
+position = Vector2(559, 428)
 metadata/Liquid = ExtResource("50_r8mpj")
 
-[node name="BottleCatcher" parent="AgaveSyrup" unique_id=2023703862 instance=ExtResource("12_lfljr")]
-position = Vector2(-905, 155)
+[node name="BottleCatcher" parent="Node2D/AgaveSyrup" unique_id=2023703862 instance=ExtResource("12_lfljr")]
+position = Vector2(592, 451)
 
-[node name="BaitSyrup" parent="." unique_id=1576688945 instance=ExtResource("3_iy0dp")]
-position = Vector2(-829, 139)
+[node name="BaitSyrup" parent="Node2D" unique_id=1576688945 instance=ExtResource("3_iy0dp")]
+position = Vector2(666, 437)
 metadata/Liquid = ExtResource("51_ysdqf")
 
-[node name="BottleCatcher" parent="BaitSyrup" unique_id=1189822631 instance=ExtResource("12_lfljr")]
-position = Vector2(-807, 155)
+[node name="BottleCatcher" parent="Node2D/BaitSyrup" unique_id=1189822631 instance=ExtResource("12_lfljr")]
+position = Vector2(690, 451)
 
-[node name="InkSyrup" parent="." unique_id=587771366 instance=ExtResource("3_iy0dp")]
-position = Vector2(-701, 144)
+[node name="InkSyrup" parent="Node2D" unique_id=587771366 instance=ExtResource("3_iy0dp")]
+position = Vector2(794, 442)
 metadata/Liquid = ExtResource("52_tihuo")
 
-[node name="BottleCatcher" parent="InkSyrup" unique_id=1197500608 instance=ExtResource("12_lfljr")]
-position = Vector2(-708, 155)
+[node name="BottleCatcher" parent="Node2D/InkSyrup" unique_id=1197500608 instance=ExtResource("12_lfljr")]
+position = Vector2(789, 451)
 
-[node name="KelpSyrup" parent="." unique_id=1466005629 instance=ExtResource("3_iy0dp")]
-position = Vector2(-594, 135)
+[node name="KelpSyrup" parent="Node2D" unique_id=1466005629 instance=ExtResource("3_iy0dp")]
+position = Vector2(901, 433)
 metadata/Liquid = ExtResource("53_tkdt8")
 
-[node name="BottleCatcher" parent="KelpSyrup" unique_id=612455669 instance=ExtResource("12_lfljr")]
-position = Vector2(-610, 155)
+[node name="BottleCatcher" parent="Node2D/KelpSyrup" unique_id=612455669 instance=ExtResource("12_lfljr")]
+position = Vector2(887, 451)
 
 [editable path="Characters"]

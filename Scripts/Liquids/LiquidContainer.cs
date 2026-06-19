@@ -24,7 +24,7 @@ public partial class LiquidContainer : Area2D //MouseDrag
 
 	public void Collision(Node body)
 	{
-		GD.Print("something entered the glass! " + body.Name);
+		//GD.Print("something entered the glass! " + body.Name);
 
 		if (body is Droplet)
 		{

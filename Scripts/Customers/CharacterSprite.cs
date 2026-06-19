@@ -100,6 +100,12 @@ public partial class CharacterSprite : Sprite2D
 	{
 		is_animated = true;
 		animtp = AnimationType.FadeIn;
+
+		var controllerNode = EventController.Instance;
+		var characterExpression = GetNode<AnimatedSprite2D>("CharacterExpression");
+
+		Texture = controllerNode.customerData.Base_customer_texture;
+        characterExpression.SpriteFrames = controllerNode.customerData.Customer_expression_textures;
 	}
 
 	private void InitFadeOutAnimation()
@@ -232,7 +238,7 @@ public partial class CharacterSprite : Sprite2D
 
 	private void AnimateFadeOut()
 	{
-		GD.Print("Fade out");
+		//GD.Print("Fade out");
 		if (total_time_elapsed >= 0.7)
 		{
 			if (rgb_modulation.A <= 1.0 && rgb_modulation.A != 0.0)
