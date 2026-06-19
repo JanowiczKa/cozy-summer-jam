@@ -54,6 +54,9 @@ size = Vector2(13.200005, 20)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_41v4r"]
 load_path = "res://.godot/imported/mixr_box.png-30061171882d1925b26a1b236a8e253d.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ix8wc"]
+size = Vector2(742.72504, 602)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lfljr"]
 load_path = "res://.godot/imported/mixr_face.png-023bd0a785a4eb8cefb9319754b97813.ctex"
 
@@ -166,12 +169,13 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 autowrap_mode = 2
 justification_flags = 162
 
-[node name="Chatbot" type="Sprite2D" parent="." unique_id=1539476651]
+[node name="Chatbot" type="Sprite2D" parent="." unique_id=1539476651 node_paths=PackedStringArray("clickableArea")]
 z_index = -50
 position = Vector2(0, -701)
 scale = Vector2(1.0744218, 0.8770764)
 texture = SubResource("CompressedTexture2D_41v4r")
 script = ExtResource("16_k4kfc")
+clickableArea = NodePath("Area2D")
 velocity = 200.0
 
 [node name="ChatBotDialogue" type="RichTextLabel" parent="Chatbot" unique_id=853212724]
@@ -185,6 +189,7 @@ offset_left = -825.76
 offset_top = -1418.6001
 offset_right = -1213.0801
 offset_bottom = -1441.7202
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("17_k4kfc")
 theme_override_fonts/bold_font = ExtResource("17_k4kfc")
@@ -213,6 +218,7 @@ offset_left = -293.18097
 offset_top = -266.7631
 offset_right = 301.55756
 offset_bottom = 234.97849
+mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("17_k4kfc")
 theme_override_fonts/bold_font = ExtResource("17_k4kfc")
@@ -226,6 +232,16 @@ vertical_alignment = 1
 script = ExtResource("20_10ytx")
 ingredientList = ExtResource("21_ddpem")
 
+[node name="Area2D" type="Area2D" parent="Chatbot" unique_id=910664855]
+scale = Vector2(1, 0.9999997)
+collision_layer = 1073741824
+collision_mask = 1073741824
+priority = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chatbot/Area2D" unique_id=2043200569]
+scale = Vector2(1, 0.9999999)
+shape = SubResource("RectangleShape2D_ix8wc")
+
 [node name="ChatBotAudio" type="AudioStreamPlayer" parent="Chatbot" unique_id=97269127]
 stream = ExtResource("22_8yvl4")
 script = ExtResource("22_tcgbs")
@@ -238,7 +254,7 @@ scale = Vector2(0.7781506, 0.74540937)
 texture = SubResource("CompressedTexture2D_lfljr")
 
 [node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
-position = Vector2(385, 408)
+position = Vector2(-666, 146)
 input_pickable = false
 
 [node name="Garnishes" type="Node2D" parent="." unique_id=396753750]

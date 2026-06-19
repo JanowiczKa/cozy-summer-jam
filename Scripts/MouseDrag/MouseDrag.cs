@@ -52,7 +52,7 @@ public partial class MouseDrag : RigidBody2D
 
 	public void BeginDragging()
 	{
-		GD.Print("Began dragging");
+		//GD.Print("Began dragging");
 
 		mouseClickOffset = GlobalPosition - GetGlobalMousePosition();
 		isHeld = true;

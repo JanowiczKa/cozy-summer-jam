@@ -83,61 +83,61 @@ public partial class EventController : Node
 		}
 	}
 
-	public override void _Input(InputEvent @event)
-	{
-		// Player input for Introduction, Outro and Result dialog sequences
-		if (@event.IsActionPressed("Space") && (gmstate == GameState.Introduction || gmstate == GameState.Result || gmstate == GameState.Outro))
-		{
-			// Change game states if the at the end of a dialog sequence
-			if (sequence_index >= expression_sequence.Length || sequence_index >= speech_sequence.Length)
-			{
-				switch(gmstate)
-				{
-					case GameState.Introduction:
-						if (chatbotDialogue.dlgMode == ChatBotDialogue.DialogueMode.Default)
-						{
-							EmitSignal(SignalName.ClearDialogAndExpression);
-							EmitSignal(SignalName.StartBounceAnimation);
-							chatbotDialogue.PlayIntro(customerData.Final_drink_target.DrinkName);
-						}
-						break;
-					case GameState.Outro:
-						if (characterSprite.is_animated)
-							break;
-						EmitSignal(SignalName.StartDrinkingAnimation);
-						EmitSignal(SignalName.ClearDialogAndExpression);
-						break;
-					case GameState.Result:
-						EmitSignal(SignalName.StartFadeOut);
+	// public override void _Input(InputEvent @event)
+	// {
+	// 	// Player input for Introduction, Outro and Result dialog sequences
+	// 	if (@event.IsActionPressed("Space") && (gmstate == GameState.Introduction || gmstate == GameState.Result || gmstate == GameState.Outro))
+	// 	{
+	// 		// Change game states if the at the end of a dialog sequence
+	// 		if (sequence_index >= expression_sequence.Length || sequence_index >= speech_sequence.Length)
+	// 		{
+	// 			switch(gmstate)
+	// 			{
+	// 				case GameState.Introduction:
+	// 					if (chatbotDialogue.dlgMode == ChatBotDialogue.DialogueMode.Default)
+	// 					{
+	// 						EmitSignal(SignalName.ClearDialogAndExpression);
+	// 						EmitSignal(SignalName.StartBounceAnimation);
+	// 						chatbotDialogue.PlayIntro(customerData.Final_drink_target.DrinkName);
+	// 					}
+	// 					break;
+	// 				case GameState.Outro:
+	// 					if (characterSprite.is_animated)
+	// 						break;
+	// 					EmitSignal(SignalName.StartDrinkingAnimation);
+	// 					EmitSignal(SignalName.ClearDialogAndExpression);
+	// 					break;
+	// 				case GameState.Result:
+	// 					EmitSignal(SignalName.StartFadeOut);
 
-						chatbotDialogue.PlayOutro(score);
+	// 					chatbotDialogue.PlayOutro(score);
 
-						EmitSignal(SignalName.ClearDialogAndExpression);
-						break;
-				}
-				return;
-			}
+	// 					EmitSignal(SignalName.ClearDialogAndExpression);
+	// 					break;
+	// 			}
+	// 			return;
+	// 		}
 
-			// If not at the end of a dialog sequence
-			if (characterSprite.is_animated != true)
-			{
-				TriggerNextDialogLine();
-			}
+	// 		// If not at the end of a dialog sequence
+	// 		if (characterSprite.is_animated != true)
+	// 		{
+	// 			TriggerNextDialogLine();
+	// 		}
 				
-		}
+	// 	}
 
-		// testing purposes only
-		if (@event.IsActionPressed("FadeOut"))
-		{
-			MoveToOutroAndScoringSequence(true);
-		}
+	// 	// testing purposes only
+	// 	if (@event.IsActionPressed("FadeOut"))
+	// 	{
+	// 		MoveToOutroAndScoringSequence(true);
+	// 	}
 
-		// testing purposes only
-		if (@event.IsActionPressed("FadeIn"))
-		{
-			StartCustomerSequence(GD.Load<CustomerData>("res://Resources/Customers/Sans/SansData.tres"));
-		}
-	}
+	// 	// testing purposes only
+	// 	if (@event.IsActionPressed("FadeIn"))
+	// 	{
+	// 		StartCustomerSequence(GD.Load<CustomerData>("res://Resources/Customers/Sans/SansData.tres"));
+	// 	}
+	// }
 
 	public void StartGameplaySequence()
 	{
