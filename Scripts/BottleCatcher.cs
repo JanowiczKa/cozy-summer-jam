@@ -14,7 +14,7 @@ public partial class BottleCatcher : Area2D
 		notif = bottle.GetChild<VisibleOnScreenNotifier2D>(3);
 		LiquidData liquid = bottle.GetMeta("Liquid").As<LiquidData>();
 		tex = liquid.bottle;
-		//GD.Print("Texture: " + tex);
+		GD.Print("Texture: " + tex);
 
 	}
 
