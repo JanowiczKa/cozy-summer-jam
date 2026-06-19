@@ -61,44 +61,6 @@ position = Vector2(-865, -110)
 scale = Vector2(1.0298165, 0.9946332)
 texture = ExtResource("2_kqyic")
 
-[node name="Sea Water" type="Control" parent="." unique_id=1649482710]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -241.0
-offset_top = -346.0
-offset_right = -41.0
-offset_bottom = -306.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Button" type="Button" parent="Sea Water" unique_id=873481189 node_paths=PackedStringArray("parentDispenser")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.66
-anchor_top = 0.6
-anchor_right = 1.66
-anchor_bottom = 0.6
-offset_left = -52.0
-offset_top = -32.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
-theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
-icon = ExtResource("3_6e28s")
-flat = true
-script = ExtResource("3_etaux")
-liquid = ExtResource("4_suje7")
-parentDispenser = NodePath("../..")
-metadata/_edit_use_anchors_ = true
-
 [node name="Crabshell Cola" type="Control" parent="." unique_id=363961239]
 layout_mode = 3
 anchors_preset = 8
@@ -107,9 +69,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -241.0
-offset_top = -275.0
+offset_top = -343.0
 offset_right = -41.0
-offset_bottom = -235.0
+offset_bottom = -303.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -134,6 +96,44 @@ icon = ExtResource("3_6e28s")
 flat = true
 script = ExtResource("3_etaux")
 liquid = ExtResource("5_m3s6g")
+parentDispenser = NodePath("../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sea Water" type="Control" parent="." unique_id=1649482710]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -241.0
+offset_top = -278.0
+offset_right = -41.0
+offset_bottom = -238.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Sea Water" unique_id=873481189 node_paths=PackedStringArray("parentDispenser")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.66
+anchor_top = 0.6
+anchor_right = 1.66
+anchor_bottom = 0.6
+offset_left = -52.0
+offset_top = -32.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_6ra8a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1qtch")
+theme_override_styles/hover = SubResource("StyleBoxFlat_etaux")
+icon = ExtResource("3_6e28s")
+flat = true
+script = ExtResource("3_etaux")
+liquid = ExtResource("4_suje7")
 parentDispenser = NodePath("../..")
 metadata/_edit_use_anchors_ = true
 
