@@ -6,6 +6,7 @@ public partial class GameManager : Node
 	[Export] GameRound[] gameRounds;
 	[Export(PropertyHint.FilePath)] EventController eventController;
 	[Export(PropertyHint.FilePath)] DrinkSubmissionArea drinkSubmissionArea;
+	[Export(PropertyHint.FilePath)] Label timerLabel;
 
 	private GameRound currentRound;
 	private int currentRoundIndex = 0;
@@ -23,6 +24,7 @@ public partial class GameManager : Node
 		eventController.Connect("EndOfCustomerSequence", new Callable(this, MethodName.EndCurrentCustomerInteraction));
 
 		drinkSubmissionArea.OnDrinkSubmitted += SubmitDrinkToCustomer;
+		timerLabel.Text = "";
 	}
 
 	private void StartNextRound()
@@ -66,13 +68,19 @@ public partial class GameManager : Node
 		currentCustomerIndex++;
 
 		StartNextCustomerInteraction();
+		timerLabel.Text = "";
+	}
+
+	private void UpdateTimerWithDelta(double delta)
+	{
+		timer += delta;
+		timerLabel.Text = $"Time Left: {timer}s";
 	}
 
 	public override void _Process(double delta)
 	{
 		if (!timerIsEnabled) return;
 
-		timer += delta;
 
 		if (timer < allowedTimeToMixDrinks) return;
 

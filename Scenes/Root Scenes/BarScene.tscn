@@ -38,17 +38,18 @@ script = ExtResource("3_85wtc")
 customers = Array[Object]([ExtResource("3_kc8my")])
 metadata/_custom_type_script = "uid://cuaj5mroc22rv"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_85wtc"]
-size = Vector2(1920, 12.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf26"]
-size = Vector2(20.9, 20)
+[sub_resource type="LabelSettings" id="LabelSettings_ix8wc"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e5jey"]
 load_path = "res://.godot/imported/bar_counter.png-172b884e861448a0657ae2e42b3ba574.ctex"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -169.5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lf26"]
+size = Vector2(13.200005, 20)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_41v4r"]
 load_path = "res://.godot/imported/mixr_box.png-30061171882d1925b26a1b236a8e253d.ctex"
@@ -61,42 +62,44 @@ script = ExtResource("1_gqqm6")
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1962037065]
 
-[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea")]
+[node name="GameManager" type="Node" parent="." unique_id=597460365 node_paths=PackedStringArray("eventController", "drinkSubmissionArea", "timerLabel")]
 script = ExtResource("2_fvivi")
 gameRounds = Array[Resource]([SubResource("Resource_5lf26")])
 eventController = NodePath("../EventController")
-drinkSubmissionArea = NodePath("../BarScene/BarCounter")
+drinkSubmissionArea = NodePath("../BarScene/DrinkSubmissionArea")
+timerLabel = NodePath("../Control/Label")
 
 [node name="EventController" type="Node" parent="." unique_id=838439069]
 script = ExtResource("6_r4now")
+
+[node name="Control" type="Control" parent="." unique_id=1284454079]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1319892436]
+layout_mode = 0
+offset_left = 565.0
+offset_top = -487.0
+offset_right = 900.0
+offset_bottom = -418.0
+text = "Time Left: 40s"
+label_settings = SubResource("LabelSettings_ix8wc")
 
 [node name="DropletSpawner" type="Node2D" parent="." unique_id=1740632994]
 script = ExtResource("6_8yvl4")
 dropletScene = ExtResource("7_0s30y")
 
+[node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
+
 [node name="BarScene" type="Node2D" parent="." unique_id=413730612]
 
-[node name="BarCounter" type="StaticBody2D" parent="BarScene" unique_id=1223054503 node_paths=PackedStringArray("drinkSubmissionArea")]
-position = Vector2(0, 50)
-collision_layer = 8
-collision_mask = 8
-script = ExtResource("6_5lf26")
-drinkSubmissionArea = NodePath("Area2D")
-timeToSubmit = 1.5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/BarCounter" unique_id=165915098]
-position = Vector2(0, 190)
-shape = SubResource("RectangleShape2D_85wtc")
-
-[node name="Area2D" type="Area2D" parent="BarScene/BarCounter" unique_id=32967087]
-collision_layer = 8
-collision_mask = 8
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/BarCounter/Area2D" unique_id=302225844]
-position = Vector2(333, 185)
-scale = Vector2(10, 1)
-shape = SubResource("RectangleShape2D_5lf26")
+[node name="Background" type="Sprite2D" parent="BarScene" unique_id=602345615]
+show_behind_parent = true
+z_index = -100
+z_as_relative = false
+texture = ExtResource("24_87gjg")
 
 [node name="Table" type="StaticBody2D" parent="BarScene" unique_id=1237125352]
 position = Vector2(0, 301)
@@ -109,7 +112,7 @@ scale = Vector2(1.0015625, 0.98113215)
 texture = SubResource("CompressedTexture2D_e5jey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/Table" unique_id=779099646]
-position = Vector2(0, -159)
+position = Vector2(0, -400)
 scale = Vector2(9, 2)
 shape = SubResource("WorldBoundaryShape2D_gr58c")
 
@@ -125,11 +128,17 @@ texture = ExtResource("10_lfljr")
 [node name="Trays" type="Sprite2D" parent="BarScene" unique_id=2110182133]
 texture = ExtResource("11_ix8wc")
 
-[node name="HoldingObjectParent" type="Node2D" parent="." unique_id=691305776]
+[node name="DrinkSubmissionArea" type="Area2D" parent="BarScene" unique_id=32967087]
+position = Vector2(336, 227)
+collision_layer = 8
+collision_mask = 8
+monitorable = false
+script = ExtResource("6_5lf26")
+timeToSubmit = 2.0
 
-[node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
-position = Vector2(385, 408)
-input_pickable = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/DrinkSubmissionArea" unique_id=302225844]
+scale = Vector2(10, 1)
+shape = SubResource("RectangleShape2D_5lf26")
 
 [node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
 position = Vector2(-953, -818)
@@ -228,37 +237,39 @@ position = Vector2(-342.6772, -476.34143)
 scale = Vector2(0.7781506, 0.74540937)
 texture = SubResource("CompressedTexture2D_lfljr")
 
-[node name="FishEyeSpawner" parent="." unique_id=1504049884 instance=ExtResource("24_0s30y")]
+[node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
+position = Vector2(385, 408)
+input_pickable = false
+
+[node name="Garnishes" type="Node2D" parent="." unique_id=396753750]
+
+[node name="FishEyeSpawner" parent="Garnishes" unique_id=1504049884 instance=ExtResource("24_0s30y")]
 position = Vector2(-895, 440)
 spawnableScene = ExtResource("25_41v4r")
 metadata/GarnishData = ExtResource("26_ix8wc")
 
-[node name="CrabStickSpawner" parent="." unique_id=820162645 instance=ExtResource("24_0s30y")]
+[node name="CrabStickSpawner" parent="Garnishes" unique_id=820162645 instance=ExtResource("24_0s30y")]
 position = Vector2(-759, 439)
 metadata/GarnishData = ExtResource("26_ix8wc")
+
+[node name="Alcohols" type="Node2D" parent="." unique_id=1684555991]
+
+[node name="Absinthe" parent="Alcohols" unique_id=1570976637 instance=ExtResource("3_iy0dp")]
+position = Vector2(-900, -225)
+metadata/Liquid = ExtResource("32_ix8wc")
+
+[node name="BottleCatcher" parent="Alcohols/Absinthe" unique_id=72906268 instance=ExtResource("12_lfljr")]
+position = Vector2(-901, -122)
+
+[node name="Brandy" parent="Alcohols" unique_id=537746372 instance=ExtResource("3_iy0dp")]
+position = Vector2(-756, -228)
+metadata/Liquid = ExtResource("33_3kb3r")
+
+[node name="BottleCatcher" parent="Alcohols/Brandy" unique_id=741567597 instance=ExtResource("12_lfljr")]
+position = Vector2(-759, -122)
 
 [node name="LiquidDispenser" parent="." unique_id=956457883 instance=ExtResource("26_e5jey")]
 z_index = -6
 position = Vector2(842, 116)
-
-[node name="Background" type="Sprite2D" parent="." unique_id=602345615]
-show_behind_parent = true
-z_index = -100
-z_as_relative = false
-texture = ExtResource("24_87gjg")
-
-[node name="Absinthe" parent="." unique_id=1570976637 instance=ExtResource("3_iy0dp")]
-position = Vector2(-900, -225)
-metadata/Liquid = ExtResource("32_ix8wc")
-
-[node name="BottleCatcher" parent="Absinthe" unique_id=72906268 instance=ExtResource("12_lfljr")]
-position = Vector2(-901, -122)
-
-[node name="Brandy" parent="." unique_id=537746372 instance=ExtResource("3_iy0dp")]
-position = Vector2(-756, -228)
-metadata/Liquid = ExtResource("33_3kb3r")
-
-[node name="BottleCatcher" parent="Brandy" unique_id=741567597 instance=ExtResource("12_lfljr")]
-position = Vector2(-759, -122)
 
 [editable path="Characters"]
