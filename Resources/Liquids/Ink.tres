@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://pg870q0yfr6t"]
+
+[ext_resource type="Texture2D" uid="uid://137oavn7wk3m" path="res://Bar Assets/Syrup/Ink Syrup.png" id="1_iiyxy"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="2_wwpol"]
+
+[resource]
+script = ExtResource("2_wwpol")
+LiquidName = "Ink Syrup"
+Color = Color(0.21945047, 3.8564765e-05, 0.22488114, 0.8666667)
+bottle = ExtResource("1_iiyxy")

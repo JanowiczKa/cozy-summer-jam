@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://dnk3frkuo8tfi"]
+
+[ext_resource type="Texture2D" uid="uid://jdb1meitm0w7" path="res://Bar Assets/Syrup/Bait Syrup.png" id="1_6dayq"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="2_nisoo"]
+
+[resource]
+script = ExtResource("2_nisoo")
+LiquidName = "Bait"
+Color = Color(0.88011396, 0.22103554, 0.088658206, 0.8666667)
+bottle = ExtResource("1_6dayq")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://1yti2v13uwic"]
+
+[ext_resource type="Texture2D" uid="uid://ck1l445xnr1mr" path="res://Bar Assets/Alcohol/Rum.png" id="1_wje7b"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="2_b0670"]
+
+[resource]
+script = ExtResource("2_b0670")
+LiquidName = "Abyssal Zone Rum"
+Color = Color(0.46926332, 0.23870245, 1.4439226e-07, 0.8666667)
+bottle = ExtResource("1_wje7b")

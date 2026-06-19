@@ -133,7 +133,7 @@ public partial class ChatBotDialogue : RichTextLabel
 	{
 		string dialogueAndScore = "";
 
-		if (score >= 95)
+		if (score >= 85)
 		{
 			dialogueAndScore = Tr(dialogueBank.OutroDialogue[0]).Replace("{score}", score.ToString());
 		} else if (score >= 50)

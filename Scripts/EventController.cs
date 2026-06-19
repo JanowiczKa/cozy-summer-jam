@@ -79,7 +79,7 @@ public partial class EventController : Node
 			total_time_elapsed += delta;
 		}
 
-		if (gmstate == GameState.Gameplay && total_time_elapsed >= 7.0 && waiting_for_text_to_finish == false)
+		if (gmstate == GameState.Gameplay && total_time_elapsed >= 5.0 && waiting_for_text_to_finish == false)
 		{
 			LoopMessagesWhenMakingDrink();
 		}
@@ -258,7 +258,7 @@ public partial class EventController : Node
 			return;
 		}
 
-		if (score >= 95)
+		if (score >= 85)
 		{
 			speech_sequence = customerData.Result_perfect.Dialog;
 			expression_sequence = customerData.Result_perfect.Expression;

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="GarnishData" format=3 uid="uid://dbpg6bupq7orw"]
+
+[ext_resource type="Script" uid="uid://spgfawkgyibm" path="res://Scripts/GarnishData.cs" id="1_8xle0"]
+
+[resource]
+script = ExtResource("1_8xle0")
+GarnishName = "CoralDust"

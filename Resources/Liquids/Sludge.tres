@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://bl37k2n4k7rov"]
+
+[ext_resource type="Texture2D" uid="uid://031ds8nshp8c" path="res://Bar Assets/Alcohol/Sludge.png" id="1_4w5ri"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="2_phcjx"]
+
+[resource]
+script = ExtResource("2_phcjx")
+LiquidName = "The Sludge"
+Color = Color(0.17254902, 0.31764707, 0, 0.8666667)
+bottle = ExtResource("1_4w5ri")

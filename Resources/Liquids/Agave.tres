@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://grmjk7wtacrx"]
+
+[ext_resource type="Texture2D" uid="uid://bukn7gnl4bd07" path="res://Bar Assets/Syrup/Agave Syrup.png" id="1_r5tc4"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="2_k4jnh"]
+
+[resource]
+script = ExtResource("2_k4jnh")
+LiquidName = "Alba Agave"
+Color = Color(0.53333336, 0.5176471, 0, 0.8666667)
+bottle = ExtResource("1_r5tc4")

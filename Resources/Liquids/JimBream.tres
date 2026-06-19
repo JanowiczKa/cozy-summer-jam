@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://yjc15y85ywpm"]
+
+[ext_resource type="Texture2D" uid="uid://bbjbm0oxwjtuw" path="res://Bar Assets/Alcohol/Jim beam.png" id="1_l4mt2"]
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="2_023mw"]
+
+[resource]
+script = ExtResource("2_023mw")
+LiquidName = "Jim Bream"
+Color = Color(0.53333336, 0.31764707, 0, 0.8666667)
+bottle = ExtResource("1_l4mt2")
