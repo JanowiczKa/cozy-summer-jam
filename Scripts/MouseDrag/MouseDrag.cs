@@ -23,7 +23,7 @@ public partial class MouseDrag : RigidBody2D
 		FreezeMode = FreezeModeEnum.Kinematic;
 		InputPickable = true;
 
-        //calls the OnInputEvent method when the collider detects user input overlapping it
+		//calls the OnInputEvent method when the collider detects user input overlapping it
 		if (optionalDraggableAreaCollider == null)
 		{
 			InputEvent += OnInputEvent;

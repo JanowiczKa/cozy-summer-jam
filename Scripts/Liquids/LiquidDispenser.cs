@@ -12,10 +12,10 @@ public partial class LiquidDispenser : Node2D
 
 	private double timer;
 
-    public override void _Ready()
-    {
+	public override void _Ready()
+	{
 		rand = new RandomNumberGenerator();
-    }
+	}
 
 	public void StartPouringLiquid(LiquidData liquid)
 	{
@@ -28,8 +28,8 @@ public partial class LiquidDispenser : Node2D
 		currentLiquid = null;
 	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		if (currentLiquid == null) return;
 
 		timer += delta;
@@ -50,6 +50,6 @@ public partial class LiquidDispenser : Node2D
 
 			GetTree().Root.AddChild(dropletInstance);
 		}
-    }
+	}
 
 }

@@ -24,6 +24,7 @@ public partial class CharacterSprite : Sprite2D
 		Static
 	};
 	private AnimationType animtp;
+	private Vector2 baseSize;
 
 	[Signal]
 	private delegate void FadeInFinishedEventHandler();
@@ -37,7 +38,8 @@ public partial class CharacterSprite : Sprite2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Scale = new Vector2((float)0.36, (float)0.36);
+		//Scale = new Vector2((float)0.36, (float)0.36);
+		baseSize = new Vector2(Scale.X, Scale.Y);
 		is_animated = false;
 		total_time_elapsed = 0.0;
 		animation_sequence = 0;
@@ -115,7 +117,7 @@ public partial class CharacterSprite : Sprite2D
 		acceleration = 0.00001;
 		max_velocity = 0.01;
 		min_velocity = 0.0001;
-		anim_bounds = [0.38, Scale.X];
+		anim_bounds = [baseSize.X + 0.02, baseSize.Y];
 	}
 
 	private void InitDrinkAnimation()
@@ -126,7 +128,7 @@ public partial class CharacterSprite : Sprite2D
 		acceleration = 0.00001;
 		max_velocity = 0.01;
 		min_velocity = 0.0001;
-		anim_bounds = [0.40, Scale.X];
+		anim_bounds = [baseSize.X + 0.02, baseSize.Y];
 	}
 
 	private void TerminateBounceAnimation()
@@ -138,7 +140,7 @@ public partial class CharacterSprite : Sprite2D
 		acceleration = 0.0;
 		max_velocity = 0.0;
 		min_velocity = 0.0;
-		anim_bounds = [0.38, 0.36];
+		anim_bounds = [baseSize.X, baseSize.Y];
 	}
 	
 	// Manipulates the sprite's Scale values to stretch the image
