@@ -5,6 +5,8 @@ using System.Linq;
 
 public partial class EventController : Node
 {
+	[Export(PropertyHint.FilePath)] Area2D characterInteractionArea;
+
 	public enum GameState
 	{
 		Idle,
@@ -47,6 +49,14 @@ public partial class EventController : Node
 	[Signal]
 	private delegate void ClearDialogAndExpressionEventHandler();
 
+	public static EventController Instance;
+
+    public override void _EnterTree()
+    {
+		Instance = this;
+    }
+
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -69,6 +79,23 @@ public partial class EventController : Node
 		spriteNode.Connect("DrinkingFinished", new Callable(this, MethodName.ChangeGameState));
 		var textNode = GetNode<RichTextLabel>("../Characters/SpeechBubble/BubbleText");
 		textNode.Connect("RestartGameplayTextTimer", new Callable(this, MethodName.ResetTimerForText));
+
+		characterInteractionArea.InputEvent += OnInputEvent;
+	}
+
+	public void OnInputEvent(Node viewport, InputEvent @event, long shape_idx)
+	{	
+		var isMouseEvent = @event is InputEventMouseButton;
+		
+		if (!isMouseEvent) return;
+		
+		var mouseEvent = (InputEventMouseButton)@event;
+
+		var pressed = mouseEvent.Pressed;
+		var isLeftClick = mouseEvent.GetButtonIndex() == MouseButton.Left;
+		
+		if (isLeftClick && pressed && !MouseDragController.Instance.IsHoldingObject()) 
+			CharacterDialogueUpdate();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -85,10 +112,9 @@ public partial class EventController : Node
 		}
 	}
 
-	public override void _Input(InputEvent @event)
+	private void CharacterDialogueUpdate()
 	{
-		// Player input for Introduction, Outro and Result dialog sequences
-		if (@event.IsActionPressed("Space") && (gmstate == GameState.Introduction || gmstate == GameState.Result || gmstate == GameState.Outro))
+		if (gmstate == GameState.Introduction || gmstate == GameState.Result || gmstate == GameState.Outro)
 		{
 			// Change game states if the at the end of a dialog sequence
 			if (sequence_index >= expression_sequence.Length || sequence_index >= speech_sequence.Length)
@@ -127,13 +153,63 @@ public partial class EventController : Node
 			}
 				
 		}
-
-		// testing purposes only
-		if (@event.IsActionPressed("FadeIn"))
-		{
-			StartCustomerSequence(GD.Load<CustomerData>("res://Resources/Customers/Sans/SansData.tres"));
-		}
 	}
+
+	// public override void _Input(InputEvent @event)
+	// {
+	// 	// Player input for Introduction, Outro and Result dialog sequences
+	// 	if (@event.IsActionPressed("Space") && (gmstate == GameState.Introduction || gmstate == GameState.Result || gmstate == GameState.Outro))
+	// 	{
+	// 		// Change game states if the at the end of a dialog sequence
+	// 		if (sequence_index >= expression_sequence.Length || sequence_index >= speech_sequence.Length)
+	// 		{
+	// 			switch(gmstate)
+	// 			{
+	// 				case GameState.Introduction:
+	// 					if (chatbotDialogue.dlgMode == ChatBotDialogue.DialogueMode.Default)
+	// 					{
+	// 						EmitSignal(SignalName.ClearDialogAndExpression);
+	// 						EmitSignal(SignalName.StartBounceAnimation);
+	// 						chatbotDialogue.PlayIntro(customerData.Final_drink_target.DrinkName);
+	// 					}
+	// 					break;
+	// 				case GameState.Outro:
+	// 					if (characterSprite.is_animated)
+	// 						break;
+	// 					EmitSignal(SignalName.StartDrinkingAnimation);
+	// 					EmitSignal(SignalName.ClearDialogAndExpression);
+	// 					break;
+	// 				case GameState.Result:
+	// 					EmitSignal(SignalName.StartFadeOut);
+
+	// 					chatbotDialogue.PlayOutro(score);
+
+	// 					EmitSignal(SignalName.ClearDialogAndExpression);
+	// 					break;
+	// 			}
+	// 			return;
+	// 		}
+
+	// 		// If not at the end of a dialog sequence
+	// 		if (characterSprite.is_animated != true)
+	// 		{
+	// 			TriggerNextDialogLine();
+	// 		}
+				
+	// 	}
+
+	// 	// // testing purposes only
+	// 	// if (@event.IsActionPressed("FadeOut"))
+	// 	// {
+	// 	// 	MoveToOutroAndScoringSequence(true);
+	// 	// }
+
+	// 	// // testing purposes only
+	// 	// if (@event.IsActionPressed("FadeIn"))
+	// 	// {
+	// 	// 	StartCustomerSequence(GD.Load<CustomerData>("res://Resources/Customers/Sans/SansData.tres"));
+	// 	// }
+	// }
 
 	public void StartGameplaySequence()
 	{
@@ -146,9 +222,12 @@ public partial class EventController : Node
 	// Loads a new customer resource and fades the customer in, starting the entire sequence
 	public void StartCustomerSequence(CustomerData customer)
 	{
+		GD.Print("Starting customer sequence");
 		customerData = customer;
 		CharacterExpression expressionNode = GetNode<CharacterExpression>("../Characters/CharacterSprite/CharacterExpression");
+		GD.Print(expressionNode.Name);
 		expressionNode.SpriteFrames = customer.Customer_expression_textures;
+		GD.Print("Emitting signal!");
 		EmitSignal(SignalName.StartFadeIn);
 	}
 

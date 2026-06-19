@@ -2,10 +2,8 @@ using Godot;
 using System;
 
 //this is actually really shitty design and will break if we have the player putting multiple glasses on here, but we'll restrict the player to one glass anyway so it should be alright at least for now
-public partial class DrinkSubmissionArea : Node2D
+public partial class DrinkSubmissionArea : Area2D
 {
-	[Export(PropertyHint.FilePath)] public Area2D drinkSubmissionArea;
-
 	[Export] public double timeToSubmit;
 
 	private double timer;
@@ -16,8 +14,8 @@ public partial class DrinkSubmissionArea : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		drinkSubmissionArea.BodyEntered += TryStartSubmissionTimer;
-		drinkSubmissionArea.BodyExited += TryStopSubmissionTimer;
+		BodyEntered += TryStartSubmissionTimer;
+		BodyExited += TryStopSubmissionTimer;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

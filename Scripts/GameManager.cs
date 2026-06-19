@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations.Schema;
+using System;
 using Godot;
 
 public partial class GameManager : Node
@@ -6,6 +6,8 @@ public partial class GameManager : Node
 	[Export] GameRound[] gameRounds;
 	[Export(PropertyHint.FilePath)] EventController eventController;
 	[Export(PropertyHint.FilePath)] DrinkSubmissionArea drinkSubmissionArea;
+	[Export(PropertyHint.FilePath)] Label timerLabel;
+	[Export(PropertyHint.FilePath)] Timer startGameTimer;
 	[Export(PropertyHint.FilePath)] public DrinkContainer glass;
 
 	private GameRound currentRound;
@@ -18,8 +20,6 @@ public partial class GameManager : Node
 
 	public override void _Ready()
 	{
-		StartNextRound();
-
 		eventController.Connect("EndOfIntroduction", new Callable(this, MethodName.StartCurrentCustomerDrinkMakingSection));
 		eventController.Connect("EndOfCustomerSequence", new Callable(this, MethodName.EndCurrentCustomerInteraction));
 		VisibleOnScreenNotifier2D glassVisible = glass.GetChild<VisibleOnScreenNotifier2D>(5);
@@ -27,6 +27,9 @@ public partial class GameManager : Node
 		
 
 		drinkSubmissionArea.OnDrinkSubmitted += SubmitDrinkToCustomer;
+		timerLabel.Text = "";
+
+		startGameTimer.Timeout += StartNextRound;
 	}
 
 	private void RespawnGlass()
@@ -73,25 +76,44 @@ public partial class GameManager : Node
 
 	private void StartCurrentCustomerDrinkMakingSection()
 	{
-		timer = 0;
+		GD.Print("Starting Current Customer Drink Making Section");
+		timer = allowedTimeToMixDrinks;
 		timerIsEnabled = true;
 	}
 
 	private void EndCurrentCustomerInteraction()
 	{
+		GD.Print("Ending customer interaction");
 		currentCustomerIndex++;
 
+		timerIsEnabled = false;
+		timerLabel.Text = "";
 		StartNextCustomerInteraction();
+	}
+
+	private void UpdateTimerWithDelta(double delta)
+	{
+		timer = timer - delta;
+		timerLabel.Text = $"Time Left: {Math.Round(timer)}s";
+	}
+
+	private void PlayerRunOutOfTime()
+	{
+		GD.Print("Player run out of time! " + timer);
+		eventController.MoveToOutroAndScoringSequence(true, null);
+		timerIsEnabled = false;
+		timerLabel.Text = "";
 	}
 
 	public override void _Process(double delta)
 	{
 		if (!timerIsEnabled) return;
 
-		timer += delta;
+		UpdateTimerWithDelta(delta);
 
-		if (timer < allowedTimeToMixDrinks) return;
+		if (timer > 0) return;
 
+		PlayerRunOutOfTime();
 		//time ran out, so maybe we should do some sort of override to give score of 0? handle later
 		//EndCurrentCustomerInteraction();
 	}
@@ -99,12 +121,13 @@ public partial class GameManager : Node
 	public void SubmitDrinkToCustomer(DrinkContainer drink)
 	{
 		//pass drink data
-		//EndCurrentCustomerInteraction();
 		
 		if (eventController.gmstate == EventController.GameState.Gameplay)
 		{
 			DrinkContainer lastGlass = glass;
 			eventController.MoveToOutroAndScoringSequence(false, lastGlass);
+			timerIsEnabled = false;
+			timerLabel.Text = "";
 			RespawnGlass();
 		}
 	}
