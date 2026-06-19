@@ -10,8 +10,6 @@ public partial class GameManager : Node
 	[Export(PropertyHint.FilePath)] Timer startGameTimer;
 	[Export(PropertyHint.FilePath)] public DrinkContainer glass;
 
-	//public List<>
-
 	private GameRound currentRound;
 	private int currentRoundIndex = 0;
 	private int currentCustomerIndex = 0;

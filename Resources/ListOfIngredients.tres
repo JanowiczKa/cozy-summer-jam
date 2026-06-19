@@ -1,23 +1,11 @@
 [gd_resource type="Resource" script_class="ListOfIngredients" format=3 uid="uid://cu384u56l0w3g"]
 
-[ext_resource type="Resource" uid="uid://cr6h4joq7i5bi" path="res://Resources/Liquids/WhaleMilk.tres" id="3_1hmyk"]
+[ext_resource type="Resource" uid="uid://dulchvyd6h2mc" path="res://Resources/Liquids/Milk.tres" id="1_apibh"]
+[ext_resource type="Resource" uid="uid://bnty4ctmw6qgt" path="res://Resources/Liquids/MonsterEnergy.tres" id="2_868wa"]
 [ext_resource type="Resource" uid="uid://dsxl65ka21uco" path="res://Resources/Liquids/BarracudaBrandy.tres" id="3_j5g0j"]
-[ext_resource type="Resource" uid="uid://davb6hd8mqn8f" path="res://Resources/Liquids/Vermouth.tres" id="4_icdy8"]
 [ext_resource type="Resource" uid="uid://8p6xa3d27tp2" path="res://Resources/Liquids/TheAbsintheFather.tres" id="4_x1y5g"]
-[ext_resource type="Resource" uid="uid://cwhh162v21u7p" path="res://Resources/Liquids/ShavedIceberg.tres" id="5_3ek7s"]
 [ext_resource type="Script" uid="uid://04qx731dgc1c" path="res://Scripts/ListOfIngredients.cs" id="5_d2oev"]
-[ext_resource type="Resource" uid="uid://df2e0o38g5ua1" path="res://Resources/Liquids/SeaWater.tres" id="6_yilc3"]
-[ext_resource type="Resource" uid="uid://bdnktcsklt801" path="res://Resources/Liquids/CrabshellCola.tres" id="7_g2nc5"]
-[ext_resource type="Resource" uid="uid://yjc15y85ywpm" path="res://Resources/Liquids/JimBream.tres" id="8_d1dyw"]
-[ext_resource type="Resource" uid="uid://xbv0mwsjwbi" path="res://Resources/Liquids/Tequila.tres" id="9_3e4as"]
-[ext_resource type="Resource" uid="uid://bl37k2n4k7rov" path="res://Resources/Liquids/Sludge.tres" id="10_vhogu"]
-[ext_resource type="Resource" uid="uid://dfo4f18hltw2e" path="res://Resources/Liquids/Vodka.tres" id="11_tfx02"]
-[ext_resource type="Resource" uid="uid://grmjk7wtacrx" path="res://Resources/Liquids/Agave.tres" id="12_fa7lc"]
-[ext_resource type="Resource" uid="uid://du8yasniwhsxb" path="res://Resources/Liquids/Kelp.tres" id="13_fes61"]
-[ext_resource type="Resource" uid="uid://dnk3frkuo8tfi" path="res://Resources/Liquids/Bait.tres" id="14_lvknr"]
-[ext_resource type="Resource" uid="uid://1yti2v13uwic" path="res://Resources/Liquids/Rum.tres" id="15_0q6wy"]
-[ext_resource type="Resource" uid="uid://pg870q0yfr6t" path="res://Resources/Liquids/Ink.tres" id="16_hc1yx"]
 
 [resource]
 script = ExtResource("5_d2oev")
-liquids = Array[Object]([ExtResource("3_j5g0j"), ExtResource("4_x1y5g"), ExtResource("3_1hmyk"), ExtResource("4_icdy8"), ExtResource("5_3ek7s"), ExtResource("6_yilc3"), ExtResource("7_g2nc5"), ExtResource("8_d1dyw"), ExtResource("9_3e4as"), ExtResource("10_vhogu"), ExtResource("11_tfx02"), ExtResource("12_fa7lc"), ExtResource("13_fes61"), ExtResource("14_lvknr"), ExtResource("15_0q6wy"), ExtResource("16_hc1yx")])
+liquids = Array[Object]([ExtResource("1_apibh"), ExtResource("2_868wa"), ExtResource("3_j5g0j"), ExtResource("4_x1y5g"), null, null, null, null])

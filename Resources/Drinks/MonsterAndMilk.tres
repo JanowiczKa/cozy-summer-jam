@@ -9,4 +9,3 @@
 script = ExtResource("3_28efq")
 DrinkName = "Monster Milk"
 DrinkList = Array[Object]([ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("1_tl03b"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("2_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck"), ExtResource("3_qf3ck")])
-GarnishList = Array[Object]([])
