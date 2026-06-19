@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CustomerData" format=3 uid="uid://b5qte3llaamjx"]
 
-[ext_resource type="Texture2D" uid="uid://dmjldvrplv4dr" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="1_7qw3p"]
+[ext_resource type="Texture2D" uid="uid://bna6piuhhnyu5" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="1_7qw3p"]
 [ext_resource type="Resource" uid="uid://dyyiao7vw3g0j" path="res://Resources/Customers/Sans/Gameplay.tres" id="1_kc74c"]
 [ext_resource type="SpriteFrames" uid="uid://dkmbybe3cj75j" path="res://Resources/Customers/Sans/SansFrames.tres" id="2_8oe6k"]
 [ext_resource type="Resource" uid="uid://dfkgiuf4smhh7" path="res://Resources/Customers/Sans/Intro.tres" id="2_rtenj"]
