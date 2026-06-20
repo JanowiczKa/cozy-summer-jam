@@ -5,8 +5,7 @@
 [ext_resource type="Script" uid="uid://djc871d8462ux" path="res://Scripts/GameManager.cs" id="2_fvivi"]
 [ext_resource type="Script" uid="uid://cuaj5mroc22rv" path="res://Scripts/GameRound.cs" id="3_85wtc"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
-[ext_resource type="Resource" uid="uid://bltfn3xdu66qf" path="res://Resources/Customers/Finn/Finn_Shift_1.tres" id="4_3kb3r"]
-[ext_resource type="Resource" uid="uid://b75xgt6lktkik" path="res://Resources/Customers/Cephanie/Cephanie_Shift_1.tres" id="4_m0ogi"]
+[ext_resource type="Resource" uid="uid://bltfn3xdu66qf" path="res://Resources/Customers/Finn/Finn_Shift_1.tres" id="3_tkdt8"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/character.tscn" id="5_4aloy"]
 [ext_resource type="Script" uid="uid://d06fruxa5ksow" path="res://Scripts/DrinkSubmissionArea.cs" id="6_5lf26"]
 [ext_resource type="Script" uid="uid://q14hrtgyhxvm" path="res://Scripts/DropletSpawner.cs" id="6_8yvl4"]
@@ -16,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dt8ueawr0aqk5" path="res://Bar Assets/Environment/Shelves.png" id="10_lfljr"]
 [ext_resource type="Texture2D" uid="uid://c5gmlrdktslk" path="res://Bar Assets/Environment/Garnish trays.png" id="11_ix8wc"]
 [ext_resource type="PackedScene" uid="uid://ch7rr4ovwg62a" path="res://Scenes/bottle_catcher.tscn" id="12_lfljr"]
+[ext_resource type="SpriteFrames" uid="uid://cl2ovf6xv8crx" path="res://Resources/Customers/Finn/FinnExpressionFrames.tres" id="14_tkdt8"]
 [ext_resource type="Script" uid="uid://dyknpy1p1lj4p" path="res://Scripts/Chatbot/Chatbot.cs" id="16_k4kfc"]
 [ext_resource type="FontFile" uid="uid://3hs0qfi7pbwn" path="res://Fonts/font.ttf" id="17_k4kfc"]
 [ext_resource type="Script" uid="uid://dt1tgpfadxasn" path="res://Scripts/Chatbot/ChatBotDialogue.cs" id="18_6f4cw"]
@@ -53,10 +53,11 @@
 [ext_resource type="Resource" uid="uid://dnk3frkuo8tfi" path="res://Resources/Liquids/Bait.tres" id="51_ysdqf"]
 [ext_resource type="Resource" uid="uid://pg870q0yfr6t" path="res://Resources/Liquids/Ink.tres" id="52_tihuo"]
 [ext_resource type="Resource" uid="uid://du8yasniwhsxb" path="res://Resources/Liquids/Kelp.tres" id="53_tkdt8"]
+[ext_resource type="AudioStream" uid="uid://bbc0cnx2p8uor" path="res://Audio/jamgameplay.ogg" id="54_kgahu"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
-customers = Array[Object]([ExtResource("4_3kb3r"), ExtResource("4_m0ogi")])
+customers = Array[Object]([ExtResource("3_tkdt8")])
 metadata/_custom_type_script = "uid://cuaj5mroc22rv"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ix8wc"]
@@ -187,6 +188,8 @@ scale = Vector2(0.4577777, 0.4577777)
 
 [node name="CharacterExpression" parent="Characters/CharacterSprite" index="0" unique_id=1294962647]
 position = Vector2(-9.536743e-07, -2.1844597)
+sprite_frames = ExtResource("14_tkdt8")
+animation = &"Expressions"
 
 [node name="SpeechBubble" parent="Characters" index="1" unique_id=1476035436]
 position = Vector2(131, -383)
@@ -439,5 +442,10 @@ metadata/Liquid = ExtResource("53_tkdt8")
 
 [node name="BottleCatcher" parent="Node2D/KelpSyrup" unique_id=612455669 instance=ExtResource("12_lfljr")]
 position = Vector2(887, 451)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=2085472161]
+stream = ExtResource("54_kgahu")
+autoplay = true
+parameters/looping = true
 
 [editable path="Characters"]

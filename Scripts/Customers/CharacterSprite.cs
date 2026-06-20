@@ -105,7 +105,7 @@ public partial class CharacterSprite : Sprite2D
 		var characterExpression = GetNode<AnimatedSprite2D>("CharacterExpression");
 
 		Texture = controllerNode.customerData.Base_customer_texture;
-        characterExpression.SpriteFrames = controllerNode.customerData.Customer_expression_textures;
+		characterExpression.SpriteFrames = controllerNode.customerData.Customer_expression_textures;
 	}
 
 	private void InitFadeOutAnimation()

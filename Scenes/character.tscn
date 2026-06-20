@@ -17,8 +17,6 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("2_ticvp")
 
 [node name="CharacterExpression" type="AnimatedSprite2D" parent="CharacterSprite" unique_id=1294962647]
-animation = &"Expressions"
-script = ExtResource("4_dk5p5")
 
 [node name="SpeechBubble" type="Sprite2D" parent="." unique_id=1476035436]
 

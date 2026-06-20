@@ -39,7 +39,7 @@ public partial class GameManager : Node
 		var instance = newGlass.Instantiate();
 		AddChild(instance);
 		glass = (DrinkContainer)instance;
-		glass.GlobalPosition = new Vector2(385, 408);
+		glass.GlobalPosition = new Vector2(-176, 115);
 		VisibleOnScreenNotifier2D glassVisible = glass.GetChild<VisibleOnScreenNotifier2D>(5);
 		glassVisible.Connect("screen_exited", new Callable(this, MethodName.RespawnGlass));
 	}

@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="GarnishData" format=3 uid="uid://1auiputy7lfx"]
 
 [ext_resource type="Script" uid="uid://spgfawkgyibm" path="res://Scripts/GarnishData.cs" id="1_pusr4"]
+[ext_resource type="Resource" uid="uid://cmobshldcax5h" path="res://Resources/Liquids/CaviarLiquid.tres" id="1_qa7ic"]
 
 [resource]
 script = ExtResource("1_pusr4")
 GarnishName = "Caviar"
+GarnishToLiquid = ExtResource("1_qa7ic")

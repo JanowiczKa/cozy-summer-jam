@@ -8,6 +8,8 @@ public partial class LiquidContainer : Area2D //MouseDrag
 	//1 droplet is 1 part
 	[Export] 
 	public int containerSize = 60;
+	public int currentVolume;
+	public Random rand;
 
 	[Export(PropertyHint.File)]
 	public Sprite2D liquidSprite;
@@ -20,6 +22,8 @@ public partial class LiquidContainer : Area2D //MouseDrag
 		liquidSprite.SetInstanceShaderParameter("totalParts", containerSize);
 
 		BodyEntered += Collision;
+		rand = new Random();
+		currentVolume = 0;
 	}
 
 	public void Collision(Node body)
@@ -34,6 +38,28 @@ public partial class LiquidContainer : Area2D //MouseDrag
 
 			body.QueueFree();
 		}
+
+		if (body is Garnish)
+		{
+			// return early if already full
+			if (liquids.Count() >= containerSize) return;
+			
+			Garnish garnish = body as Garnish;
+			
+			if (garnish.isHeld != true)
+			{
+				AddGarnish(garnish.garnishData.GarnishToLiquid);
+
+				var garnishParent = garnish.GetParent();
+				garnishParent.RemoveChild(garnish);
+				CallDeferred("add_child", garnish);
+				garnish.SetDeferred("freeze", true);
+				int offset = rand.Next(-15,15);
+				garnish.SetDeferred("global_position", new Vector2(GlobalPosition.X+offset, GlobalPosition.Y));
+				garnish.CallDeferred("remove_child", garnish.GetChild(1));
+				garnish.SetDeferred("isInGlass", true);
+			}
+		}
 	}
 	
 	public void AddLiquid(LiquidData newLiquid)
@@ -42,8 +68,14 @@ public partial class LiquidContainer : Area2D //MouseDrag
 		if (liquids.Count() >= containerSize) return;
 
 		liquids.Add(newLiquid);
+		currentVolume++;
 
 		UpdateLiquidShader();
+	}
+
+	public void AddGarnish(LiquidData newLiquid)
+	{
+		liquids.Add(newLiquid);
 	}
 
 	private void UpdateLiquidShader()

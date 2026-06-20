@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="CustomerData" format=3 uid="uid://bltfn3xdu66qf"]
 
 [ext_resource type="Texture2D" uid="uid://bna6piuhhnyu5" path="res://Sprites/Customers/Finn/shark_sprite_blank.png" id="1_qfuk3"]
-[ext_resource type="Resource" uid="uid://ly05ftyuapuf" path="res://Resources/Drinks/RumAndCoke.tres" id="1_sxtbl"]
 [ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/Customers/CustomerData.cs" id="1_wjai4"]
 [ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/Customers/DialogAndExpression.cs" id="2_a805b"]
 [ext_resource type="SpriteFrames" uid="uid://cl2ovf6xv8crx" path="res://Resources/Customers/Finn/FinnExpressionFrames.tres" id="2_qfuk3"]
+[ext_resource type="Resource" uid="uid://bqsmhogu07e0m" path="res://Resources/Drinks/JustOneCaviar.tres" id="3_qfuk3"]
 
 [sub_resource type="Resource" id="Resource_a805b"]
 script = ExtResource("2_a805b")
@@ -56,7 +56,7 @@ metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [resource]
 script = ExtResource("1_wjai4")
-Final_drink_target = ExtResource("1_sxtbl")
+Final_drink_target = ExtResource("3_qfuk3")
 Intro_dialog_and_expressions = SubResource("Resource_tav44")
 Gameplay_dialog_and_expressions = SubResource("Resource_a805b")
 Result_perfect = SubResource("Resource_wj3tp")

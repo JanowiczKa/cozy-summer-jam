@@ -1,0 +1,21 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dvnrk3uceuxjt"]
+
+[ext_resource type="Texture2D" uid="uid://1q2b2vlpsd1y" path="res://Sprites/Customers/Finn/Expressions/shark_sprite_happy.png" id="1_j1irr"]
+[ext_resource type="Texture2D" uid="uid://d4hcwi0o3qyt2" path="res://Sprites/Customers/Finn/Expressions/shark_sprite_angry.png" id="2_3rgsq"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j1irr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3rgsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_j1irr")
+}],
+"loop": false,
+"name": &"Expressions",
+"speed": 5.0
+}]

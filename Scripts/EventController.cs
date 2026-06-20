@@ -51,10 +51,10 @@ public partial class EventController : Node
 
 	public static EventController Instance;
 
-    public override void _EnterTree()
-    {
+	public override void _EnterTree()
+	{
 		Instance = this;
-    }
+	}
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -224,7 +224,7 @@ public partial class EventController : Node
 	{
 		GD.Print("Starting customer sequence");
 		customerData = customer;
-		CharacterExpression expressionNode = GetNode<CharacterExpression>("../Characters/CharacterSprite/CharacterExpression");
+		AnimatedSprite2D expressionNode = GetNode<AnimatedSprite2D>("../Characters/CharacterSprite/CharacterExpression");
 		GD.Print(expressionNode.Name);
 		expressionNode.SpriteFrames = customer.Customer_expression_textures;
 		GD.Print("Emitting signal!");
