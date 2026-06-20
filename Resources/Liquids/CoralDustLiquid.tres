@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://pus8bc63uyoq"]
+
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="1_tk8mt"]
+
+[resource]
+script = ExtResource("1_tk8mt")
+LiquidName = "Coral Dust"

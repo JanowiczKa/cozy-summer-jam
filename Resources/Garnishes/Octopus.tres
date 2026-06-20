@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="GarnishData" format=3 uid="uid://cugq7x0nu1pdn"]
 
 [ext_resource type="Script" uid="uid://spgfawkgyibm" path="res://Scripts/GarnishData.cs" id="1_6o2fx"]
+[ext_resource type="Resource" uid="uid://3yalgfqfnenm" path="res://Resources/Liquids/OctopusLiquid.tres" id="1_lme3y"]
 
 [resource]
 script = ExtResource("1_6o2fx")
 GarnishName = "Octopus Tentacle"
+GarnishToLiquid = ExtResource("1_lme3y")

@@ -4,54 +4,54 @@
 [ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/Customers/CustomerData.cs" id="1_wjai4"]
 [ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/Customers/DialogAndExpression.cs" id="2_a805b"]
 [ext_resource type="SpriteFrames" uid="uid://cl2ovf6xv8crx" path="res://Resources/Customers/Finn/FinnExpressionFrames.tres" id="2_qfuk3"]
-[ext_resource type="Resource" uid="uid://bqsmhogu07e0m" path="res://Resources/Drinks/JustOneCaviar.tres" id="3_qfuk3"]
+[ext_resource type="Resource" uid="uid://8r10knfrabpp" path="res://Resources/Drinks/OceanFloor.tres" id="3_qfuk3"]
 
 [sub_resource type="Resource" id="Resource_a805b"]
 script = ExtResource("2_a805b")
-Dialog = PackedStringArray("Dude,  I remember I got so trashed off Jim Bream once!", "Well…", "I don\'t remember much from the night, now that I think about it…")
-Expression = PackedStringArray("DefaultExp", "DefaultExp", "DefaultExp")
+Dialog = PackedStringArray("Hydration is important, broski.", "Gotta drink a lot of Sea Water to maintain this physique!", "Aquarium gravel is basically a snack in a drink.")
+Expression = PackedStringArray("Neutral", "Happy", "Neutral")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_tav44"]
 script = ExtResource("2_a805b")
-Dialog = PackedStringArray("Sup, bro!", "Killer place.", "Can I do a Rum and Coke?")
-Expression = PackedStringArray("DefaultExp", "DefaultExp", "Happy")
+Dialog = PackedStringArray("Sup, bro!", "Killer place.", "Can I do an Ocean Floor?")
+Expression = PackedStringArray("Neutral", "Neutral", "Angry")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_jb61v"]
 script = ExtResource("2_a805b")
-Dialog = PackedStringArray("Down the jaws!")
-Expression = PackedStringArray("")
+Dialog = PackedStringArray("Preciate you bro!")
+Expression = PackedStringArray("Happy")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_hyyl5"]
 script = ExtResource("2_a805b")
 Dialog = PackedStringArray("What the glub is this, dude?")
-Expression = PackedStringArray("")
+Expression = PackedStringArray("Angry")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_qfuk3"]
 script = ExtResource("2_a805b")
 Dialog = PackedStringArray("Uhhh… you joshing me?")
-Expression = PackedStringArray("")
+Expression = PackedStringArray("Angry")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_on7am"]
 script = ExtResource("2_a805b")
-Dialog = PackedStringArray("Thanks, man!")
-Expression = PackedStringArray("")
+Dialog = PackedStringArray("What the glub is this, dude?")
+Expression = PackedStringArray("Angry")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_j28pq"]
 script = ExtResource("2_a805b")
 Dialog = PackedStringArray("Oh dang- I think I hear the boys calling me.", "I’ll catch you later, brodie!")
-Expression = PackedStringArray("", "")
+Expression = PackedStringArray("Neutral", "Happy")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_wj3tp"]
 script = ExtResource("2_a805b")
-Dialog = PackedStringArray("Sick drink, dude!", "The boys need to hear about this!")
-Expression = PackedStringArray("", "")
+Dialog = PackedStringArray("You absolutely cooked with this one, bro!")
+Expression = PackedStringArray("Happy")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [resource]

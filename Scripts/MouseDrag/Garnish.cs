@@ -6,6 +6,7 @@ public partial class Garnish : MouseDrag
 	[Export] public GarnishData garnishData;
 
     public bool isInGlass;
+    public int xOffset;
 
     public override void _Process(double delta)
     {
@@ -13,7 +14,7 @@ public partial class Garnish : MouseDrag
         {
             LiquidContainer parent = GetParent<LiquidContainer>();
             int offset = parent.currentVolume * 4;
-            GlobalPosition = new Vector2(GlobalPosition.X, parent.GlobalPosition.Y+40-offset);
+            GlobalPosition = new Vector2(parent.GlobalPosition.X+xOffset, parent.GlobalPosition.Y+30-offset);
         }
     }
 

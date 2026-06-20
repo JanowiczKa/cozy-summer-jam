@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="LiquidData" format=3 uid="uid://x5abigf7gplw"]
+
+[ext_resource type="Script" uid="uid://bgg4was383e8n" path="res://Scripts/Liquids/LiquidData.cs" id="1_4hcyd"]
+
+[resource]
+script = ExtResource("1_4hcyd")
+LiquidName = "Fish Eye"

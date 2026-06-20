@@ -48,6 +48,8 @@ public partial class Character : Node2D
 	private void PlayExpression(string expression)
 	{
 		EmitSignal(SignalName.SetExpression, expression);
+		//CharacterExpression node = GetNode<CharacterExpression>("CharacterSprite/CharacterExpression");
+		//node.ChangeExpression(expression);
 	}
 
 	private void AnimateBouncing()

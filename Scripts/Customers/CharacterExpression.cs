@@ -8,7 +8,7 @@ public partial class CharacterExpression : AnimatedSprite2D
 	// Called when the node enters the s cene tree for the first time.
 	public override void _Ready()
 	{
-		var parentNode = GetNode<Node2D>("../..");
+		var parentNode = GetNode("../..");
 		parentNode.Connect("SetExpression", new Callable(this, MethodName.ChangeExpression));
 		parentNode.Connect("FadeOutAction", new Callable(this, MethodName.ResetExpression));
 		parentNode.Connect("ExpressionClear", new Callable(this, MethodName.ResetExpression));
@@ -20,7 +20,7 @@ public partial class CharacterExpression : AnimatedSprite2D
 	}
 	
 	public void ChangeExpression(string expression){
-		
+		GD.Print("Expression: " + expression);
 		switch(expression)
 		{
 			case "Neutral":

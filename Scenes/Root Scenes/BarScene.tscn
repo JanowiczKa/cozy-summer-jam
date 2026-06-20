@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c5gmlrdktslk" path="res://Bar Assets/Environment/Garnish trays.png" id="11_ix8wc"]
 [ext_resource type="PackedScene" uid="uid://ch7rr4ovwg62a" path="res://Scenes/bottle_catcher.tscn" id="12_lfljr"]
 [ext_resource type="SpriteFrames" uid="uid://cl2ovf6xv8crx" path="res://Resources/Customers/Finn/FinnExpressionFrames.tres" id="14_tkdt8"]
+[ext_resource type="Script" uid="uid://wnmnkeqa5fh5" path="res://Scripts/Customers/CharacterExpression.cs" id="15_m0ogi"]
 [ext_resource type="Script" uid="uid://dyknpy1p1lj4p" path="res://Scripts/Chatbot/Chatbot.cs" id="16_k4kfc"]
 [ext_resource type="FontFile" uid="uid://3hs0qfi7pbwn" path="res://Fonts/font.ttf" id="17_k4kfc"]
 [ext_resource type="Script" uid="uid://dt1tgpfadxasn" path="res://Scripts/Chatbot/ChatBotDialogue.cs" id="18_6f4cw"]
@@ -190,11 +191,13 @@ scale = Vector2(0.4577777, 0.4577777)
 position = Vector2(-9.536743e-07, -2.1844597)
 sprite_frames = ExtResource("14_tkdt8")
 animation = &"Expressions"
+script = ExtResource("15_m0ogi")
 
 [node name="SpeechBubble" parent="Characters" index="1" unique_id=1476035436]
 position = Vector2(131, -383)
 
 [node name="BubbleText" parent="Characters/SpeechBubble" index="0" unique_id=1648223998]
+z_index = -51
 anchor_left = 976.00006
 anchor_top = 415.00003
 anchor_right = 1382.0001

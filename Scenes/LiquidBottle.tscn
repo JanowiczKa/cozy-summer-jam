@@ -68,7 +68,7 @@ scale = Vector2(3.6608653, 7.862668)
 polygon = PackedVector2Array(-4.2471046, -9.331114, -4.2471046, -5.578087, -10.03861, -5.578087, -10.03861, 10.039346, 10.03861, 10.039346, 10.03861, -5.4570217, 4.2471046, -5.4570217, 4.2471046, -9.331114, 5.405406, -9.331114, 5.405406, -10.057507, -5.405406, -10.057507, -5.405406, -9.331114)
 
 [node name="LiquidPourSpout" type="Node2D" parent="." unique_id=967450582 node_paths=PackedStringArray("parentNode")]
-position = Vector2(0, -116)
+position = Vector2(0, -138)
 script = ExtResource("3_2ymyn")
 parentNode = NodePath("..")
 

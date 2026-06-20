@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Drink" format=3 uid="uid://q6ny633m3rlu"]
+
+[ext_resource type="Resource" uid="uid://ci66t7jvvw51x" path="res://Resources/Liquids/WormLiquid.tres" id="1_11lqk"]
+[ext_resource type="Script" uid="uid://cvqvnbumuygs2" path="res://Scripts/Drink.cs" id="1_j1yf6"]
+[ext_resource type="Resource" uid="uid://dr18foy55k0x3" path="res://Resources/Liquids/CrabStickLiquid.tres" id="2_a3oyi"]
+[ext_resource type="Resource" uid="uid://cr6h4joq7i5bi" path="res://Resources/Liquids/WhaleMilk.tres" id="3_orwr1"]
+[ext_resource type="Resource" uid="uid://du8yasniwhsxb" path="res://Resources/Liquids/Kelp.tres" id="4_yv1cm"]
+[ext_resource type="Resource" uid="uid://8p6xa3d27tp2" path="res://Resources/Liquids/TheAbsintheFather.tres" id="5_csvmy"]
+
+[resource]
+script = ExtResource("1_j1yf6")
+DrinkName = "The Wiggler"
+DrinkList = Array[Object]([ExtResource("1_11lqk"), ExtResource("1_11lqk"), ExtResource("1_11lqk"), ExtResource("1_11lqk"), ExtResource("1_11lqk"), ExtResource("2_a3oyi"), ExtResource("2_a3oyi"), ExtResource("2_a3oyi"), ExtResource("2_a3oyi"), ExtResource("2_a3oyi"), ExtResource("3_orwr1"), ExtResource("3_orwr1"), ExtResource("3_orwr1"), ExtResource("3_orwr1"), ExtResource("3_orwr1"), ExtResource("4_yv1cm"), ExtResource("4_yv1cm"), ExtResource("4_yv1cm"), ExtResource("4_yv1cm"), ExtResource("4_yv1cm"), ExtResource("5_csvmy"), ExtResource("5_csvmy"), ExtResource("5_csvmy"), ExtResource("5_csvmy"), ExtResource("5_csvmy")])

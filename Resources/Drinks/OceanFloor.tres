@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Drink" format=3 uid="uid://8r10knfrabpp"]
 
-[ext_resource type="Resource" uid="uid://df2e0o38g5ua1" path="res://Resources/Liquids/SeaWater.tres" id="1_6ih8b"]
-[ext_resource type="Script" uid="uid://cvqvnbumuygs2" path="res://Scripts/Drink.cs" id="2_cnp66"]
+[ext_resource type="Resource" uid="uid://cx2vcyodcjpee" path="res://Resources/Liquids/GravelLiquid.tres" id="1_cnp66"]
+[ext_resource type="Script" uid="uid://cvqvnbumuygs2" path="res://Scripts/Drink.cs" id="1_yubg1"]
+[ext_resource type="Resource" uid="uid://df2e0o38g5ua1" path="res://Resources/Liquids/SeaWater.tres" id="2_hlqi0"]
 
 [resource]
-script = ExtResource("2_cnp66")
+script = ExtResource("1_yubg1")
 DrinkName = "Ocean Floor"
-DrinkList = Array[Object]([ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b"), ExtResource("1_6ih8b")])
-metadata/_custom_type_script = "uid://cvqvnbumuygs2"
+DrinkList = Array[Object]([ExtResource("1_cnp66"), ExtResource("1_cnp66"), ExtResource("1_cnp66"), ExtResource("1_cnp66"), ExtResource("1_cnp66"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0"), ExtResource("2_hlqi0")])

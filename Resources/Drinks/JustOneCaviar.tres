@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Drink" format=3 uid="uid://bqsmhogu07e0m"]
-
-[ext_resource type="Resource" uid="uid://cmobshldcax5h" path="res://Resources/Liquids/CaviarLiquid.tres" id="1_vf37t"]
-[ext_resource type="Script" uid="uid://cvqvnbumuygs2" path="res://Scripts/Drink.cs" id="2_2tyus"]
-
-[resource]
-script = ExtResource("2_2tyus")
-DrinkName = "Just Caviar"
-DrinkList = Array[Object]([ExtResource("1_vf37t")])

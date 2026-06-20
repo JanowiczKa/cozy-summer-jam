@@ -58,6 +58,7 @@ public partial class LiquidContainer : Area2D //MouseDrag
 				garnish.SetDeferred("global_position", new Vector2(GlobalPosition.X+offset, GlobalPosition.Y));
 				garnish.CallDeferred("remove_child", garnish.GetChild(1));
 				garnish.SetDeferred("isInGlass", true);
+				garnish.SetDeferred("xOffset", offset);
 			}
 		}
 	}

@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="GarnishData" format=3 uid="uid://daj1nlna6wa5u"]
 
 [ext_resource type="Script" uid="uid://spgfawkgyibm" path="res://Scripts/GarnishData.cs" id="1_5baed"]
+[ext_resource type="Resource" uid="uid://dr18foy55k0x3" path="res://Resources/Liquids/CrabStickLiquid.tres" id="1_d0n46"]
 
 [resource]
 script = ExtResource("1_5baed")
 GarnishName = "Crab Stick"
+GarnishToLiquid = ExtResource("1_d0n46")
