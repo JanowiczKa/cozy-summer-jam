@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="CustomerData" format=3 uid="uid://dfs42gio1j2k6"]
+
+[ext_resource type="SpriteFrames" uid="uid://xp3rf2t32v1j" path="res://Resources/Customers/Bob/BobSpriteFrames.tres" id="1_2b3aw"]
+[ext_resource type="Texture2D" uid="uid://cumvdnm1y8avy" path="res://Sprites/Customers/Blobfish/blobfish_sprite_blank.png" id="1_v30s6"]
+[ext_resource type="Resource" uid="uid://q6ny633m3rlu" path="res://Resources/Drinks/TheWiggler.tres" id="2_v30s6"]
+[ext_resource type="Texture2D" uid="uid://dm37sl6700fp8" path="res://Sprites/Customers/Blobfish/blobfish_sprite_hand.png" id="2_x6u2d"]
+[ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/Customers/DialogAndExpression.cs" id="3_x6u2d"]
+[ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/Customers/CustomerData.cs" id="4_lxptd"]
+
+[sub_resource type="Resource" id="Resource_2b3aw"]
+script = ExtResource("3_x6u2d")
+Dialog = PackedStringArray("My soul has felt blacker than Squid Ink since Sheila left me…", "My friend, Captain Morgan, has always recommended Abyssal Zone Rum.", "I used to work in a Crabshell Cola factory… before the… Incident. No, not that one. I mean Sheila up and leaving me.", "Caviar… fancy stuff. More my wife’s speed.")
+Expression = PackedStringArray("Angry", "Neutral", "Neutral", "Neutral")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_vl45q"]
+script = ExtResource("3_x6u2d")
+Dialog = PackedStringArray("Just the usual, kid.", "…", "Fine, it’s The Wiggler.")
+Expression = PackedStringArray("Neutral", "Neutral", "Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_x6u2d"]
+script = ExtResource("3_x6u2d")
+Dialog = PackedStringArray("Cheers, kid.", "Hope this is better than my marriage.")
+Expression = PackedStringArray("Neutral", "Neutral")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_lxptd"]
+script = ExtResource("3_x6u2d")
+Dialog = PackedStringArray("...", "It’s okay, I’m used to disappointment.")
+Expression = PackedStringArray("Neutral", "Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_sbkhh"]
+script = ExtResource("3_x6u2d")
+Dialog = PackedStringArray("Uh.", "Even my ex-wife gave me more than this.")
+Expression = PackedStringArray("Angry", "Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_rb67i"]
+script = ExtResource("3_x6u2d")
+Dialog = PackedStringArray("…", "It’s okay, I’m used to disappointment.")
+Expression = PackedStringArray("Neutral", "Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_27p3a"]
+script = ExtResource("3_x6u2d")
+Dialog = PackedStringArray("Oh, my divorce lawyer is calling— goodbye.", "(what do you mean, she wants more child support?)")
+Expression = PackedStringArray("Neutral", "Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_5nj60"]
+script = ExtResource("3_x6u2d")
+Dialog = PackedStringArray("This is better than ‘Don’t Fear the Grouper’ by Blue Oyster Cult!")
+Expression = PackedStringArray("Happy")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[resource]
+script = ExtResource("4_lxptd")
+Final_drink_target = ExtResource("2_v30s6")
+Intro_dialog_and_expressions = SubResource("Resource_vl45q")
+Gameplay_dialog_and_expressions = SubResource("Resource_2b3aw")
+Result_perfect = SubResource("Resource_5nj60")
+Result_mixed = SubResource("Resource_rb67i")
+Result_bad = SubResource("Resource_lxptd")
+Result_empty = SubResource("Resource_sbkhh")
+Result_out_of_time = SubResource("Resource_27p3a")
+Outro_dialog_and_expressions = SubResource("Resource_x6u2d")
+Base_customer_texture = ExtResource("1_v30s6")
+Customer_details_texture = ExtResource("2_x6u2d")
+Customer_expression_textures = ExtResource("1_2b3aw")

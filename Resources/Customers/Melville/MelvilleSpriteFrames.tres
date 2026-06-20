@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cgm23rifhtjwj"]
+
+[ext_resource type="Texture2D" uid="uid://chavfmisk0mjj" path="res://Sprites/Customers/Fisherman/Expressions/fisherman_sprite_neutral.png" id="1_g8yv2"]
+[ext_resource type="Texture2D" uid="uid://2iul878xlj6x" path="res://Sprites/Customers/Fisherman/Expressions/fisherman_sprite_angry.png" id="2_x251w"]
+[ext_resource type="Texture2D" uid="uid://bwwdpxa5j7fwl" path="res://Sprites/Customers/Fisherman/Expressions/fisherman_sprite_happy.png" id="3_76bk4"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g8yv2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x251w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_76bk4")
+}],
+"loop": true,
+"name": &"Expressions",
+"speed": 5.0
+}]

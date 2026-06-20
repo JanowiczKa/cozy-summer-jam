@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Drink" format=3 uid="uid://c8ghj2wbf7b4w"]
+
+[ext_resource type="Resource" uid="uid://1yti2v13uwic" path="res://Resources/Liquids/Rum.tres" id="1_lptce"]
+[ext_resource type="Resource" uid="uid://bdnktcsklt801" path="res://Resources/Liquids/CrabshellCola.tres" id="2_ngalw"]
+[ext_resource type="Resource" uid="uid://pg870q0yfr6t" path="res://Resources/Liquids/Ink.tres" id="3_ipha7"]
+[ext_resource type="Resource" uid="uid://cmobshldcax5h" path="res://Resources/Liquids/CaviarLiquid.tres" id="4_ofxt1"]
+[ext_resource type="Script" uid="uid://cvqvnbumuygs2" path="res://Scripts/Drink.cs" id="5_syyxl"]
+
+[resource]
+script = ExtResource("5_syyxl")
+DrinkName = "Black Pearl"
+DrinkList = Array[Object]([ExtResource("1_lptce"), ExtResource("1_lptce"), ExtResource("1_lptce"), ExtResource("1_lptce"), ExtResource("1_lptce"), ExtResource("1_lptce"), ExtResource("1_lptce"), ExtResource("1_lptce"), ExtResource("1_lptce"), ExtResource("1_lptce"), ExtResource("2_ngalw"), ExtResource("2_ngalw"), ExtResource("2_ngalw"), ExtResource("2_ngalw"), ExtResource("2_ngalw"), ExtResource("3_ipha7"), ExtResource("3_ipha7"), ExtResource("3_ipha7"), ExtResource("3_ipha7"), ExtResource("3_ipha7"), ExtResource("4_ofxt1")])

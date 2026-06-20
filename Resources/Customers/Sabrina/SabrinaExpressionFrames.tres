@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b412hk6v2rbc3"]
+
+[ext_resource type="Texture2D" uid="uid://cpfrchid6c4ea" path="res://Sprites/Customers/Swordfish/Expressions/swordfish_sprite_default.png" id="1_y1rgw"]
+[ext_resource type="Texture2D" uid="uid://i2gqokc21e7d" path="res://Sprites/Customers/Swordfish/Expressions/swordfish_sprite_angry.png" id="2_n45vi"]
+[ext_resource type="Texture2D" uid="uid://bic5nvynqqrk1" path="res://Sprites/Customers/Swordfish/Expressions/swordfish_sprite_happy.png" id="3_cj1up"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y1rgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n45vi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cj1up")
+}],
+"loop": true,
+"name": &"Expressions",
+"speed": 5.0
+}]

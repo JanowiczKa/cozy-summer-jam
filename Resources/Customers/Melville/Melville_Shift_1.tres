@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="CustomerData" format=3 uid="uid://cl0xxwg0imlpd"]
+
+[ext_resource type="Texture2D" uid="uid://b3y5osccnxw48" path="res://Sprites/Customers/Fisherman/fisherman_sprite_blank.png" id="1_qo0p6"]
+[ext_resource type="SpriteFrames" uid="uid://cgm23rifhtjwj" path="res://Resources/Customers/Melville/MelvilleSpriteFrames.tres" id="2_m01fi"]
+[ext_resource type="Resource" uid="uid://ifod7lqukocp" path="res://Resources/Drinks/F710.tres" id="3_m01fi"]
+[ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/Customers/CustomerData.cs" id="3_psg0o"]
+[ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/Customers/DialogAndExpression.cs" id="4_psg0o"]
+
+[sub_resource type="Resource" id="Resource_psg0o"]
+script = ExtResource("4_psg0o")
+Dialog = PackedStringArray("I still remember the day o’ the Incident. The screams. The Sludge. The ‘orrors o’ tentacles descendin’ from the skies. It be Cthulhu,’ I ‘ad ‘ollered.", "Nothin’ like Sea Water to stop ye growin’ grim about the mouth, matey.", "My daughter loved usin’ Fish Eyes as marbles when she were young. Now she just be on… TikiTok?")
+Expression = PackedStringArray("Angry", "Neutral", "Happy")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_7fysc"]
+script = ExtResource("4_psg0o")
+Dialog = PackedStringArray("Ahoy there, sailor.", "I be needin’ somethin’ fer me woes.", "Have ye got an F710?")
+Expression = PackedStringArray("Neutral", "Angry", "Neutral")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_unpjt"]
+script = ExtResource("4_psg0o")
+Dialog = PackedStringArray("I be thankin’ ye, matey.")
+Expression = PackedStringArray("Happy")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_0jmtk"]
+script = ExtResource("4_psg0o")
+Dialog = PackedStringArray("There be somethin’ askew ‘ere…")
+Expression = PackedStringArray("Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_vcgu8"]
+script = ExtResource("4_psg0o")
+Dialog = PackedStringArray("Where be the rest o’ it?")
+Expression = PackedStringArray("Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_d8s8t"]
+script = ExtResource("4_psg0o")
+Dialog = PackedStringArray("There be somethin’ askew ‘ere…")
+Expression = PackedStringArray("Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_5sbfq"]
+script = ExtResource("4_psg0o")
+Dialog = PackedStringArray("The high seas be callin’ me, laddy.", "I best be leavin’.")
+Expression = PackedStringArray("Angry", "Neutral")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_2gmb8"]
+script = ExtResource("4_psg0o")
+Dialog = PackedStringArray("Shiver me timbers!", "It be witchcraft!")
+Expression = PackedStringArray("Neutral", "Happy")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[resource]
+script = ExtResource("3_psg0o")
+Final_drink_target = ExtResource("3_m01fi")
+Intro_dialog_and_expressions = SubResource("Resource_7fysc")
+Gameplay_dialog_and_expressions = SubResource("Resource_psg0o")
+Result_perfect = SubResource("Resource_2gmb8")
+Result_mixed = SubResource("Resource_d8s8t")
+Result_bad = SubResource("Resource_0jmtk")
+Result_empty = SubResource("Resource_vcgu8")
+Result_out_of_time = SubResource("Resource_5sbfq")
+Outro_dialog_and_expressions = SubResource("Resource_unpjt")
+Base_customer_texture = ExtResource("1_qo0p6")
+Customer_expression_textures = ExtResource("2_m01fi")

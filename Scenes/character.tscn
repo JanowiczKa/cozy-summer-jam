@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://daprdl45r836x" path="res://Scripts/Customers/Character.cs" id="1_gase8"]
 [ext_resource type="Script" uid="uid://d3eai5vrvalyi" path="res://Scripts/Customers/CharacterSprite.cs" id="2_ticvp"]
-[ext_resource type="Script" uid="uid://wnmnkeqa5fh5" path="res://Scripts/Customers/CharacterExpression.cs" id="4_dk5p5"]
+[ext_resource type="Texture2D" uid="uid://cjc22ae5x0566" path="res://Sprites/Customers/customer_details_blank.png" id="3_a5ess"]
+[ext_resource type="Script" uid="uid://g140scs3mbqs" path="res://Scripts/Customers/CharacterDetails.cs" id="3_reotu"]
 [ext_resource type="FontFile" uid="uid://3hs0qfi7pbwn" path="res://Fonts/font.ttf" id="6_bvy42"]
 [ext_resource type="Script" uid="uid://2ihtqrg05bjl" path="res://Scripts/Customers/RichTextLabel.cs" id="7_ywvfl"]
 [ext_resource type="AudioStream" uid="uid://h4gfu2w0swfo" path="res://Audio/voice_sans.mp3" id="8_sh1xl"]
@@ -17,6 +18,11 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("2_ticvp")
 
 [node name="CharacterExpression" type="AnimatedSprite2D" parent="CharacterSprite" unique_id=1294962647]
+
+[node name="CharacterDetails" type="Sprite2D" parent="CharacterSprite" unique_id=1617804845]
+scale = Vector2(0.9999998, 0.9999998)
+texture = ExtResource("3_a5ess")
+script = ExtResource("3_reotu")
 
 [node name="SpeechBubble" type="Sprite2D" parent="." unique_id=1476035436]
 

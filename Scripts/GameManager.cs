@@ -14,7 +14,7 @@ public partial class GameManager : Node
 	private int currentRoundIndex = 0;
 	private int currentCustomerIndex = 0;
 
-	[Export] public double allowedTimeToMixDrinks = 40;
+	[Export] public double allowedTimeToMixDrinks = 60;
 	private double timer;
 	private bool timerIsEnabled = false;
 

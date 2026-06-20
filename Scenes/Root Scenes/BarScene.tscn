@@ -4,13 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://cjoyjip4hou8r" path="res://Scenes/DrinkGlass.tscn" id="1_pshnu"]
 [ext_resource type="Script" uid="uid://djc871d8462ux" path="res://Scripts/GameManager.cs" id="2_fvivi"]
 [ext_resource type="Script" uid="uid://cuaj5mroc22rv" path="res://Scripts/GameRound.cs" id="3_85wtc"]
+[ext_resource type="Resource" uid="uid://dfs42gio1j2k6" path="res://Resources/Customers/Bob/Bob_Shift_1.tres" id="3_engim"]
 [ext_resource type="PackedScene" uid="uid://bbxv0y6mmgnhy" path="res://Scenes/LiquidBottle.tscn" id="3_iy0dp"]
+[ext_resource type="Resource" uid="uid://bnpa5eiad67qk" path="res://Resources/Customers/Sabrina/Sabrina_Shift_1.tres" id="3_kenm8"]
 [ext_resource type="Resource" uid="uid://bltfn3xdu66qf" path="res://Resources/Customers/Finn/Finn_Shift_1.tres" id="3_tkdt8"]
+[ext_resource type="Resource" uid="uid://b75xgt6lktkik" path="res://Resources/Customers/Cephanie/Cephanie_Shift_1.tres" id="4_3qjug"]
 [ext_resource type="PackedScene" uid="uid://dhs5evb6h75wu" path="res://Scenes/character.tscn" id="5_4aloy"]
 [ext_resource type="Script" uid="uid://d06fruxa5ksow" path="res://Scripts/DrinkSubmissionArea.cs" id="6_5lf26"]
 [ext_resource type="Script" uid="uid://q14hrtgyhxvm" path="res://Scripts/DropletSpawner.cs" id="6_8yvl4"]
 [ext_resource type="Script" uid="uid://16kx4o1hf44n" path="res://Scripts/EventController.cs" id="6_r4now"]
 [ext_resource type="PackedScene" uid="uid://cspb5c30a5a15" path="res://Scenes/Droplet.tscn" id="7_0s30y"]
+[ext_resource type="Resource" uid="uid://cl0xxwg0imlpd" path="res://Resources/Customers/Melville/Melville_Shift_1.tres" id="7_awhll"]
 [ext_resource type="Texture2D" uid="uid://n7dd6g735fis" path="res://Bar Assets/Environment/Poles.png" id="9_41v4r"]
 [ext_resource type="Texture2D" uid="uid://dt8ueawr0aqk5" path="res://Bar Assets/Environment/Shelves.png" id="10_lfljr"]
 [ext_resource type="Texture2D" uid="uid://c5gmlrdktslk" path="res://Bar Assets/Environment/Garnish trays.png" id="11_ix8wc"]
@@ -58,7 +62,7 @@
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
-customers = Array[Object]([ExtResource("3_tkdt8")])
+customers = Array[Object]([ExtResource("3_tkdt8"), ExtResource("3_engim"), ExtResource("4_3qjug"), ExtResource("3_kenm8"), ExtResource("7_awhll")])
 metadata/_custom_type_script = "uid://cuaj5mroc22rv"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ix8wc"]
@@ -99,7 +103,6 @@ drinkSubmissionArea = NodePath("../BarScene/DrinkSubmissionArea")
 timerLabel = NodePath("../Control/Label")
 startGameTimer = NodePath("Timer")
 glass = NodePath("../DrinkGlass")
-allowedTimeToMixDrinks = 30.0
 
 [node name="Timer" type="Timer" parent="GameManager" unique_id=843113400]
 wait_time = 2.0
@@ -122,6 +125,7 @@ offset_left = 565.0
 offset_top = -487.0
 offset_right = 900.0
 offset_bottom = -418.0
+theme_override_fonts/font = ExtResource("17_k4kfc")
 text = "Time Left: 40s"
 label_settings = SubResource("LabelSettings_ix8wc")
 
@@ -180,7 +184,7 @@ scale = Vector2(10, 1)
 shape = SubResource("RectangleShape2D_5lf26")
 
 [node name="Characters" parent="." unique_id=623045154 instance=ExtResource("5_4aloy")]
-position = Vector2(-103, 30)
+position = Vector2(-103, 35)
 
 [node name="CharacterSprite" parent="Characters" index="0" unique_id=1052017425]
 z_index = -99
@@ -192,6 +196,10 @@ position = Vector2(-9.536743e-07, -2.1844597)
 sprite_frames = ExtResource("14_tkdt8")
 animation = &"Expressions"
 script = ExtResource("15_m0ogi")
+
+[node name="CharacterDetails" parent="Characters/CharacterSprite" index="1" unique_id=1617804845]
+z_index = 1
+z_as_relative = false
 
 [node name="SpeechBubble" parent="Characters" index="1" unique_id=1476035436]
 position = Vector2(131, -383)
@@ -305,6 +313,7 @@ scale = Vector2(0.7781506, 0.74540937)
 texture = SubResource("CompressedTexture2D_lfljr")
 
 [node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
+z_index = 50
 position = Vector2(-176, 115)
 input_pickable = false
 

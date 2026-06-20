@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("2_phcjx")
-LiquidName = "The Sludge"
+LiquidName = "The Sludge (from the Incident)"
 Color = Color(0.17254902, 0.31764707, 0, 0.8666667)
 bottle = ExtResource("1_4w5ri")

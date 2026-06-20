@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="CustomerData" format=3 uid="uid://bnpa5eiad67qk"]
+
+[ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/Customers/CustomerData.cs" id="1_ibvu3"]
+[ext_resource type="Texture2D" uid="uid://dbvyw6rbu8jd0" path="res://Sprites/Customers/Swordfish/swordfish_sprite_blank.png" id="1_kur7r"]
+[ext_resource type="SpriteFrames" uid="uid://b412hk6v2rbc3" path="res://Resources/Customers/Sabrina/SabrinaExpressionFrames.tres" id="2_fs2ql"]
+[ext_resource type="Texture2D" uid="uid://byxk0dfyhuevc" path="res://Sprites/Customers/Swordfish/swordfish_sprite_hand.png" id="2_w61qc"]
+[ext_resource type="Resource" uid="uid://c8ghj2wbf7b4w" path="res://Resources/Drinks/BlackPearl.tres" id="3_mgfao"]
+[ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/Customers/DialogAndExpression.cs" id="4_w61qc"]
+
+[sub_resource type="Resource" id="Resource_mgfao"]
+script = ExtResource("4_w61qc")
+Dialog = PackedStringArray("I haven’t been to the Abyssal Zone- I hear they make a gorgeous rum. Not that you would know.", "My company, Crabshell Cola, just launched a marketing campaign on some social media site- Teepee Tok or some such?", "That had better not be imitation Squid Ink. Don’t try to lie, either- I have quite a discerning palate.", "You have Caviar? In a place like this? Well, miracles really do happen.")
+Expression = PackedStringArray("Neutral", "Neutral", "Angry", "Neutral")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_a7inw"]
+script = ExtResource("4_w61qc")
+Dialog = PackedStringArray("Hm.", "A tiki bar? How…", "Quaint.", "A Black Pearl, and make it snappy.")
+Expression = PackedStringArray("Neutral", "Neutral", "Angry", "Neutral")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_topra"]
+script = ExtResource("4_w61qc")
+Dialog = PackedStringArray("About time.")
+Expression = PackedStringArray("Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_w61qc"]
+script = ExtResource("4_w61qc")
+Dialog = PackedStringArray("Whatever you’re paid, it’s too much.")
+Expression = PackedStringArray("Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_wxndc"]
+script = ExtResource("4_w61qc")
+Dialog = PackedStringArray("I make your year’s salary in a week- did you know that?")
+Expression = PackedStringArray("Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_5jkfm"]
+script = ExtResource("4_w61qc")
+Dialog = PackedStringArray("Whatever you’re paid, it’s too much.")
+Expression = PackedStringArray("Angry")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_jksnk"]
+script = ExtResource("4_w61qc")
+Dialog = PackedStringArray("Time is money, imbecile, and you’re wasting both.", "I have more important places to be.")
+Expression = PackedStringArray("Angry", "Neutral")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[sub_resource type="Resource" id="Resource_xorye"]
+script = ExtResource("4_w61qc")
+Dialog = PackedStringArray("It’s… agreeable.")
+Expression = PackedStringArray("Happy")
+metadata/_custom_type_script = "uid://biw2gp20tmj0e"
+
+[resource]
+script = ExtResource("1_ibvu3")
+Final_drink_target = ExtResource("3_mgfao")
+Intro_dialog_and_expressions = SubResource("Resource_a7inw")
+Gameplay_dialog_and_expressions = SubResource("Resource_mgfao")
+Result_perfect = SubResource("Resource_xorye")
+Result_mixed = SubResource("Resource_5jkfm")
+Result_bad = SubResource("Resource_w61qc")
+Result_empty = SubResource("Resource_wxndc")
+Result_out_of_time = SubResource("Resource_jksnk")
+Outro_dialog_and_expressions = SubResource("Resource_topra")
+Base_customer_texture = ExtResource("1_kur7r")
+Customer_details_texture = ExtResource("2_w61qc")
+Customer_expression_textures = ExtResource("2_fs2ql")

@@ -171,6 +171,8 @@ public partial class EventController : Node
 		AnimatedSprite2D expressionNode = GetNode<AnimatedSprite2D>("../Characters/CharacterSprite/CharacterExpression");
 		GD.Print(expressionNode.Name);
 		expressionNode.SpriteFrames = customer.Customer_expression_textures;
+		Sprite2D detailsNode = GetNode<Sprite2D>("../Characters/CharacterSprite/CharacterDetails");
+		detailsNode.Texture = customer.Customer_details_texture;
 		GD.Print("Emitting signal!");
 		EmitSignal(SignalName.StartFadeIn);
 	}

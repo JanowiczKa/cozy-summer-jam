@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://xp3rf2t32v1j"]
+
+[ext_resource type="Texture2D" uid="uid://dbdt85h5ny85x" path="res://Sprites/Customers/Blobfish/Expressions/blobfish_sprite_neutral.png" id="1_h4rwc"]
+[ext_resource type="Texture2D" uid="uid://dye7sabup8s46" path="res://Sprites/Customers/Blobfish/Expressions/blobfish_sprite_angry.png" id="2_so6b3"]
+[ext_resource type="Texture2D" uid="uid://do6neh2xdn5si" path="res://Sprites/Customers/Blobfish/Expressions/blobfish_sprite_happy.png" id="3_f10yk"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h4rwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_so6b3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f10yk")
+}],
+"loop": true,
+"name": &"Expressions",
+"speed": 5.0
+}]

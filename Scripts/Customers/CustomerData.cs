@@ -35,13 +35,16 @@ public partial class CustomerData : Resource
 	public Texture2D Base_customer_texture {get; set;}
 
 	[Export]
+	public Texture2D Customer_details_texture {get; set;}
+
+	[Export]
 	public SpriteFrames Customer_expression_textures {get; set;}
 
-	public CustomerData() : this(null, null, null, null, null, null, null, null, null, null, null) {}
+	public CustomerData() : this(null, null, null, null, null, null, null, null, null, null, null, null) {}
 
 	public CustomerData(Drink drink_target, DialogAndExpression intro, 
 	DialogAndExpression gameplay, DialogAndExpression resultPerfect, DialogAndExpression resultMixed, 
-	DialogAndExpression resultBad, DialogAndExpression resultEmpty, DialogAndExpression resultTime,DialogAndExpression outro, Texture2D base_tex, SpriteFrames frames)
+	DialogAndExpression resultBad, DialogAndExpression resultEmpty, DialogAndExpression resultTime,DialogAndExpression outro, Texture2D base_tex, Texture2D details_tex, SpriteFrames frames)
 	{
 		Final_drink_target = drink_target;
 		Intro_dialog_and_expressions = intro;
@@ -52,6 +55,7 @@ public partial class CustomerData : Resource
 		Result_empty = resultEmpty;
 		Outro_dialog_and_expressions = outro;
 		Base_customer_texture = base_tex;
+		Customer_details_texture = details_tex;
 		Customer_expression_textures = frames;
 		Result_out_of_time = resultTime;
 	}

@@ -2,61 +2,62 @@
 
 [ext_resource type="Texture2D" uid="uid://d2c1d80e5aeyx" path="res://Sprites/Customers/Octopus Girl/octopus_sprite_blank.png" id="1_j5jbn"]
 [ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/Customers/CustomerData.cs" id="1_qod5k"]
+[ext_resource type="Texture2D" uid="uid://dcx6dwhtya4i5" path="res://Sprites/Customers/Octopus Girl/octopus_sprite_arm.png" id="2_g6ynw"]
 [ext_resource type="SpriteFrames" uid="uid://bnj8qc0fxe5mq" path="res://Resources/Customers/Cephanie/CephanieExpressionFrames.tres" id="2_pvdaj"]
-[ext_resource type="Resource" uid="uid://8r10knfrabpp" path="res://Resources/Drinks/OceanFloor.tres" id="3_pvdaj"]
+[ext_resource type="Resource" uid="uid://juss6pvopssx" path="res://Resources/Drinks/SexOnTheReef.tres" id="3_6a8b4"]
 [ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/Customers/DialogAndExpression.cs" id="4_6a8b4"]
 
 [sub_resource type="Resource" id="Resource_6a8b4"]
 script = ExtResource("4_6a8b4")
-Dialog = PackedStringArray("freshwater has less sodium than Sea Water, but it’s my cheat day, hehe!")
-Expression = PackedStringArray("")
+Dialog = PackedStringArray("i got sooooooo wasted on Pleco Brand Vodka, hehe. it’s barb girl summer!", "Shaved Iceberg is, like, so good for depuffing your gills in the morning!", "ummm, I’m pretty sure eating Octopus Tentacle can get you cancelled. #Yikes.", "ugh, i just love that Albacore Agave is like, totally cruelty-free and all natural! plus it’s like, so healing for your skin barrier?")
+Expression = PackedStringArray("Happy", "Neutral", "Angry", "Happy")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_g6ynw"]
 script = ExtResource("4_6a8b4")
-Dialog = PackedStringArray("hiiiiiiiiii, bestie!", "Can I get an Ocean Floor?")
-Expression = PackedStringArray("", "")
+Dialog = PackedStringArray("hayyyy, can i get a mocha woke\'a dubai cold brew cream triple hazelnut-", "mmm, actually…", "i’ll just get a Sex On The Reef")
+Expression = PackedStringArray("Happy", "Neutral", "Neutral")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_6owsh"]
 script = ExtResource("4_6a8b4")
 Dialog = PackedStringArray("omggg i’m gonna try it!", "aaaa why am i scared!!")
-Expression = PackedStringArray("", "")
+Expression = PackedStringArray("Neutral", "Happy")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_ny6te"]
 script = ExtResource("4_6a8b4")
 Dialog = PackedStringArray("oh babes this is NOT it")
-Expression = PackedStringArray("")
+Expression = PackedStringArray("Angry")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_m4ejq"]
 script = ExtResource("4_6a8b4")
 Dialog = PackedStringArray("i’m all about cutting calories but that’s just rude")
-Expression = PackedStringArray("")
+Expression = PackedStringArray("Angry")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_dd38g"]
 script = ExtResource("4_6a8b4")
-Dialog = PackedStringArray("you totally need more practice")
-Expression = PackedStringArray("")
+Dialog = PackedStringArray("oh babes this is NOT it")
+Expression = PackedStringArray("Angry")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_5k628"]
 script = ExtResource("4_6a8b4")
 Dialog = PackedStringArray("omg, timothée shallowmet has been spotted at the next shoal over!", "i’ve, like, got to go— laterz!")
-Expression = PackedStringArray("", "")
+Expression = PackedStringArray("Happy", "Neutral")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [sub_resource type="Resource" id="Resource_jpv24"]
 script = ExtResource("4_6a8b4")
-Dialog = PackedStringArray("O. M. G. this is perf!")
-Expression = PackedStringArray("")
+Dialog = PackedStringArray("totally slayyyyyyyed, bestie!")
+Expression = PackedStringArray("Happy")
 metadata/_custom_type_script = "uid://biw2gp20tmj0e"
 
 [resource]
 script = ExtResource("1_qod5k")
-Final_drink_target = ExtResource("3_pvdaj")
+Final_drink_target = ExtResource("3_6a8b4")
 Intro_dialog_and_expressions = SubResource("Resource_g6ynw")
 Gameplay_dialog_and_expressions = SubResource("Resource_6a8b4")
 Result_perfect = SubResource("Resource_jpv24")
@@ -66,5 +67,6 @@ Result_empty = SubResource("Resource_m4ejq")
 Result_out_of_time = SubResource("Resource_5k628")
 Outro_dialog_and_expressions = SubResource("Resource_6owsh")
 Base_customer_texture = ExtResource("1_j5jbn")
+Customer_details_texture = ExtResource("2_g6ynw")
 Customer_expression_textures = ExtResource("2_pvdaj")
 metadata/_custom_type_script = "uid://tb7sbbtpyfr2"

@@ -1,22 +1,20 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bnj8qc0fxe5mq"]
 
 [ext_resource type="Texture2D" uid="uid://qht85ollycd8" path="res://Sprites/Customers/Octopus Girl/Expressions/octopus_sprite_happy.png" id="1_2y0a1"]
+[ext_resource type="Texture2D" uid="uid://bxo62mkksg53j" path="res://Sprites/Customers/Octopus Girl/Expressions/octopus_sprite_neutral.png" id="1_fysu0"]
 [ext_resource type="Texture2D" uid="uid://doy17aetgxkal" path="res://Sprites/Customers/Octopus Girl/Expressions/octopus_sprite_angry.png" id="1_tj2sk"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2y0a1"]
-load_path = "res://.godot/imported/octopus_sprite_happy.png-7ddabd4a5bccd8be295f9e8f9f897b24.ctex"
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_2y0a1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("1_2y0a1")
+"texture": ExtResource("1_fysu0")
 }, {
 "duration": 1.0,
 "texture": ExtResource("1_tj2sk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_2y0a1")
 }],
 "loop": true,
 "name": &"Expressions",

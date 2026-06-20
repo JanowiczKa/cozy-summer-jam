@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Drink" format=3 uid="uid://ifod7lqukocp"]
+
+[ext_resource type="Script" uid="uid://cvqvnbumuygs2" path="res://Scripts/Drink.cs" id="1_lyta4"]
+[ext_resource type="Resource" uid="uid://x5abigf7gplw" path="res://Resources/Liquids/FishEyeLiquid.tres" id="1_pmm3d"]
+[ext_resource type="Resource" uid="uid://bl37k2n4k7rov" path="res://Resources/Liquids/Sludge.tres" id="2_fqkgg"]
+[ext_resource type="Resource" uid="uid://df2e0o38g5ua1" path="res://Resources/Liquids/SeaWater.tres" id="3_ukfd2"]
+
+[resource]
+script = ExtResource("1_lyta4")
+DrinkName = "The F710"
+DrinkList = Array[Object]([ExtResource("1_pmm3d"), ExtResource("1_pmm3d"), ExtResource("1_pmm3d"), ExtResource("1_pmm3d"), ExtResource("1_pmm3d"), ExtResource("1_pmm3d"), ExtResource("1_pmm3d"), ExtResource("1_pmm3d"), ExtResource("1_pmm3d"), ExtResource("1_pmm3d"), ExtResource("2_fqkgg"), ExtResource("2_fqkgg"), ExtResource("2_fqkgg"), ExtResource("2_fqkgg"), ExtResource("2_fqkgg"), ExtResource("3_ukfd2"), ExtResource("3_ukfd2"), ExtResource("3_ukfd2"), ExtResource("3_ukfd2"), ExtResource("3_ukfd2"), ExtResource("3_ukfd2"), ExtResource("3_ukfd2"), ExtResource("3_ukfd2"), ExtResource("3_ukfd2"), ExtResource("3_ukfd2")])

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpq3q56ghonb7"]
 
 [ext_resource type="Script" uid="uid://cijr1eidkk6il" path="res://Scripts/MouseDrag/Garnish.cs" id="1_3bss7"]
-[ext_resource type="Resource" uid="uid://cywo6mwtk4ro8" path="res://Resources/Garnishes/FishEye.tres" id="2_foxlb"]
+[ext_resource type="Resource" uid="uid://daj1nlna6wa5u" path="res://Resources/Garnishes/CrabStick.tres" id="2_3bss7"]
 [ext_resource type="Texture2D" uid="uid://qiyv3h2kkflc" path="res://Bar Assets/Garnishes/Crabstick.png" id="3_3bss7"]
 [ext_resource type="Script" uid="uid://cl3alg7xoh3uv" path="res://Scripts/GarnishTex.cs" id="4_ey07q"]
 
@@ -17,7 +17,7 @@ freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_3bss7")
-garnishData = ExtResource("2_foxlb")
+garnishData = ExtResource("2_3bss7")
 
 [node name="GarnishTex" type="Sprite2D" parent="." unique_id=987522512]
 scale = Vector2(0.60156244, 0.60156244)
