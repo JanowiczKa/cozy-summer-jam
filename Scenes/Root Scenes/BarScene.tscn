@@ -297,6 +297,7 @@ shape = SubResource("RectangleShape2D_ix8wc")
 
 [node name="ChatBotAudio" type="AudioStreamPlayer" parent="Chatbot" unique_id=97269127]
 stream = ExtResource("22_8yvl4")
+volume_db = -10.0
 script = ExtResource("22_tcgbs")
 
 [node name="ChatBotFace" type="Sprite2D" parent="Chatbot" unique_id=1351200936]
