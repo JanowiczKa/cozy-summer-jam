@@ -148,7 +148,6 @@ texture = ExtResource("24_87gjg")
 position = Vector2(0, 301)
 
 [node name="Visuals" type="Sprite2D" parent="BarScene/Table" unique_id=367679077]
-modulate = Color(0.56, 0.33898667, 0.14559999, 1)
 z_index = -10
 position = Vector2(1.5000589, 57.000023)
 scale = Vector2(1.0015625, 0.98113215)
