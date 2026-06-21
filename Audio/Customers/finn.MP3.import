@@ -2,13 +2,13 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://cxcam5nmncih0"
-path="res://.godot/imported/finn.MP3-b0da333d5334717b474a5b15d65e7f02.mp3str"
+uid="uid://x7t3fp846aj8"
+path="res://.godot/imported/finn.mp3-f78f5a0af4f052f40b818ea10c3eb018.mp3str"
 
 [deps]
 
-source_file="res://Audio/Customers/finn.MP3"
-dest_files=["res://.godot/imported/finn.MP3-b0da333d5334717b474a5b15d65e7f02.mp3str"]
+source_file="res://Audio/Customers/finn.mp3"
+dest_files=["res://.godot/imported/finn.mp3-f78f5a0af4f052f40b818ea10c3eb018.mp3str"]
 
 [params]
 

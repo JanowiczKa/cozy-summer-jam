@@ -15,6 +15,7 @@ public partial class Garnish : MouseDrag
             LiquidContainer parent = GetParent<LiquidContainer>();
             int offset = parent.currentVolume * 4;
             GlobalPosition = new Vector2(parent.GlobalPosition.X+xOffset, parent.GlobalPosition.Y+30-offset);
+            GlobalRotationDegrees = parent.GlobalRotationDegrees;
         }
     }
 
