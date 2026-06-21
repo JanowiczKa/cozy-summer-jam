@@ -462,7 +462,6 @@ autoplay = true
 parameters/looping = true
 
 [node name="TitleScreen" parent="." unique_id=1791101885 node_paths=PackedStringArray("manager") instance=ExtResource("60_mk3po")]
-visible = false
 z_index = 100
 manager = NodePath("../GameManager")
 
