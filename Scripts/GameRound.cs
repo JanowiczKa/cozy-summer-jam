@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using Godot;
 
 [GlobalClass]
@@ -10,6 +11,11 @@ public partial class GameRound : Resource
 	public GameRound(CustomerData[] Customers)
     {
         customers = Customers;
+    }
+
+    public int GetCustomerNumber()
+    {
+        return customers.Count();
     }
 
     public CustomerData GetCustomerAtIndex(int index)

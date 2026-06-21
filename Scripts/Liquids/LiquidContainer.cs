@@ -79,21 +79,37 @@ public partial class LiquidContainer : Area2D //MouseDrag
 		liquids.Add(newLiquid);
 	}
 
-	private void UpdateLiquidShader()
+	public void UpdateLiquidShader()
 	{
 		var newVolume = liquids.Count();
 
-		//Shit for performance but small so I don't mind
-		var avgRed = liquids.Average(x => x.Color.R);
-		var avgGreen = liquids.Average(x => x.Color.G);
-		var avgBlue = liquids.Average(x => x.Color.B);
-		var avgAlpha = liquids.Average(x => x.Color.A);
+		if (liquids.Count() == 0)
+		{
+			var avgRed = (float)0.0;
+			var avgGreen = (float)0.0;
+			var avgBlue = (float)0.0;
+			var avgAlpha = (float)0.0;
 
-		var newColor = new Color(avgRed, avgGreen, avgBlue, avgAlpha);
+			var newColor = new Color(avgRed, avgGreen, avgBlue, avgAlpha);
 
 
-		liquidSprite.SetInstanceShaderParameter("partsShowing", newVolume);
-		liquidSprite.SelfModulate = newColor;
+			liquidSprite.SetInstanceShaderParameter("partsShowing", newVolume);
+			liquidSprite.SelfModulate = newColor;
+		} else
+		{
+			//Shit for performance but small so I don't mind
+			var avgRed = liquids.Average(x => x.Color.R);
+			var avgGreen = liquids.Average(x => x.Color.G);
+			var avgBlue = liquids.Average(x => x.Color.B);
+			var avgAlpha = liquids.Average(x => x.Color.A);
+
+			var newColor = new Color(avgRed, avgGreen, avgBlue, avgAlpha);
+
+
+			liquidSprite.SetInstanceShaderParameter("partsShowing", newVolume);
+			liquidSprite.SelfModulate = newColor;
+		}
+
 
 		GD.Print("Updated liquid in glass " + newVolume);
 	}

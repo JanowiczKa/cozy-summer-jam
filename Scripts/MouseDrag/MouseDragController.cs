@@ -62,6 +62,7 @@ public partial class MouseDragController : Node2D
 
 	public override void _Process(double delta)
 	{
+		UpdateBlur();
 		var letGo = Input.IsActionJustReleased("Mouse1");
 
 		if (currentDraggedObject == null || !letGo) return;
@@ -71,7 +72,10 @@ public partial class MouseDragController : Node2D
 		currentDraggedObject = null;
 	}
 	
-
+	public void UpdateBlur()
+	{
+		SetInstanceShaderParameter("lod", 5);
+	}
 	public override void _PhysicsProcess(double delta)
 	{
 		if (currentDraggedObject == null) return;

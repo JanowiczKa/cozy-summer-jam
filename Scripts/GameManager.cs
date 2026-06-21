@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using Godot;
+using System.Collections.Generic;
 
 public partial class GameManager : Node
 {
@@ -9,6 +11,7 @@ public partial class GameManager : Node
 	[Export(PropertyHint.FilePath)] Label timerLabel;
 	[Export(PropertyHint.FilePath)] Timer startGameTimer;
 	[Export(PropertyHint.FilePath)] public DrinkContainer glass;
+	private bool isFullScreen;
 
 	private GameRound currentRound;
 	private int currentRoundIndex = 0;
@@ -17,6 +20,8 @@ public partial class GameManager : Node
 	[Export] public double allowedTimeToMixDrinks = 60;
 	private double timer;
 	private bool timerIsEnabled = false;
+
+	public double[] customerScores;
 
 	public override void _Ready()
 	{
@@ -30,18 +35,52 @@ public partial class GameManager : Node
 		timerLabel.Text = "";
 
 		startGameTimer.Timeout += StartNextRound;
+		customerScores = new double[gameRounds[currentRoundIndex].GetCustomerNumber()];
+		isFullScreen = true;
 	}
 
+    public override void _Input(InputEvent @event)
+    {
+        if (Input.IsActionJustPressed("Fullscreen"))
+    	{
+			if (isFullScreen)
+			{
+				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed);
+				isFullScreen = false;
+			} else
+			{
+				DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+				isFullScreen = true;
+			}	
+    	}
+
+		if (Input.IsActionJustPressed("Exit"))
+		{
+			GetTree().Quit();
+		}
+	}
+
+	public void StartGame()
+	{
+		startGameTimer.Start();
+	}
+	
 	private void RespawnGlass()
 	{
-		glass.QueueFree();
-		var newGlass = GD.Load<PackedScene>("res://Scenes/DrinkGlass.tscn");
-		var instance = newGlass.Instantiate();
-		AddChild(instance);
-		glass = (DrinkContainer)instance;
-		glass.GlobalPosition = new Vector2(-176, 115);
-		VisibleOnScreenNotifier2D glassVisible = glass.GetChild<VisibleOnScreenNotifier2D>(5);
-		glassVisible.Connect("screen_exited", new Callable(this, MethodName.RespawnGlass));
+		glass.GlobalPosition = new Vector2(-176, 180);
+		glass.Freeze = true;
+		glass.liquidContainer.liquids = new List<LiquidData>();
+		glass.liquidContainer.currentVolume = 0;
+		Godot.Collections.Array<Node> children = glass.liquidContainer.GetChildren();
+		for (int i = 0; i < children.Count(); i++)
+		{
+			if (children[i] is Garnish)
+			{
+				children[i].QueueFree();
+			}
+		}
+
+		glass.liquidContainer.UpdateLiquidShader();
 	}
 
 	private void StartNextRound()
@@ -66,8 +105,7 @@ public partial class GameManager : Node
 		if (currentCustomer == null)
 		{
 			//wrong place for this logic but out of time to figure out where to make it go
-			EndCurrentRound();
-			StartNextRound();
+			eventController.ChangeGameState("FinalScore");
 			return;
 		}
 
@@ -81,9 +119,10 @@ public partial class GameManager : Node
 		timerIsEnabled = true;
 	}
 
-	private void EndCurrentCustomerInteraction()
+	private void EndCurrentCustomerInteraction(double score)
 	{
 		GD.Print("Ending customer interaction");
+		customerScores[currentCustomerIndex] = score;
 		currentCustomerIndex++;
 
 		timerIsEnabled = false;
@@ -120,7 +159,7 @@ public partial class GameManager : Node
 
 	public void SubmitDrinkToCustomer(DrinkContainer drink)
 	{
-		//pass drink data
+		if (drink == null) return;
 		
 		if (eventController.gmstate == EventController.GameState.Gameplay)
 		{

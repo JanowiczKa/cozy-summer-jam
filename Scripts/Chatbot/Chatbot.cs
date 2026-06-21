@@ -12,6 +12,8 @@ public partial class Chatbot : Sprite2D
 	public bool isExtended;
 	private ChatBotDialogue dialogueNode;
 	private ChatBotRecipe recipeNode;
+	private Chatbot chatbot;
+
 	private EventController controller;
 
 	// Called when the node enters the scene tree for the first time.
@@ -53,14 +55,25 @@ public partial class Chatbot : Sprite2D
 
 		var pressed = mouseEvent.Pressed;
 		var isLeftClick = mouseEvent.GetButtonIndex() == MouseButton.Left;
-		
+
 		if (isLeftClick && pressed) 
 			AnimationStart();
 	}
 
 	public void AnimationStart()
 	{
+		if (isAnimated) return;
+
 		if (controller.gmstate == EventController.GameState.Gameplay)
+		{
+			isAnimated = true;
+			currentVelocity = velocity;
+		}else if(dialogueNode.is_player_at_end == true && dialogueNode.is_player_scored_finally == true && recipeNode.end_final_score == true && isExtended == true)
+		{
+			isAnimated = true;
+			currentVelocity = velocity;
+			dialogueNode.PlayFinalScoreResult();
+		} else if(dialogueNode.is_player_at_end == true && dialogueNode.dlgMode == ChatBotDialogue.DialogueMode.Default && isExtended == false)
 		{
 			isAnimated = true;
 			currentVelocity = velocity;

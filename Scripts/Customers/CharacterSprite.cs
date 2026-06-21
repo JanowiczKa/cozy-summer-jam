@@ -134,7 +134,7 @@ public partial class CharacterSprite : Sprite2D
 		acceleration = 0.00001;
 		max_velocity = 0.01;
 		min_velocity = 0.0001;
-		anim_bounds = [baseSize.X + 0.04, baseSize.Y];
+		anim_bounds = [baseSize.X + 0.03, baseSize.Y];
 	}
 
 	private void TerminateBounceAnimation()

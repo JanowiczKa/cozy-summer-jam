@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dm37sl6700fp8" path="res://Sprites/Customers/Blobfish/blobfish_sprite_hand.png" id="2_x6u2d"]
 [ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/Customers/DialogAndExpression.cs" id="3_x6u2d"]
 [ext_resource type="Script" uid="uid://tb7sbbtpyfr2" path="res://Scripts/Customers/CustomerData.cs" id="4_lxptd"]
+[ext_resource type="AudioStream" uid="uid://c8dlyeoxyh15h" path="res://Audio/Customers/BlobDude.mp3" id="6_lxptd"]
 
 [sub_resource type="Resource" id="Resource_2b3aw"]
 script = ExtResource("3_x6u2d")
@@ -69,3 +70,4 @@ Outro_dialog_and_expressions = SubResource("Resource_x6u2d")
 Base_customer_texture = ExtResource("1_v30s6")
 Customer_details_texture = ExtResource("2_x6u2d")
 Customer_expression_textures = ExtResource("1_2b3aw")
+Voice = ExtResource("6_lxptd")

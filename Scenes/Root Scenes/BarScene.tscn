@@ -59,6 +59,7 @@
 [ext_resource type="Resource" uid="uid://pg870q0yfr6t" path="res://Resources/Liquids/Ink.tres" id="52_tihuo"]
 [ext_resource type="Resource" uid="uid://du8yasniwhsxb" path="res://Resources/Liquids/Kelp.tres" id="53_tkdt8"]
 [ext_resource type="AudioStream" uid="uid://bbc0cnx2p8uor" path="res://Audio/jamgameplay.ogg" id="54_kgahu"]
+[ext_resource type="PackedScene" uid="uid://bkgdtiu3x57og" path="res://Scenes/TitleScreen.tscn" id="60_mk3po"]
 
 [sub_resource type="Resource" id="Resource_5lf26"]
 script = ExtResource("3_85wtc")
@@ -107,11 +108,11 @@ glass = NodePath("../DrinkGlass")
 [node name="Timer" type="Timer" parent="GameManager" unique_id=843113400]
 wait_time = 2.0
 one_shot = true
-autostart = true
 
-[node name="EventController" type="Node" parent="." unique_id=838439069 node_paths=PackedStringArray("characterInteractionArea")]
+[node name="EventController" type="Node" parent="." unique_id=838439069 node_paths=PackedStringArray("characterInteractionArea", "audio")]
 script = ExtResource("6_r4now")
 characterInteractionArea = NodePath("../Characters/CharacterInteractionArea")
+audio = NodePath("../Characters/VoiceSEPlayer")
 
 [node name="Control" type="Control" parent="." unique_id=1284454079]
 layout_mode = 3
@@ -459,5 +460,10 @@ position = Vector2(887, 451)
 stream = ExtResource("54_kgahu")
 autoplay = true
 parameters/looping = true
+
+[node name="TitleScreen" parent="." unique_id=1791101885 node_paths=PackedStringArray("manager") instance=ExtResource("60_mk3po")]
+visible = false
+z_index = 100
+manager = NodePath("../GameManager")
 
 [editable path="Characters"]

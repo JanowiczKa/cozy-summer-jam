@@ -6,6 +6,7 @@ using System.Linq;
 public partial class EventController : Node
 {
 	[Export(PropertyHint.FilePath)] Area2D characterInteractionArea;
+	[Export(PropertyHint.FilePath)] AudioStreamPlayer audio;
 
 	public enum GameState
 	{
@@ -13,6 +14,7 @@ public partial class EventController : Node
 		Introduction,
 		Gameplay,
 		Outro,
+		FinalScore,
 		Result
 	}
 	private string[] expression_sequence;
@@ -28,12 +30,14 @@ public partial class EventController : Node
 	public double score;
 	private DrinkContainer drinkContainer;
 
+	private bool isDrinkEmpty;
+
 	[Export]
 	public CustomerData customerData;
 	[Signal]
 	private delegate void EndOfIntroductionEventHandler();
 	[Signal]
-	private delegate void EndOfCustomerSequenceEventHandler();
+	private delegate void EndOfCustomerSequenceEventHandler(double curentCustomerScore);
 	[Signal]
 	private delegate void ChangeExpressionEventHandler(string expression);
 	[Signal]
@@ -71,6 +75,7 @@ public partial class EventController : Node
 		characterSprite = GetNode<CharacterSprite>("../Characters/CharacterSprite");
 		chatbot = GetNode<Chatbot>("../Chatbot");
 		chatbotDialogue = GetNode<ChatBotDialogue>("../Chatbot/ChatBotDialogue");
+		isDrinkEmpty = false;
 
 		gmstate = GameState.Idle;
 		var charactersNode = GetNode<Node2D>("../Characters");
@@ -101,10 +106,7 @@ public partial class EventController : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (chatbot.isExtended != true)
-		{
-			total_time_elapsed += delta;
-		}
+		total_time_elapsed += delta;
 
 		if (gmstate == GameState.Gameplay && total_time_elapsed >= 5.0 && waiting_for_text_to_finish == false)
 		{
@@ -136,6 +138,7 @@ public partial class EventController : Node
 						EmitSignal(SignalName.ClearDialogAndExpression);
 						break;
 					case GameState.Result:
+						gmstate = GameState.Idle;
 						EmitSignal(SignalName.StartFadeOut);
 
 						chatbotDialogue.PlayOutro(score);
@@ -173,6 +176,7 @@ public partial class EventController : Node
 		expressionNode.SpriteFrames = customer.Customer_expression_textures;
 		Sprite2D detailsNode = GetNode<Sprite2D>("../Characters/CharacterSprite/CharacterDetails");
 		detailsNode.Texture = customer.Customer_details_texture;
+		audio.Stream = customerData.Voice;
 		GD.Print("Emitting signal!");
 		EmitSignal(SignalName.StartFadeIn);
 	}
@@ -186,6 +190,7 @@ public partial class EventController : Node
 			chatbot.AnimationStart();
 		}
 		drinkContainer = drnk;
+		score = VerifyDrinkAndScore();
 		// Check if the player ran out of time
 		if (out_of_time == true)
 		{
@@ -198,6 +203,7 @@ public partial class EventController : Node
 		if (drink.Count() == 0)
 		{
 			ChangeGameState("Result");
+			isDrinkEmpty = true;
 			return;
 		}
 		ChangeGameState("Outro");
@@ -222,7 +228,11 @@ public partial class EventController : Node
 
 	private void LoopMessagesWhenMakingDrink()
 	{
-		sequence_index = rand.Next(expression_sequence.Length);
+		sequence_index += 1;
+		if (sequence_index >= expression_sequence.Count())
+		{
+			sequence_index = 0;
+		}
 		EmitSignal(SignalName.ChangeExpression, expression_sequence[sequence_index]);
 		EmitSignal(SignalName.StartNextDialog, speech_sequence[sequence_index]);
 		// Do not play bounce animation if the text is set to ""
@@ -243,7 +253,6 @@ public partial class EventController : Node
 	private double VerifyDrinkAndScore()
 	{
 		DrinkContainer container = drinkContainer;
-		double score = 0.0;
 		List<LiquidData> target = new List<LiquidData>();
 		List<LiquidData> drink = container.liquidContainer.liquids;
 		for (int i = 0; i < customerData.Final_drink_target.DrinkList.Length; i++)
@@ -279,8 +288,7 @@ public partial class EventController : Node
 
 	private void DetermineResult(double score)
 	{
-		List<LiquidData> drink = drinkContainer.liquidContainer.liquids;
-		if (drink.Count() == 0)
+		if (isDrinkEmpty)
 		{
 			speech_sequence = customerData.Result_empty.Dialog;
 			expression_sequence = customerData.Result_empty.Expression;
@@ -329,7 +337,6 @@ public partial class EventController : Node
 			case "Result":
 				sequence_index = 0;
 				gmstate = GameState.Result;
-				score = VerifyDrinkAndScore();
 				DetermineResult(score);
 				GD.Print(score);
 				sequence_index = 0;
@@ -338,10 +345,11 @@ public partial class EventController : Node
 			case "End":
 				gmstate = GameState.Idle;
 				sequence_index = 0;
-				score = 0.0;
+				isDrinkEmpty = false;
 
 				// Signals the game manager that the entire customer sequence has finished
-				EmitSignal(SignalName.EndOfCustomerSequence);
+				EmitSignal(SignalName.EndOfCustomerSequence, score);
+				score = 0.0;
 				break;
 			case "OutOfTime":
 				sequence_index = 0;
@@ -350,6 +358,11 @@ public partial class EventController : Node
 				expression_sequence = customerData.Result_out_of_time.Expression;
 				sequence_index = 0;
 				TriggerNextDialogLine();
+				break;
+			case "FinalScore":
+				sequence_index = 0;
+				gmstate = GameState.FinalScore;
+				chatbotDialogue.EndOfShift();
 				break;
 		}
 	}

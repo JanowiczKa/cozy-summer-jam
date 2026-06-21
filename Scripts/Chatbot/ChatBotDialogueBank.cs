@@ -9,11 +9,19 @@ public partial class ChatBotDialogueBank : Resource
 	[Export]
 	public string[] OutroDialogue {get; set;}
 
-	public ChatBotDialogueBank() : this(null, null) {}
+	[Export]
+	public string FinalScore {get; set;}
 
-	public ChatBotDialogueBank(string[] introDialogue, string[] outroDialogue)
+	[Export]
+	public string[] FinalScoreResult {get; set;}
+
+	public ChatBotDialogueBank() : this(null, null, null, null) {}
+
+	public ChatBotDialogueBank(string[] introDialogue, string[] outroDialogue, string finalScore, string[] finalScoreResult)
 	{
 		IntroDialogue = introDialogue;
 		OutroDialogue = outroDialogue;
+		FinalScore = finalScore;
+		FinalScoreResult = finalScoreResult;
 	}
 }

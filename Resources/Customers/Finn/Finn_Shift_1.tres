@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://biw2gp20tmj0e" path="res://Scripts/Customers/DialogAndExpression.cs" id="2_a805b"]
 [ext_resource type="SpriteFrames" uid="uid://cl2ovf6xv8crx" path="res://Resources/Customers/Finn/FinnExpressionFrames.tres" id="2_qfuk3"]
 [ext_resource type="Resource" uid="uid://8r10knfrabpp" path="res://Resources/Drinks/OceanFloor.tres" id="3_qfuk3"]
+[ext_resource type="AudioStream" uid="uid://cxcam5nmncih0" path="res://Audio/Customers/finn.MP3" id="5_on7am"]
 
 [sub_resource type="Resource" id="Resource_a805b"]
 script = ExtResource("2_a805b")
@@ -67,4 +68,5 @@ Result_out_of_time = SubResource("Resource_j28pq")
 Outro_dialog_and_expressions = SubResource("Resource_jb61v")
 Base_customer_texture = ExtResource("1_qfuk3")
 Customer_expression_textures = ExtResource("2_qfuk3")
+Voice = ExtResource("5_on7am")
 metadata/_custom_type_script = "uid://tb7sbbtpyfr2"
