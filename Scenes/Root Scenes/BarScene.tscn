@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c5gmlrdktslk" path="res://Bar Assets/Environment/Garnish trays.png" id="11_ix8wc"]
 [ext_resource type="PackedScene" uid="uid://ch7rr4ovwg62a" path="res://Scenes/bottle_catcher.tscn" id="12_lfljr"]
 [ext_resource type="SpriteFrames" uid="uid://cl2ovf6xv8crx" path="res://Resources/Customers/Finn/FinnExpressionFrames.tres" id="14_tkdt8"]
+[ext_resource type="Texture2D" uid="uid://b4r5j6a16tulf" path="res://Bar Assets/Environment/BarCounter.png" id="14_yy11w"]
 [ext_resource type="Script" uid="uid://wnmnkeqa5fh5" path="res://Scripts/Customers/CharacterExpression.cs" id="15_m0ogi"]
 [ext_resource type="Script" uid="uid://dyknpy1p1lj4p" path="res://Scripts/Chatbot/Chatbot.cs" id="16_k4kfc"]
 [ext_resource type="FontFile" uid="uid://3hs0qfi7pbwn" path="res://Fonts/font.ttf" id="17_k4kfc"]
@@ -28,6 +29,7 @@
 [ext_resource type="Script" uid="uid://dxeu7qbij4t8n" path="res://Scripts/Chatbot/ChatBotRecipe.cs" id="20_10ytx"]
 [ext_resource type="Resource" uid="uid://cu384u56l0w3g" path="res://Resources/ListOfIngredients.tres" id="21_ddpem"]
 [ext_resource type="AudioStream" uid="uid://i75pnj0w06um" path="res://Audio/Chatbot/mixr_dial1.wav" id="22_8yvl4"]
+[ext_resource type="Texture2D" uid="uid://2k3nuifn8kvb" path="res://Bar Assets/Environment/MixrBox.png" id="22_dqgjb"]
 [ext_resource type="Script" uid="uid://hlbtnj17hakv" path="res://Scripts/Chatbot/ChatBotAudio.cs" id="22_tcgbs"]
 [ext_resource type="PackedScene" uid="uid://beworw7g3u1d3" path="res://Scenes/SceneSpawner.tscn" id="24_0s30y"]
 [ext_resource type="Texture2D" uid="uid://btu3r1lradd5h" path="res://Bar Assets/Environment/Background.png" id="24_87gjg"]
@@ -37,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://dt0qlcxutkic5" path="res://Scenes/Gravel.tscn" id="27_7gwqm"]
 [ext_resource type="Resource" uid="uid://ef4dm5hjpre8" path="res://Resources/Garnishes/Gravel.tres" id="28_50n6l"]
 [ext_resource type="PackedScene" uid="uid://feoqabf4jtio" path="res://Scenes/Caviar.tscn" id="29_4xfta"]
+[ext_resource type="Texture2D" uid="uid://c3b5jxm7g5vyj" path="res://Bar Assets/Environment/MixrFace.png" id="29_pp41l"]
 [ext_resource type="Resource" uid="uid://1auiputy7lfx" path="res://Resources/Garnishes/Caviar.tres" id="30_org7b"]
 [ext_resource type="PackedScene" uid="uid://ba5xnku55d7gj" path="res://Scenes/CoralDust.tscn" id="31_08sjm"]
 [ext_resource type="Resource" uid="uid://dbpg6bupq7orw" path="res://Resources/Garnishes/CoralDust.tres" id="32_1janj"]
@@ -70,9 +73,6 @@ metadata/_custom_type_script = "uid://cuaj5mroc22rv"
 font_size = 50
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e5jey"]
-load_path = "res://.godot/imported/bar_counter.png-172b884e861448a0657ae2e42b3ba574.ctex"
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gr58c"]
 distance = -169.5
 
@@ -82,14 +82,8 @@ size = Vector2(13.200005, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kb3r"]
 size = Vector2(616, 547)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_41v4r"]
-load_path = "res://.godot/imported/mixr_box.png-30061171882d1925b26a1b236a8e253d.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ix8wc"]
 size = Vector2(742.72504, 602)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lfljr"]
-load_path = "res://.godot/imported/mixr_face.png-023bd0a785a4eb8cefb9319754b97813.ctex"
 
 [node name="BarScene" type="Node2D" unique_id=284124051]
 script = ExtResource("1_gqqm6")
@@ -151,7 +145,7 @@ position = Vector2(0, 301)
 z_index = -10
 position = Vector2(1.5000589, 57.000023)
 scale = Vector2(1.0015625, 0.98113215)
-texture = SubResource("CompressedTexture2D_e5jey")
+texture = ExtResource("14_yy11w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BarScene/Table" unique_id=779099646]
 position = Vector2(0, -400)
@@ -232,7 +226,7 @@ shape = SubResource("RectangleShape2D_3kb3r")
 z_index = -50
 position = Vector2(0, -701)
 scale = Vector2(1.0744218, 0.8770764)
-texture = SubResource("CompressedTexture2D_41v4r")
+texture = ExtResource("22_dqgjb")
 script = ExtResource("16_k4kfc")
 clickableArea = NodePath("Area2D")
 velocity = 200.0
@@ -310,7 +304,7 @@ top_level = true
 z_as_relative = false
 position = Vector2(-342.6772, -476.34143)
 scale = Vector2(0.7781506, 0.74540937)
-texture = SubResource("CompressedTexture2D_lfljr")
+texture = ExtResource("29_pp41l")
 
 [node name="DrinkGlass" parent="." unique_id=955460407 instance=ExtResource("1_pshnu")]
 z_index = 50

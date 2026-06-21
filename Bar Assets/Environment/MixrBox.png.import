@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3b5jxm7g5vyj"
-path="res://.godot/imported/mixr_face.png-8bca98aae838833bd312eebb1e16012a.ctex"
+uid="uid://2k3nuifn8kvb"
+path="res://.godot/imported/MixrBox.png-808ef6629190ee72a71968fa36caeaf9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bar Assets/Environment/mixr_face.png"
-dest_files=["res://.godot/imported/mixr_face.png-8bca98aae838833bd312eebb1e16012a.ctex"]
+source_file="res://Bar Assets/Environment/MixrBox.png"
+dest_files=["res://.godot/imported/MixrBox.png-808ef6629190ee72a71968fa36caeaf9.ctex"]
 
 [params]
 
