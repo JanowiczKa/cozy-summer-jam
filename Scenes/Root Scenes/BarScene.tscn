@@ -457,6 +457,7 @@ position = Vector2(887, 451)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=2085472161]
 stream = ExtResource("54_kgahu")
+volume_db = -10.0
 autoplay = true
 parameters/looping = true
 
